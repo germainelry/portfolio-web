@@ -1,7 +1,7 @@
 @import 'tailwindcss';
 
 /* Import retro fonts */
-@import url('https://fonts.googleapis.com/css2?family=VT323&family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=VT323&family=Press+Start+2P&family=Silkscreen:wght@400;700&display=swap');
 
 /* Color palette */
 :root {
@@ -43,6 +43,7 @@ body {
   --color-retro-title-bar: #f0f0f0;
   --color-retro-border-dark: #2c2c2c;
   --color-retro-border-light: #ffffff;
+  --color-gold: #ffd700;
   
   /* Fonts */
   --font-family-mono: 'VT323', 'Courier New', monospace;

@@ -3,13 +3,43 @@ import MacButton from '../MacButton';
 import PixelAvatar from '../PixelAvatar';
 import StatCard from '../StatCard';
 import Tooltip from '../Tooltip';
-import { TrophyIcon, FolderGridIcon, CoffeeIcon } from '../StatIcons';
+import { TrophyIcon, CoffeeIcon } from '../StatIcons';
+import { ClockLightningIcon } from '../icons/PixelIcons';
+import { useState, useEffect } from 'react';
 
 interface HeroProps {
   onNavigate: (section: string) => void;
 }
 
 export default function Hero({ onNavigate }: HeroProps) {
+  const [typedText, setTypedText] = useState('');
+  const [showCursor, setShowCursor] = useState(true);
+  const fullText = 'Automation • AI • DevOps';
+  
+  // Typing animation
+  useEffect(() => {
+    let charIndex = 0;
+    const typingInterval = setInterval(() => {
+      if (charIndex < fullText.length) {
+        setTypedText(fullText.substring(0, charIndex + 1));
+        charIndex++;
+      } else {
+        clearInterval(typingInterval);
+      }
+    }, 60); // 60ms per character
+    
+    return () => clearInterval(typingInterval);
+  }, []);
+  
+  // Cursor blink animation
+  useEffect(() => {
+    const cursorInterval = setInterval(() => {
+      setShowCursor(prev => !prev);
+    }, 500); // Blink every 500ms
+    
+    return () => clearInterval(cursorInterval);
+  }, []);
+
   return (
     <Window title="GERMAINE.EXE" width="max-w-xl" className="animate-fadeIn">
       <div className="flex flex-col items-center gap-6 text-center">
@@ -32,23 +62,23 @@ export default function Hero({ onNavigate }: HeroProps) {
           </div>
         </div>
 
-        {/* Name and Title */}
+        {/* Name and Title - Updated Typography */}
         <div>
-          <h1 className="font-mono text-retro-charcoal mb-2">
-            Germaine Luah
+          <h1 className="text-retro-charcoal mb-2" style={{ fontFamily: 'Silkscreen, monospace', fontSize: '36px', letterSpacing: '0.08em' }}>
+            GERMAINE LUAH
           </h1>
-          <p className="font-mono text-lg text-retro-grey-dark">
-            Software Engineer • Builder
+          <p className="text-retro-grey-dark" style={{ fontFamily: 'VT323, monospace', fontSize: '20px', letterSpacing: '0.03em' }}>
+            Software Engineer <span className="text-pink-500 px-2" style={{ fontSize: '18px' }}>•</span> Builder
           </p>
         </div>
 
-        {/* Terminal-style tagline */}
-        <div className="bg-white border-2 border-retro-charcoal p-4 w-full max-w-md font-mono text-sm">
+        {/* Terminal-style interface with typing animation */}
+        <div className="bg-[#1a1a1a] border-2 border-[#2c2c2c] p-4 w-full max-w-md rounded shadow-[0_2px_8px_rgba(0,0,0,0.3)]" style={{ fontFamily: 'VT323, monospace', fontSize: '18px' }}>
           <div className="flex items-start gap-2">
-            <span className="text-retro-grey-dark">{'>'}</span>
+            <span className="text-white">&gt;</span>
             <div className="flex-1">
-              <span className="text-retro-charcoal">Automation • AI • DevOps</span>
-              <span className="inline-block w-2 h-4 bg-retro-charcoal ml-1 animate-pulse">▌</span>
+              <span className="text-white">{typedText}</span>
+              <span className={`inline-block w-3 h-5 bg-cyan-500 ml-1 ${showCursor ? 'opacity-100' : 'opacity-0'}`} style={{ transition: 'opacity 0.1s' }}>█</span>
             </div>
           </div>
         </div>
@@ -67,8 +97,8 @@ export default function Hero({ onNavigate }: HeroProps) {
           </Tooltip>
         </div>
 
-        {/* Fun stats with icons and animations */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-6 w-full justify-items-center">
+        {/* Stat cards - Standardized sizing with automation focus */}
+        <div className="flex justify-center gap-6 mt-6 w-full">
           <StatCard 
             value="3+" 
             label="Years Exp"
@@ -89,22 +119,22 @@ export default function Hero({ onNavigate }: HeroProps) {
             }}
           />
           <StatCard 
-            value="10+" 
-            label="Projects"
-            icon={<FolderGridIcon />}
+            value="500+" 
+            label="Hours Saved"
+            icon={<ClockLightningIcon size={48} />}
             tooltip={{
-              title: "Projects Completed",
+              title: "Automation Impact",
               details: [
-                "10+ shipped projects",
-                "Full-stack apps",
-                "AI/automation tools"
+                "500+ hours saved",
+                "Through automation",
+                "DevOps efficiency"
               ]
             }}
             countUp={{
               start: 0,
-              end: '10+',
+              end: '500+',
               duration: 1800,
-              steps: [0, 3, 6, 10]
+              steps: [0, 100, 250, 400, 500]
             }}
           />
           <StatCard 
