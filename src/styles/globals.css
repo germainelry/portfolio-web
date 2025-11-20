@@ -1,0 +1,374 @@
+@import 'tailwindcss';
+
+/* Import retro fonts */
+@import url('https://fonts.googleapis.com/css2?family=VT323&family=Press+Start+2P&display=swap');
+
+/* Color palette */
+:root {
+  /* Retro Grey Palette */
+  --retro-grey: #c0c0c0;
+  --retro-grey-light: #d4d4d4;
+  --retro-grey-dark: #808080;
+  --retro-charcoal: #3c3c3c;
+  --retro-frame: #e5e5e5;
+  --retro-title-bar: #f0f0f0;
+  --retro-border-dark: #2c2c2c;
+  --retro-border-light: #ffffff;
+}
+
+/* Base styles */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'VT323', 'Courier New', monospace;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
+
+/* Custom utilities */
+@theme {
+  /* Colors */
+  --color-retro-grey: #c0c0c0;
+  --color-retro-grey-light: #d4d4d4;
+  --color-retro-grey-dark: #808080;
+  --color-retro-charcoal: #3c3c3c;
+  --color-retro-frame: #e5e5e5;
+  --color-retro-title-bar: #f0f0f0;
+  --color-retro-border-dark: #2c2c2c;
+  --color-retro-border-light: #ffffff;
+  
+  /* Fonts */
+  --font-family-mono: 'VT323', 'Courier New', monospace;
+  --font-family-pixel: 'Press Start 2P', monospace;
+  
+  /* Border widths */
+  --border-width-3: 3px;
+  
+  /* Box shadows */
+  --box-shadow-retro: 8px 8px 0px rgba(0, 0, 0, 0.15);
+}
+
+/* Custom background patterns */
+.bg-retro-desktop {
+  background: linear-gradient(135deg, #ffb895 0%, #ff9770 100%);
+  background-attachment: fixed;
+}
+
+.bg-dithered-pattern {
+  background-image: 
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(255, 119, 112, 0.15) 2px,
+      rgba(255, 119, 112, 0.15) 4px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 2px,
+      rgba(255, 119, 112, 0.15) 2px,
+      rgba(255, 119, 112, 0.15) 4px
+    );
+  background-blend-mode: multiply;
+}
+
+/* Custom border width */
+.border-3 {
+  border-width: 3px;
+}
+
+/* Custom shadow */
+.shadow-retro {
+  box-shadow: 8px 8px 0px rgba(0, 0, 0, 0.15);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes barberpole {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 16px 16px;
+  }
+}
+
+.animate-barberpole {
+  animation: barberpole 1s linear infinite;
+}
+
+@keyframes barberpole-slow {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 17px 17px;
+  }
+}
+
+.animate-barberpole-slow {
+  animation: barberpole-slow 2s linear infinite;
+}
+
+@keyframes shine {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.animate-slideInRight {
+  animation: slideInRight 0.3s ease-out;
+}
+
+@keyframes bounce-in {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.2);
+  }
+  70% {
+    transform: translate(-50%, -50%) scale(0.9);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+}
+
+.animate-bounce-in {
+  animation: bounce-in 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+}
+
+@keyframes steam-rise {
+  0% {
+    opacity: 0;
+    transform: translateY(0) translateX(0);
+  }
+  50% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-8px) translateX(2px);
+  }
+}
+
+.steam-1 {
+  animation: steam-rise 2s ease-in-out infinite;
+}
+
+.steam-2 {
+  animation: steam-rise 2s ease-in-out infinite;
+  animation-delay: 0.5s;
+}
+
+.steam-3 {
+  animation: steam-rise 2s ease-in-out infinite;
+  animation-delay: 1s;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-bounce-subtle {
+  animation: bounce 2s ease-in-out infinite;
+}
+
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.5;
+  }
+  40% {
+    opacity: 1;
+  }
+  60% {
+    opacity: 0.7;
+  }
+  80% {
+    opacity: 0.3;
+  }
+}
+
+.animate-twinkle {
+  animation: twinkle 3s ease-in-out infinite;
+}
+
+@keyframes float-up {
+  0% {
+    transform: translateY(0);
+    opacity: 0.2;
+  }
+  10% {
+    opacity: 0.2;
+  }
+  90% {
+    opacity: 0.1;
+  }
+  100% {
+    transform: translateY(calc(-100vh - 20px));
+    opacity: 0;
+  }
+}
+
+.animate-float-up {
+  animation: float-up 12s linear infinite;
+}
+
+/* Zoom-in cursor */
+.cursor-zoom-in {
+  cursor: zoom-in;
+}
+
+@keyframes bounce-subtle {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+.animate-bounce-subtle {
+  animation: bounce-subtle 0.6s ease-in-out;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 16px;
+  height: 16px;
+}
+
+::-webkit-scrollbar-track {
+  background: #ffb895;
+  border: 2px solid #ff9770;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ff9770;
+  border: 2px solid #ff8860;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #ff8860;
+}
+
+::-webkit-scrollbar-corner {
+  background: #ffb895;
+}
+
+/* Typography defaults */
+h1 {
+  font-size: 2rem;
+  line-height: 1.2;
+  font-weight: bold;
+}
+
+h2 {
+  font-size: 1.5rem;
+  line-height: 1.3;
+  font-weight: bold;
+}
+
+h3 {
+  font-size: 1.25rem;
+  line-height: 1.4;
+  font-weight: bold;
+}
+
+p {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom Retro Cursors */
+* {
+  cursor: url('/cursors/cursor.svg') 3 3, auto;
+}
+
+button, a, .cursor-pointer, [role="button"] {
+  cursor: url('/cursors/pointinghand.svg') 9 3, pointer;
+}
+
+input[type='text'], textarea, .cursor-text {
+  cursor: text;
+}
+
+.cursor-grab, .window-title {
+  cursor: url('/cursors/move.svg') 9 9, grab;
+}
+
+.cursor-grabbing, .window-title:active {
+  cursor: url('/cursors/move.svg') 9 9, grabbing;
+}
+
+.cursor-not-allowed, button:disabled, [disabled] {
+  cursor: url('/cursors/notallowed.svg') 14 20, not-allowed;
+}
+
+.cursor-resize {
+  cursor: nwse-resize;
+}
+
+/* Specific cursor applications */
+.nav-dot,
+.skill-card,
+.stat-card,
+.project-tab,
+.desktop-icon,
+.arrow-nav,
+.interest-tag,
+.tech-badge {
+  cursor: url('/cursors/pointinghand.svg') 9 3, pointer;
+}
