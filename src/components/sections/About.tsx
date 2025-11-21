@@ -9,8 +9,8 @@ export default function About() {
     { name: 'Python', value: 90 },
     { name: 'Automation', value: 85 },
     { name: 'DevOps', value: 80 },
-    { name: 'JavaScript', value: 75 },
-    { name: 'Cloud (AWS)', value: 70 },
+    { name: 'AI', value: 75 },
+    { name: 'SQL', value: 70 },
   ];
 
   const interests = [
@@ -18,11 +18,11 @@ export default function About() {
     { name: 'Anime', description: 'Shonen & Slice of life' },
     { name: 'Keyboards', description: 'Mechanical keyboard enthusiast' },
     { name: 'AI/ML', description: 'Machine learning & automation' },
-    { name: 'Coffee', description: 'Specialty coffee lover' }
+    { name: 'Bubble Tea', description: 'Boba tea enthusiast' }
   ];
 
   return (
-    <Window title="ABOUT.TXT" width="max-w-3xl">
+    <Window title="ABOUT.TXT" width="max-w-2xl">
       <div className="space-y-6">
         {/* Profile Section */}
         <div className="flex flex-col md:flex-row gap-6 items-start">

@@ -2,36 +2,6 @@ import { useState } from 'react';
 import Window from '../Window';
 import Tooltip from '../Tooltip';
 
-// Tech stack color mapping - brand colors (matching Projects section design)
-const techColors: Record<string, { bg: string; text: string; border: string }> = {
-  // Languages
-  'Python': { bg: '#3776ab', text: '#ffffff', border: '#2d5f8d' },
-  'Bash': { bg: '#293137', text: '#ffffff', border: '#1a1d21' },
-  'PowerShell': { bg: '#012456', text: '#ffffff', border: '#011a3e' },
-  
-  // Data/Analytics
-  'Pandas': { bg: '#150458', text: '#ffffff', border: '#0d0338' },
-  'JMP': { bg: '#009e73', text: '#ffffff', border: '#00795a' },
-  'Tableau': { bg: '#e97627', text: '#ffffff', border: '#c55d14' },
-  'SQL': { bg: '#336791', text: '#ffffff', border: '#285577' },
-  'Statistical Analysis': { bg: '#00a86b', text: '#ffffff', border: '#008556' },
-  
-  // Frameworks/APIs
-  'FastAPI': { bg: '#009688', text: '#ffffff', border: '#00796b' },
-  
-  // DevOps/Infrastructure
-  'Chef': { bg: '#f09820', text: '#ffffff', border: '#d17e0a' },
-  'Jenkins': { bg: '#d33833', text: '#ffffff', border: '#b02e2a' },
-  'CI/CD': { bg: '#6b46c5', text: '#ffffff', border: '#5436a1' },
-  'Linux': { bg: '#fcc624', text: '#000000', border: '#e0b00e' },
-  
-  // Security/Enterprise
-  'CyberArk': { bg: '#e20074', text: '#ffffff', border: '#b8005d' },
-  'Active Directory': { bg: '#0078d4', text: '#ffffff', border: '#005a9e' },
-  
-  'Default': { bg: '#808080', text: '#ffffff', border: '#666666' }
-};
-
 export default function Experience() {
   const [activeTab, setActiveTab] = useState(0);
 
@@ -95,7 +65,7 @@ export default function Experience() {
   ];
 
   return (
-    <Window title="EXPERIENCE.DOC" width="max-w-4xl">
+    <Window title="EXPERIENCE.DOC" width="max-w-3xl">
       {/* Tab Navigation */}
       <div className="flex border-b-2 border-retro-grey-dark mb-6 -mt-2">
         {experiences.map((exp, index) => {
@@ -156,7 +126,6 @@ export default function Experience() {
           <h3 className="font-mono text-sm text-retro-grey-dark mb-3">Tech Stack:</h3>
           <div className="flex flex-wrap gap-2">
             {experiences[activeTab].tech.map((tech, index) => {
-              const colors = techColors[tech.name] || techColors['Default'];
               return (
                 <Tooltip
                   key={index}
@@ -167,14 +136,10 @@ export default function Experience() {
                   ]}
                 >
                   <span
-                    className="px-4 py-2 font-mono text-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[3px_3px_0px_rgba(0,0,0,0.3)] cursor-default inline-block"
+                    className="px-2 py-1 font-mono bg-[#E5E5E5] border-2 border-[#808080] text-[#3C3C3C] shadow-[1px_1px_0px_rgba(0,0,0,0.15)] hover:bg-[#F0F0F0] hover:border-[#00D9FF] hover:-translate-y-0.5 hover:shadow-[2px_2px_0px_rgba(0,217,255,0.3)] transition-all duration-200 cursor-default inline-block"
                     style={{
-                      backgroundColor: colors.bg,
-                      color: colors.text,
-                      border: `2px solid ${colors.border}`,
-                      boxShadow: '2px 2px 0px rgba(0,0,0,0.2)',
-                      fontWeight: 'bold',
-                      height: '32px',
+                      fontSize: '12px',
+                      height: '28px',
                       display: 'inline-flex',
                       alignItems: 'center'
                     }}

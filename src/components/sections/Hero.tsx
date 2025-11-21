@@ -1,10 +1,7 @@
 import Window from '../Window';
 import MacButton from '../MacButton';
 import PixelAvatar from '../PixelAvatar';
-import StatCard from '../StatCard';
 import Tooltip from '../Tooltip';
-import { TrophyIcon, CoffeeIcon } from '../StatIcons';
-import { ClockLightningIcon } from '../icons/PixelIcons';
 import { useState, useEffect } from 'react';
 
 interface HeroProps {
@@ -68,8 +65,8 @@ export default function Hero({ onNavigate }: HeroProps) {
           <h1 className="text-retro-charcoal mb-2" style={{ fontFamily: 'Silkscreen, monospace', fontSize: '48px', letterSpacing: '0.08em' }}>
             GERMAINE LUAH
           </h1>
-          <p className="text-retro-grey-dark font-mono" style={{ fontSize: '20px', letterSpacing: '0.03em' }}>
-            Software Engineer <span className="text-pink-500 px-2" style={{ fontSize: '18px' }}>•</span> Builder
+          <p className="text-retro-grey-dark font-mono">
+            Software Engineer
           </p>
         </div>
 
@@ -96,66 +93,6 @@ export default function Hero({ onNavigate }: HeroProps) {
               PORTFOLIO
             </MacButton>
           </Tooltip>
-        </div>
-
-        {/* Stat cards - Standardized sizing with automation focus */}
-        <div className="flex justify-center gap-6 mt-6 w-full">
-          <StatCard 
-            value="3+" 
-            label="Years Exp"
-            icon={<TrophyIcon />}
-            tooltip={{
-              title: "Professional Experience",
-              details: [
-                "2022 - Present (3+ yrs)",
-                "Continuous learning",
-                "Growing expertise"
-              ]
-            }}
-            countUp={{
-              start: 0,
-              end: '3+',
-              duration: 1500,
-              steps: [0, 1, 2, 3]
-            }}
-          />
-          <StatCard 
-            value="500+" 
-            label="Hours Saved"
-            icon={<ClockLightningIcon size={48} />}
-            tooltip={{
-              title: "Automation Impact",
-              details: [
-                "500+ hours saved",
-                "Through automation",
-                "DevOps efficiency"
-              ]
-            }}
-            countUp={{
-              start: 0,
-              end: '500+',
-              duration: 1800,
-              steps: [0, 100, 250, 400, 500]
-            }}
-          />
-          <StatCard 
-            value="∞" 
-            label="Coffee"
-            icon={<CoffeeIcon />}
-            tooltip={{
-              title: "Coffee Consumed",
-              details: [
-                "Fueling productivity",
-                "One cup at a time",
-                "Always brewing..."
-              ]
-            }}
-            countUp={{
-              start: 0,
-              end: '∞',
-              duration: 2000
-            }}
-          />
         </div>
       </div>
     </Window>

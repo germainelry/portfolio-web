@@ -4,30 +4,6 @@ import MacButton from '../MacButton';
 import Tooltip from '../Tooltip';
 import { PixelIcons } from '../icons/PixelIcons';
 
-// Tech stack color mapping - brand colors
-const techColors: Record<string, { bg: string; text: string; border: string }> = {
-  'React': { bg: '#61dafb', text: '#000000', border: '#4fc3dc' },
-  'Node.js': { bg: '#339933', text: '#ffffff', border: '#2d8729' },
-  'PostgreSQL': { bg: '#336791', text: '#ffffff', border: '#285577' },
-  'AWS': { bg: '#ff9900', text: '#000000', border: '#e68a00' },
-  'Tailwind CSS': { bg: '#06b6d4', text: '#ffffff', border: '#0891b2' },
-  'Python': { bg: '#3776ab', text: '#ffffff', border: '#2d5f8d' },
-  'FastAPI': { bg: '#009688', text: '#ffffff', border: '#00796b' },
-  'OpenAI': { bg: '#10a37f', text: '#ffffff', border: '#0d8968' },
-  'Redis': { bg: '#dc382d', text: '#ffffff', border: '#b32e26' },
-  'Docker': { bg: '#2496ed', text: '#ffffff', border: '#1d7dbf' },
-  'TypeScript': { bg: '#3178c6', text: '#ffffff', border: '#2761a3' },
-  'DialogFlow': { bg: '#ff9800', text: '#000000', border: '#e68900' },
-  'Firebase': { bg: '#ffca28', text: '#000000', border: '#f9a825' },
-  'Express': { bg: '#000000', text: '#ffffff', border: '#333333' },
-  'Supabase': { bg: '#3ecf8e', text: '#000000', border: '#36b87a' },
-  'HuggingFace': { bg: '#ff9d00', text: '#000000', border: '#e68900' },
-  'Flask': { bg: '#000000', text: '#ffffff', border: '#333333' },
-  'Ollama': { bg: '#000000', text: '#ffffff', border: '#333333' },
-  'NLP': { bg: '#00a86b', text: '#ffffff', border: '#008556' },
-  'Default': { bg: '#808080', text: '#ffffff', border: '#666666' }
-};
-
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState(0);
 
@@ -90,35 +66,26 @@ export default function Projects() {
   ];
 
   return (
-    <Window title="PROJECTS" width="max-w-4xl">
-      {/* Folder Tabs */}
-      <div className="flex gap-2 mb-6 -mt-2 overflow-x-auto">
+    <Window title="PROJECTS" width="max-w-3xl">
+      {/* Tab Navigation */}
+      <div className="flex border-b-2 border-retro-grey-dark mb-6 -mt-2 overflow-x-auto">
         {projects.map((project, index) => {
           const isActive = selectedProject === index;
           return (
-            <Tooltip 
+            <button
               key={index}
-              title={project.name}
-              details={[
-                `Type: ${project.type}`,
-                `Status: ${project.status}`,
-                `Year: ${project.year}`
-              ]}
+              onClick={() => setSelectedProject(index)}
+              className={`px-4 py-2 font-mono text-sm border-2 border-b-0 whitespace-nowrap transition-all duration-150 relative ${
+                isActive
+                  ? 'bg-white border-retro-grey-dark -mb-0.5 z-10 cursor-default text-retro-charcoal' 
+                  : 'bg-retro-grey border-retro-grey-dark text-retro-grey-dark hover:bg-retro-grey-light cursor-pointer'
+              }`}
             >
-              <button
-                onClick={() => setSelectedProject(index)}
-                className={`flex items-center gap-2 px-4 py-2 font-mono text-sm border-2 border-b-0 whitespace-nowrap transition-all duration-150 relative ${
-                  isActive
-                    ? 'bg-white border-retro-grey-dark -mb-0.5 z-10 cursor-default text-retro-charcoal' 
-                    : 'bg-retro-grey border-retro-grey-dark text-retro-grey-dark hover:bg-retro-grey-light hover:-translate-y-0.5 cursor-pointer'
-                }`}
-              >
-                {isActive && (
-                  <div className="absolute top-0 left-0 right-0 bg-pink-500" style={{ height: '3px' }} />
-                )}
-                <span>{project.name}</span>
-              </button>
-            </Tooltip>
+              {isActive && (
+                <div className="absolute top-0 left-0 right-0 bg-pink-500" style={{ height: '3px' }} />
+              )}
+              {project.name}
+            </button>
           );
         })}
       </div>
@@ -176,17 +143,8 @@ export default function Projects() {
         {/* Description */}
         <div>
           <h3 className="font-mono text-sm text-retro-grey-dark mb-2">Description:</h3>
-          <div className="bg-[#fafafa] border-2 border-retro-grey-dark p-4 relative">
-            {/* Pixel corner accents */}
-            <div className="absolute top-2 right-2 w-2 h-2 bg-cyan-500 opacity-30" />
-            <div className="absolute top-2 right-5 w-2 h-2 bg-cyan-500 opacity-30" />
-            <div className="absolute top-5 right-2 w-2 h-2 bg-cyan-500 opacity-30" />
-            
-            <div className="absolute bottom-2 left-2 w-2 h-2 bg-cyan-500 opacity-30" />
-            <div className="absolute bottom-5 left-2 w-2 h-2 bg-cyan-500 opacity-30" />
-            <div className="absolute bottom-2 left-5 w-2 h-2 bg-cyan-500 opacity-30" />
-            
-            <p className="font-mono text-sm text-retro-charcoal leading-relaxed relative z-10" style={{ color: '#2c2c2c', lineHeight: '1.6' }}>
+          <div className="bg-[#fafafa] border-2 border-retro-grey-dark p-4">
+            <p className="font-mono text-sm text-retro-charcoal leading-relaxed" style={{ color: '#2c2c2c', lineHeight: '1.6' }}>
               {projects[selectedProject].description}
             </p>
           </div>
@@ -197,7 +155,6 @@ export default function Projects() {
           <h3 className="font-mono text-sm text-retro-grey-dark mb-2">Tech Stack:</h3>
           <div className="flex flex-wrap gap-2">
             {projects[selectedProject].tech.map((tech, index) => {
-              const colors = techColors[tech.name] || techColors['Default'];
               return (
                 <Tooltip
                   key={index}
@@ -208,14 +165,10 @@ export default function Projects() {
                   ]}
                 >
                   <span
-                    className="tech-badge px-4 py-2 font-mono text-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[3px_3px_0px_rgba(0,0,0,0.3)] cursor-default inline-block"
+                    className="px-2 py-1 font-mono bg-[#E5E5E5] border-2 border-[#808080] text-[#3C3C3C] shadow-[1px_1px_0px_rgba(0,0,0,0.15)] hover:bg-[#F0F0F0] hover:border-[#00D9FF] hover:-translate-y-0.5 hover:shadow-[2px_2px_0px_rgba(0,217,255,0.3)] transition-all duration-200 cursor-default inline-block"
                     style={{
-                      backgroundColor: colors.bg,
-                      color: colors.text,
-                      border: `2px solid ${colors.border}`,
-                      boxShadow: '2px 2px 0px rgba(0,0,0,0.2)',
-                      fontWeight: 'bold',
-                      height: '32px',
+                      fontSize: '12px',
+                      height: '28px',
                       display: 'inline-flex',
                       alignItems: 'center'
                     }}

@@ -63,7 +63,7 @@ export default function Skills() {
   };
 
   return (
-    <Window title="SYSTEM_SKILLS.cpl" width="max-w-4xl">
+    <Window title="SYSTEM_SKILLS.cpl" width="max-w-3xl">
       {/* Category Tabs */}
       <div className="flex gap-1 border-b-2 border-retro-grey-dark mb-6 -mt-2 overflow-x-auto">
         {Object.entries(skillCategories).map(([key, category]) => {
@@ -78,7 +78,7 @@ export default function Skills() {
               className={`px-4 py-2 font-mono text-sm border-2 border-b-0 whitespace-nowrap transition-all duration-150 relative ${
                 isActive
                   ? 'bg-white border-retro-grey-dark -mb-0.5 z-10 cursor-default text-retro-charcoal' 
-                  : 'bg-retro-grey border-retro-grey-dark text-retro-grey-dark hover:bg-retro-grey-light hover:-translate-y-0.5 cursor-pointer'
+                  : 'bg-retro-grey border-retro-grey-dark text-retro-grey-dark hover:bg-retro-grey-light cursor-pointer'
               }`}
             >
               {isActive && (
