@@ -1,0 +1,28 @@
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Game Console Body -->
+  <rect x="6" y="2" width="20" height="28" rx="2" fill="#E8E8E8" stroke="#2C2C2C" stroke-width="1.5"/>
+
+  <!-- Screen -->
+  <rect x="9" y="5" width="14" height="10" rx="0.5" fill="#9FBC87" stroke="#2C2C2C" stroke-width="1"/>
+
+  <!-- Screen Detail -->
+  <rect x="10" y="6" width="12" height="8" fill="#8BAC68"/>
+
+  <!-- D-Pad -->
+  <g transform="translate(10, 18)">
+    <!-- Horizontal bar -->
+    <rect x="1" y="2" width="5" height="2" fill="#5A5A5A" stroke="#2C2C2C" stroke-width="0.5"/>
+    <!-- Vertical bar -->
+    <rect x="2" y="1" width="3" height="4" fill="#5A5A5A" stroke="#2C2C2C" stroke-width="0.5"/>
+  </g>
+
+  <!-- A Button -->
+  <circle cx="21" cy="20" r="1.5" fill="#D85050" stroke="#2C2C2C" stroke-width="0.5"/>
+
+  <!-- B Button -->
+  <circle cx="18" cy="22" r="1.5" fill="#D85050" stroke="#2C2C2C" stroke-width="0.5"/>
+
+  <!-- Start/Select Lines -->
+  <rect x="13" y="26" width="2" height="1" rx="0.5" fill="#5A5A5A"/>
+  <rect x="17" y="26" width="2" height="1" rx="0.5" fill="#5A5A5A"/>
+</svg>
