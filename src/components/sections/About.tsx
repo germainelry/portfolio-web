@@ -27,7 +27,7 @@ export default function About() {
         {/* Profile Section */}
         <div className="flex flex-col md:flex-row gap-6 items-start">
           <div className="flex-shrink-0 relative group">
-            <PixelAvatar size="medium" />
+            <PixelAvatar size="large" />
             {/* Subtle sparkle effect */}
             <div className="absolute -top-2 -right-2 w-3 h-3 bg-cyan-400 rounded-full opacity-0 group-hover:opacity-100 transition-opacity animate-pulse" />
             <div className="absolute -bottom-1 -left-1 w-2 h-2 bg-pink-400 rounded-full opacity-0 group-hover:opacity-100 transition-opacity animate-pulse" style={{ animationDelay: '0.3s' }} />
