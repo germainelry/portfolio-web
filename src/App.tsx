@@ -7,6 +7,7 @@ import Projects from './components/sections/Projects';
 import Skills from './components/sections/Skills';
 import Contact from './components/sections/Contact';
 import AnimatedBackground from './components/AnimatedBackground';
+import CursorEffects from './components/CursorEffects';
 import Tooltip from './components/Tooltip';
 import { Toaster } from 'sonner@2.0.3';
 // @ts-ignore - Vite handles image imports
@@ -112,12 +113,15 @@ export default function App() {
     <div className="min-h-screen bg-retro-desktop relative overflow-x-hidden">
       {/* Toast notifications */}
       <Toaster position="top-right" expand={false} richColors />
-      
+
       {/* Dithered background pattern */}
       <div className="fixed inset-0 bg-dithered-pattern pointer-events-none" />
-      
+
       {/* Animated sparkles and particles */}
       <AnimatedBackground />
+
+      {/* Custom cursor effects */}
+      <CursorEffects />
       
       {/* Desktop icons (fixed position - visible across all sections) */}
       <div className="fixed top-20 left-1/2 -translate-x-1/2 z-30 hidden lg:block">
