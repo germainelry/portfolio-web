@@ -12,7 +12,7 @@ export default function Experience() {
       period: '2025 June - Present',
       achievements: [
         'Developed Python automation for privileged ID lifecycle management and CyberArk PAM integration (onboarding, rotation, decommissioning)',
-        'Enhanced SecretHub (FastAPI) secret management system with CyberArk integrations and comprehensive audit logging',
+        'Enhanced SecretHub (FastAPI) secret management system with CyberArk & HashiCorp Vault integrations and comprehensive audit logging',
         'Built FastAPI reporting server delivering automated compliance reports and audit dashboards with scheduled email alerts',
         'Automated Active Directory user/group management with PowerShell, strengthening security compliance and access control'
       ],
@@ -41,7 +41,9 @@ export default function Experience() {
         { name: 'Jenkins', role: 'CI/CD platform', use: 'Pipeline automation' },
         { name: 'Ruby', role: 'Scripting language', use: 'Chef cookbooks' },
         { name: 'IBM BigFix', role: 'Endpoint management', use: 'OS hardening & compliance' },
-        { name: 'Bash', role: 'Shell scripting', use: 'System automation' }
+        { name: 'Bash', role: 'Shell scripting', use: 'System automation' },
+        { name: 'Linux', role: 'Operating system', use: 'Linux 7.x, 8.x, 9.x platforms' },
+        { name: 'Unix', role: 'Operating system', use: 'AIX, Solaris platforms' }
       ]
     },
     {
