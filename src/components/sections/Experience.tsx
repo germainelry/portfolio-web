@@ -11,18 +11,18 @@ export default function Experience() {
       role: 'Software Engineer',
       period: '2025 June - Present',
       achievements: [
-        'Led automation initiatives reducing manual processes by 60%',
-        'Implemented CI/CD pipelines improving deployment frequency',
-        'Developed internal tools for team productivity enhancement',
-        'Mentored junior developers in best practices'
+        'Developed Python automation for privileged ID lifecycle management and CyberArk PAM integration (onboarding, rotation, decommissioning)',
+        'Enhanced SecretHub (FastAPI) secret management system with CyberArk & HashiCorp Vault integrations and comprehensive audit logging',
+        'Built FastAPI reporting server delivering automated compliance reports and audit dashboards with scheduled email alerts',
+        'Automated Active Directory user/group management with PowerShell, strengthening security compliance and access control'
       ],
       tech: [
         { name: 'Python', role: 'Core language', use: 'Automation & backend' },
-        { name: 'FastAPI', role: 'Backend framework', use: 'REST APIs' },
+        { name: 'FastAPI', role: 'Backend framework', use: 'REST APIs & reporting' },
         { name: 'CyberArk', role: 'PAM solution', use: 'Privileged access management' },
-        { name: 'Pandas', role: 'Data library', use: 'Data processing' },
-        { name: 'PowerShell', role: 'Scripting language', use: 'Windows automation' },
-        { name: 'Active Directory', role: 'Identity service', use: 'User management' }
+        { name: 'HashiCorp Vault', role: 'Secret management', use: 'Credential storage' },
+        { name: 'PowerShell', role: 'Scripting language', use: 'AD automation' },
+        { name: 'Active Directory', role: 'Identity service', use: 'User/group management' }
       ]
     },
     {
@@ -30,18 +30,19 @@ export default function Experience() {
       role: 'Automation Engineer',
       period: '2024 July - 2025 June',
       achievements: [
-        'Designed and deployed automated testing frameworks',
-        'Reduced regression testing time by 70% through automation',
-        'Integrated monitoring and alerting systems',
-        'Collaborated with cross-functional teams on DevOps transformation'
+        'Developed AI-powered multilingual chatbot using LLMs to enhance customer support and automate natural language interactions',
+        'Implemented Infrastructure as Code (IaC) with Chef for server provisioning, config management, and automated deployments',
+        'Managed Jenkins CI/CD pipelines and validated regression/compliance test suites across multiple OS platforms',
+        'Leveraged Chef and IBM BigFix for OS hardening, compliance monitoring, and vulnerability remediation'
       ],
       tech: [
-        { name: 'Python', role: 'Core language', use: 'Automation scripts' },
-        { name: 'Chef', role: 'Configuration management', use: 'Infrastructure as code' },
+        { name: 'Python', role: 'Core language', use: 'Automation & AI scripts' },
+        { name: 'Chef', role: 'Configuration management', use: 'Infrastructure as Code' },
         { name: 'Jenkins', role: 'CI/CD platform', use: 'Pipeline automation' },
-        { name: 'CI/CD', role: 'Methodology', use: 'Continuous delivery' },
-        { name: 'Linux', role: 'Operating system', use: 'Server management' },
-        { name: 'Bash', role: 'Shell scripting', use: 'Unix automation' }
+        { name: 'Ruby', role: 'Scripting language', use: 'Chef cookbooks' },
+        { name: 'IBM BigFix', role: 'Endpoint management', use: 'OS hardening & compliance' },
+        { name: 'Bash', role: 'Shell scripting', use: 'System automation' },
+        { name: 'LLMs', role: 'AI technology', use: 'Chatbot development' }
       ]
     },
     {
@@ -49,17 +50,18 @@ export default function Experience() {
       role: 'Process Engineer',
       period: '2022 July - 2024 June',
       achievements: [
-        'Optimized manufacturing processes using data analytics',
-        'Developed automation scripts for equipment monitoring',
-        'Led process improvement initiatives saving $500K annually',
-        'Collaborated with R&D on new technology development'
+        'Analyzed semiconductor data using JMP & Yield3, building visualizations (wafer maps, trends) driving 20% process efficiency improvement',
+        'Applied SPC & DOE methodologies to minimize variability; automated data workflows with Python increasing analytical productivity',
+        'Led cross-functional initiatives reducing defect rates by 20%, recovering ~$1M value (~450 wafers/day) per fab line',
+        'Streamlined reporting processes improving accuracy and timeliness by 30%, enhancing data-driven decision-making'
       ],
       tech: [
         { name: 'Python', role: 'Core language', use: 'Data analysis & automation' },
         { name: 'JMP', role: 'Statistical software', use: 'Process analysis' },
-        { name: 'Tableau', role: 'BI tool', use: 'Data visualization' },
-        { name: 'SQL', role: 'Database language', use: 'Data queries' },
-        { name: 'Statistical Analysis', role: 'Methodology', use: 'Process optimization' }
+        { name: 'Yield3', role: 'Yield analysis', use: 'Manufacturing data' },
+        { name: 'SPC', role: 'Methodology', use: 'Statistical process control' },
+        { name: 'DOE', role: 'Methodology', use: 'Design of experiments' },
+        { name: 'Data Visualization', role: 'Skill', use: 'Wafer maps & charts' }
       ]
     }
   ];
