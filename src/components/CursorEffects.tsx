@@ -8,17 +8,9 @@ interface Sparkle {
   rotation: number;
 }
 
-interface Ripple {
-  id: number;
-  x: number;
-  y: number;
-}
-
 export default function CursorEffects() {
   const [sparkles, setSparkles] = useState<Sparkle[]>([]);
-  const [ripples, setRipples] = useState<Ripple[]>([]);
   const sparkleIdRef = useRef(0);
-  const rippleIdRef = useRef(0);
   const lastSpawnTimeRef = useRef(0);
 
   // Sparkle Trail Effect
@@ -50,27 +42,6 @@ export default function CursorEffects() {
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
-  // Ripple on Click Effect
-  useEffect(() => {
-    const handleClick = (e: MouseEvent) => {
-      const newRipple: Ripple = {
-        id: rippleIdRef.current++,
-        x: e.clientX,
-        y: e.clientY
-      };
-
-      setRipples((prev) => [...prev, newRipple]);
-
-      // Remove ripple after animation
-      setTimeout(() => {
-        setRipples((prev) => prev.filter((r) => r.id !== newRipple.id));
-      }, 800);
-    };
-
-    window.addEventListener('click', handleClick);
-    return () => window.removeEventListener('click', handleClick);
-  }, []);
-
   return (
     <>
       {/* Sparkle Trail */}
@@ -99,24 +70,6 @@ export default function CursorEffects() {
         </div>
       ))}
 
-      {/* Ripple on Click */}
-      {ripples.map((ripple) => (
-        <div
-          key={ripple.id}
-          className="pointer-events-none fixed z-[9999]"
-          style={{
-            left: `${ripple.x}px`,
-            top: `${ripple.y}px`,
-            width: '20px',
-            height: '20px',
-            transform: 'translate(-50%, -50%)',
-            animation: 'ripple 0.8s ease-out forwards'
-          }}
-        >
-          <div className="absolute inset-0 rounded-full border-2 border-cyan-400" />
-        </div>
-      ))}
-
       {/* Global Styles for Animations and Custom Cursors */}
       <style>{`
         /* Sparkle animation */
@@ -135,36 +88,29 @@ export default function CursorEffects() {
           }
         }
 
-        /* Ripple animation */
-        @keyframes ripple {
-          0% {
-            transform: translate(-50%, -50%) scale(1);
-            opacity: 1;
-          }
-          100% {
-            transform: translate(-50%, -50%) scale(4);
-            opacity: 0;
-          }
-        }
-
-        /* 8-Bit Pixel Hand Cursor - Default (Open Hand) */
+        /* Windows 95 Style Cursor - Default Arrow */
         * {
-          cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><rect x="4" y="4" width="3" height="3" fill="%23FFFFFF"/><rect x="7" y="4" width="3" height="3" fill="%23FFFFFF"/><rect x="10" y="4" width="3" height="3" fill="%23FFFFFF"/><rect x="13" y="4" width="3" height="3" fill="%23FFFFFF"/><rect x="4" y="7" width="3" height="3" fill="%23FFFFFF"/><rect x="7" y="7" width="3" height="3" fill="%23FFD700"/><rect x="10" y="7" width="3" height="3" fill="%23FFD700"/><rect x="13" y="7" width="3" height="3" fill="%23FFFFFF"/><rect x="4" y="10" width="3" height="3" fill="%23FFFFFF"/><rect x="7" y="10" width="3" height="3" fill="%23FFD700"/><rect x="10" y="10" width="3" height="3" fill="%23FFD700"/><rect x="13" y="10" width="3" height="3" fill="%23FFFFFF"/><rect x="7" y="13" width="3" height="3" fill="%23FFFFFF"/><rect x="10" y="13" width="3" height="3" fill="%23FFFFFF"/><rect x="1" y="7" width="3" height="3" fill="%23000000"/><rect x="16" y="7" width="3" height="3" fill="%23000000"/><rect x="1" y="10" width="3" height="3" fill="%23000000"/><rect x="16" y="10" width="3" height="3" fill="%23000000"/><rect x="4" y="13" width="3" height="3" fill="%23000000"/><rect x="13" y="13" width="3" height="3" fill="%23000000"/><rect x="7" y="16" width="3" height="3" fill="%23000000"/><rect x="10" y="16" width="3" height="3" fill="%23000000"/></svg>') 12 12, auto;
+          cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M0 0 L0 16 L4 12 L7 19 L9 18 L6 11 L11 11 Z" fill="%23FFFFFF" stroke="%23000000" stroke-width="1"/></svg>') 0 0, auto;
         }
 
-        /* 8-Bit Pointing Hand for interactive elements */
+        /* Windows 95 Hand Pointer for interactive elements */
         a, button, [role="button"], input[type="submit"], input[type="button"], .cursor-pointer {
-          cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><rect x="10" y="2" width="3" height="3" fill="%2300D9FF"/><rect x="10" y="5" width="3" height="3" fill="%2300D9FF"/><rect x="10" y="8" width="3" height="3" fill="%2300D9FF"/><rect x="7" y="8" width="3" height="3" fill="%2300D9FF"/><rect x="13" y="8" width="3" height="3" fill="%23FFFFFF"/><rect x="4" y="11" width="3" height="3" fill="%2300D9FF"/><rect x="7" y="11" width="3" height="3" fill="%23FFD700"/><rect x="10" y="11" width="3" height="3" fill="%23FFD700"/><rect x="13" y="11" width="3" height="3" fill="%23FFFFFF"/><rect x="4" y="14" width="3" height="3" fill="%2300D9FF"/><rect x="7" y="14" width="3" height="3" fill="%23FFD700"/><rect x="10" y="14" width="3" height="3" fill="%23FFD700"/><rect x="13" y="14" width="3" height="3" fill="%23FFFFFF"/><rect x="7" y="17" width="3" height="3" fill="%2300D9FF"/><rect x="10" y="17" width="3" height="3" fill="%2300D9FF"/><rect x="1" y="11" width="3" height="3" fill="%23000000"/><rect x="16" y="11" width="3" height="3" fill="%23000000"/><rect x="1" y="14" width="3" height="3" fill="%23000000"/><rect x="16" y="14" width="3" height="3" fill="%23000000"/><rect x="4" y="17" width="3" height="3" fill="%23000000"/><rect x="13" y="17" width="3" height="3" fill="%23000000"/></svg>') 12 12, pointer !important;
+          cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="18" height="22" viewBox="0 0 18 22"><path d="M8 0 L8 8 L6 8 L6 11 L5 11 L5 13 L4 13 L4 15 L4 17 L5 17 L5 18 L7 18 L7 19 L10 19 L10 18 L12 18 L12 17 L14 17 L14 16 L15 16 L15 13 L14 13 L14 9 L13 9 L13 8 L12 8 L12 9 L11 9 L11 10 L10 10 L10 6 L9 6 L9 0 Z" fill="%23FFFFFF" stroke="%23000000" stroke-width="1"/></svg>') 9 0, pointer !important;
         }
 
-        /* Text I-beam cursor for inputs */
+        /* Windows 95 I-beam cursor for text inputs */
         input[type="text"], input[type="email"], textarea {
-          cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="24" viewBox="0 0 16 24"><rect x="4" y="2" width="2" height="2" fill="%23FF1493"/><rect x="6" y="2" width="4" height="2" fill="%23FF1493"/><rect x="10" y="2" width="2" height="2" fill="%23FF1493"/><rect x="7" y="4" width="2" height="16" fill="%23FF1493"/><rect x="4" y="20" width="2" height="2" fill="%23FF1493"/><rect x="6" y="20" width="4" height="2" fill="%23FF1493"/><rect x="10" y="20" width="2" height="2" fill="%23FF1493"/></svg>') 8 12, text !important;
+          cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="20" viewBox="0 0 10 20"><rect x="0" y="0" width="10" height="3" fill="%23000000"/><rect x="4" y="3" width="2" height="14" fill="%23000000"/><rect x="0" y="17" width="10" height="3" fill="%23000000"/></svg>') 5 10, text !important;
         }
 
-        /* Disabled/grayed out hand */
+        /* Windows 95 Hourglass/Wait cursor */
+        .loading, [aria-busy="true"] {
+          cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="22" viewBox="0 0 16 22"><path d="M2 0 L14 0 L14 3 L8 11 L14 19 L14 22 L2 22 L2 19 L8 11 L2 3 Z" fill="%23FFFFFF" stroke="%23000000" stroke-width="1.5"/></svg>') 8 11, wait !important;
+        }
+
+        /* Windows 95 Not-allowed cursor */
         [disabled], .cursor-not-allowed {
-          cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><rect x="4" y="4" width="3" height="3" fill="%23AAAAAA"/><rect x="7" y="4" width="3" height="3" fill="%23AAAAAA"/><rect x="10" y="4" width="3" height="3" fill="%23AAAAAA"/><rect x="13" y="4" width="3" height="3" fill="%23AAAAAA"/><rect x="4" y="7" width="3" height="3" fill="%23AAAAAA"/><rect x="7" y="7" width="3" height="3" fill="%23888888"/><rect x="10" y="7" width="3" height="3" fill="%23888888"/><rect x="13" y="7" width="3" height="3" fill="%23AAAAAA"/><rect x="4" y="10" width="3" height="3" fill="%23AAAAAA"/><rect x="7" y="10" width="3" height="3" fill="%23888888"/><rect x="10" y="10" width="3" height="3" fill="%23888888"/><rect x="13" y="10" width="3" height="3" fill="%23AAAAAA"/><rect x="7" y="13" width="3" height="3" fill="%23AAAAAA"/><rect x="10" y="13" width="3" height="3" fill="%23AAAAAA"/><rect x="1" y="7" width="3" height="3" fill="%23404040"/><rect x="16" y="7" width="3" height="3" fill="%23404040"/><rect x="1" y="10" width="3" height="3" fill="%23404040"/><rect x="16" y="10" width="3" height="3" fill="%23404040"/><rect x="4" y="13" width="3" height="3" fill="%23404040"/><rect x="13" y="13" width="3" height="3" fill="%23404040"/><rect x="7" y="16" width="3" height="3" fill="%23404040"/><rect x="10" y="16" width="3" height="3" fill="%23404040"/></svg>') 12 12, not-allowed !important;
+          cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><circle cx="10" cy="10" r="9" fill="%23FFFFFF" stroke="%23000000" stroke-width="1.5"/><path d="M4 4 L16 16" stroke="%23FF0000" stroke-width="2.5"/></svg>') 10 10, not-allowed !important;
         }
       `}</style>
     </>
