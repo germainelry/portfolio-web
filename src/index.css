@@ -2365,12 +2365,12 @@ body {
 }
 
 .bg-retro-desktop {
-  background: linear-gradient(135deg, #ffb895 0%, #ff9770 100%) fixed;
+  background: linear-gradient(135deg, #D8B5D7 0%, #C9A5C6 100%) fixed;
 }
 
 .bg-dithered-pattern {
   background-blend-mode: multiply;
-  background-image: repeating-linear-gradient(0deg, #0000, #0000 2px, #ff777026 2px 4px), repeating-linear-gradient(90deg, #0000, #0000 2px, #ff777026 2px 4px);
+  background-image: repeating-linear-gradient(0deg, #0000, #0000 2px, #C9A5C626 2px 4px), repeating-linear-gradient(90deg, #0000, #0000 2px, #C9A5C626 2px 4px);
 }
 
 .border-3 {
