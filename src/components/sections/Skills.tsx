@@ -1,7 +1,18 @@
 import { useState } from 'react';
 import Window from '../Window';
 import Tooltip from '../Tooltip';
+import ProgressBar from '../ProgressBar';
 import { PixelIcons } from '../icons/PixelIcons';
+// Import colorful brand icons from react-icons
+import { 
+  SiPython, SiPostgresql, SiGnubash, SiTypescript,
+  SiGit, SiLinux, SiDocker, SiJenkins, SiChef,
+  SiReact, SiFastapi, SiSupabase, SiSqlite, SiMongodb,
+  SiTableau, SiJira, SiConfluence, SiNotion, SiFigma,
+  SiAnthropic, SiGithubcopilot
+} from 'react-icons/si';
+import { FaFlask } from 'react-icons/fa';
+import { TbBrandPowershell } from 'react-icons/tb';
 
 export default function Skills() {
   const [activeCategory, setActiveCategory] = useState('languages');
@@ -12,10 +23,10 @@ export default function Skills() {
       label: 'Languages',
       skills: [
         { name: 'Python', icon: 'Python', proficiency: 90, years: '3+', description: 'Primary language for automation & backend' },
-        { name: 'SQL', icon: 'SQL', proficiency: 90, years: '3+', description: 'Database design & query optimization' },
-        { name: 'PowerShell', icon: 'PowerShell', proficiency: 85, years: '3+', description: 'Windows scripting & automation' },
-        { name: 'Bash', icon: 'Bash', proficiency: 85, years: '3+', description: 'Unix/Linux shell scripting' },
-        { name: 'TypeScript', icon: 'TypeScript', proficiency: 80, years: '2+', description: 'Type-safe web applications' }
+        { name: 'SQL', icon: 'Postgresql', proficiency: 90, years: '3+', description: 'Database design & query optimization' },
+        { name: 'Bash', icon: 'Gnubash', proficiency: 85, years: '3+', description: 'Unix/Linux shell scripting' },
+        { name: 'TypeScript', icon: 'Typescript', proficiency: 80, years: '2+', description: 'Type-safe web applications' },
+        { name: 'PowerShell', icon: 'Powershell', proficiency: 75, years: '2+', description: 'Windows automation & scripting' }
       ]
     },
     tools: {
@@ -25,44 +36,92 @@ export default function Skills() {
         { name: 'Linux/Unix', icon: 'Linux', proficiency: 85, years: '3+', description: 'Banking infrastructure & servers' },
         { name: 'Docker', icon: 'Docker', proficiency: 85, years: '2+', description: 'Containerization & deployment' },
         { name: 'Jenkins', icon: 'Jenkins', proficiency: 80, years: '2+', description: 'CI/CD pipeline automation' },
-        { name: 'Chef', icon: 'Chef', proficiency: 80, years: '2+', description: 'Infrastructure as Code - Certified' },
-        { name: 'n8n', icon: 'N8n', proficiency: 75, years: '1+', description: 'Workflow automation platform' }
+        { name: 'Chef', icon: 'Chef', proficiency: 80, years: '2+', description: 'Infrastructure as Code - Certified' }
       ]
     },
     frameworks: {
       label: 'Frameworks & Databases',
       skills: [
         { name: 'React', icon: 'React', proficiency: 85, years: '2+', description: 'Modern UI development' },
-        { name: 'FastAPI', icon: 'FastAPI', proficiency: 90, years: '3+', description: 'High-performance Python APIs' },
+        { name: 'FastAPI', icon: 'Fastapi', proficiency: 90, years: '3+', description: 'High-performance Python APIs' },
         { name: 'Supabase', icon: 'Supabase', proficiency: 80, years: '2+', description: 'Backend as a service' },
-        { name: 'SQLite', icon: 'SQLite', proficiency: 85, years: '2+', description: 'Embedded database' },
-        { name: 'MongoDB', icon: 'MongoDB', proficiency: 75, years: '2+', description: 'NoSQL document database' }
+        { name: 'SQLite', icon: 'Sqlite', proficiency: 85, years: '2+', description: 'Embedded database' },
+        { name: 'MongoDB', icon: 'Mongodb', proficiency: 75, years: '2+', description: 'NoSQL document database' }
       ]
     },
     data: {
       label: 'Data & Productivity',
       skills: [
         { name: 'Tableau', icon: 'Tableau', proficiency: 85, years: '2+', description: 'Data visualization & analytics' },
-        { name: 'JMP', icon: 'JMP', proficiency: 80, years: '2+', description: 'Statistical analysis software' },
-        { name: 'Excel', icon: 'Excel', proficiency: 85, years: '4+', description: 'Advanced formulas & data analysis' },
         { name: 'Jira', icon: 'Jira', proficiency: 85, years: '3+', description: 'Agile project management' },
         { name: 'Confluence', icon: 'Confluence', proficiency: 85, years: '3+', description: 'Team documentation & wikis' },
         { name: 'Notion', icon: 'Notion', proficiency: 80, years: '2+', description: 'Documentation & organization' },
         { name: 'Figma', icon: 'Figma', proficiency: 75, years: '2+', description: 'Design & prototyping' },
-        { name: 'Claude', icon: 'Claude', proficiency: 80, years: '1+', description: 'AI assistant & code generation' },
-        { name: 'GitHub Copilot', icon: 'Copilot', proficiency: 75, years: '1+', description: 'AI pair programming' },
-        { name: 'Cursor', icon: 'Cursor', proficiency: 75, years: '1+', description: 'AI-powered code editor' }
+        { name: 'Claude', icon: 'Anthropic', proficiency: 80, years: '1+', description: 'AI assistant & code generation' },
+        { name: 'GitHub Copilot', icon: 'Githubcopilot', proficiency: 75, years: '1+', description: 'AI pair programming' }
       ]
     }
   };
 
   const getIconComponent = (iconName: string) => {
-    const IconComponent = PixelIcons[iconName as keyof typeof PixelIcons];
-    return IconComponent ? <IconComponent size={48} /> : null;
+    const iconMap: Record<string, any> = {
+      'Python': SiPython,
+      'Postgresql': SiPostgresql,
+      'Gnubash': SiGnubash,
+      'Typescript': SiTypescript,
+      'Powershell': TbBrandPowershell,
+      'Git': SiGit,
+      'Linux': SiLinux,
+      'Docker': SiDocker,
+      'Jenkins': SiJenkins,
+      'Chef': SiChef,
+      'React': SiReact,
+      'Fastapi': SiFastapi,
+      'Supabase': SiSupabase,
+      'Sqlite': SiSqlite,
+      'Mongodb': SiMongodb,
+      'Tableau': SiTableau,
+      'Jira': SiJira,
+      'Confluence': SiConfluence,
+      'Notion': SiNotion,
+      'Figma': SiFigma,
+      'Anthropic': SiAnthropic,
+      'Githubcopilot': SiGithubcopilot
+    };
+    
+    // Brand-authentic colors from design brief
+    const colorMap: Record<string, string> = {
+      'Python': '#3776AB',
+      'Postgresql': '#336791',
+      'Gnubash': '#4EAA25',
+      'Typescript': '#3178C6',
+      'Powershell': '#5391FE',
+      'Git': '#F05032',
+      'Linux': '#FCC624',
+      'Docker': '#2496ED',
+      'Jenkins': '#D24939',
+      'Chef': '#F09820',
+      'React': '#61DAFB',
+      'Fastapi': '#009688',
+      'Supabase': '#3ECF8E',
+      'Sqlite': '#003B57',
+      'Mongodb': '#47A248',
+      'Tableau': '#E97627',
+      'Jira': '#0052CC',
+      'Confluence': '#172B4D',
+      'Notion': '#000000',
+      'Figma': '#F24E1E',
+      'Anthropic': '#CC785C',
+      'Githubcopilot': '#24292E'
+    };
+    
+    const IconComponent = iconMap[iconName];
+    const brandColor = colorMap[iconName];
+    return IconComponent ? <IconComponent size={48} color={brandColor} /> : null;
   };
 
   return (
-    <Window title="SYSTEM_SKILLS.cpl" width="max-w-4xl">
+    <Window title="SYSTEM_SKILLS.cpl" width="max-w-3xl">
       {/* Category Tabs */}
       <div className="flex gap-1 border-b-2 border-retro-grey-dark mb-6 -mt-2 overflow-x-auto">
         {Object.entries(skillCategories).map(([key, category]) => {
@@ -77,7 +136,7 @@ export default function Skills() {
               className={`px-4 py-2 font-mono text-sm border-2 border-b-0 whitespace-nowrap transition-all duration-150 relative ${
                 isActive
                   ? 'bg-white border-retro-grey-dark -mb-0.5 z-10 cursor-default text-retro-charcoal' 
-                  : 'bg-retro-grey border-retro-grey-dark text-retro-grey-dark hover:bg-retro-grey-light hover:-translate-y-0.5 cursor-pointer'
+                  : 'bg-retro-grey border-retro-grey-dark text-retro-grey-dark hover:bg-retro-grey-light cursor-pointer'
               }`}
             >
               {isActive && (
@@ -103,20 +162,26 @@ export default function Skills() {
           >
             <button
               onClick={() => setSelectedSkill(skill)}
-              className={`skill-card w-full h-40 border-3 flex flex-col items-center justify-center gap-3 transition-all duration-200 hover:scale-105 hover:z-10 hover:-translate-y-1 relative ${
+              className={`skill-card group w-full h-40 border-3 flex flex-col items-center justify-center gap-3 transition-all duration-200 relative ${
                 selectedSkill?.name === skill.name
-                  ? 'bg-retro-grey border-pink-500 shadow-[4px_4px_0px_0px_rgba(255,0,110,0.4)] scale-105 -translate-y-1'
-                  : 'bg-gradient-to-b from-retro-frame to-retro-grey border-retro-grey-dark shadow-[2px_2px_0px_0px_rgba(0,0,0,0.2)] hover:border-cyan-500 hover:shadow-[4px_4px_0px_0px_rgba(0,217,255,0.3)]'
+                  ? 'bg-gradient-to-b from-[#f0f0f0] to-[#e5e5e5] border-[#ff006e] shadow-[4px_4px_0px_0px_rgba(255,0,110,0.4)] scale-105 -translate-y-1'
+                  : 'bg-gradient-to-b from-[#f0f0f0] to-[#e5e5e5] border-[#808080] shadow-[2px_2px_0px_0px_rgba(0,0,0,0.2)] hover:border-[#00d9ff] hover:shadow-[4px_4px_0px_0px_rgba(0,217,255,0.3)] hover:scale-105 hover:-translate-y-1'
               }`}
             >
               {/* Certification badge for Chef */}
               {skill.name === 'Chef' && (
-                <div className="absolute -top-2 -right-2 bg-gold border-2 border-retro-charcoal w-8 h-8 flex items-center justify-center shadow-md z-10 animate-pulse">
-                  <span className="text-xs">🏆</span>
+                <div className="absolute -top-2 -right-2 bg-gold border-2 border-retro-charcoal w-10 h-10 flex items-center justify-center shadow-md z-10 animate-pulse">
+                  <PixelIcons.Trophy size={24} />
                 </div>
               )}
               
-              <div className="transform transition-transform duration-200 group-hover:scale-110">
+              <div 
+                className={`transform transition-all duration-200 ${
+                  selectedSkill?.name === skill.name 
+                    ? '[&>svg]:!text-[#ff006e]' 
+                    : ''
+                }`}
+              >
                 {getIconComponent(skill.icon)}
               </div>
               <span className="font-mono text-sm text-retro-charcoal text-center px-2 leading-tight max-w-[100px]">
@@ -137,7 +202,7 @@ export default function Skills() {
               {getIconComponent(selectedSkill.icon)}
             </div>
             <div>
-              <h3 className="font-mono text-lg text-retro-charcoal">
+              <h3 className="font-mono text-retro-charcoal" style={{ fontSize: '20px' }}>
                 {selectedSkill.name}
               </h3>
               <p className="font-mono text-sm text-retro-grey-dark">
@@ -151,22 +216,7 @@ export default function Skills() {
               <span className="text-retro-grey-dark">Proficiency:</span>
               <span className="text-retro-charcoal">{selectedSkill.proficiency}%</span>
             </div>
-            <div className="h-4 bg-retro-grey border-2 border-retro-grey-dark overflow-hidden">
-              <div 
-                className="h-full bg-retro-charcoal transition-all duration-500 animate-barberpole"
-                style={{ 
-                  width: `${selectedSkill.proficiency}%`,
-                  backgroundImage: `repeating-linear-gradient(
-                    45deg,
-                    transparent,
-                    transparent 4px,
-                    rgba(255,255,255,0.3) 4px,
-                    rgba(255,255,255,0.3) 8px
-                  )`,
-                  backgroundSize: '16px 16px'
-                }}
-              />
-            </div>
+            <ProgressBar value={selectedSkill.proficiency} />
           </div>
 
           <div className="flex items-center justify-between font-mono text-sm pt-2 relative">

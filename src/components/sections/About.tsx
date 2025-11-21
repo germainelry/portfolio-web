@@ -9,20 +9,20 @@ export default function About() {
     { name: 'Python', value: 90 },
     { name: 'Automation', value: 85 },
     { name: 'DevOps', value: 80 },
-    { name: 'JavaScript', value: 75 },
-    { name: 'Cloud (AWS)', value: 70 },
+    { name: 'AI', value: 75 },
+    { name: 'SQL', value: 70 },
   ];
 
   const interests = [
-    { name: 'Games', emoji: '🎮', description: 'RPG & Strategy games' },
-    { name: 'Anime', emoji: '🍜', description: 'Shonen & Slice of life' },
-    { name: 'Keyboards', emoji: '⌨️', description: 'Mechanical keyboard enthusiast' },
-    { name: 'AI/ML', emoji: '🤖', description: 'Machine learning & automation' },
-    { name: 'Coffee', emoji: '☕', description: 'Specialty coffee lover' }
+    { name: 'Games', description: 'RPG & Strategy games' },
+    { name: 'Anime', description: 'Shonen & Slice of life' },
+    { name: 'Keyboards', description: 'Mechanical keyboard enthusiast' },
+    { name: 'AI/ML', description: 'Machine learning & automation' },
+    { name: 'Bubble Tea', description: 'Boba tea enthusiast' }
   ];
 
   return (
-    <Window title="ABOUT.TXT" width="max-w-3xl">
+    <Window title="ABOUT.TXT" width="max-w-2xl">
       <div className="space-y-6">
         {/* Profile Section */}
         <div className="flex flex-col md:flex-row gap-6 items-start">
@@ -84,7 +84,7 @@ export default function About() {
             {interests.map((interest) => (
               <Tooltip key={interest.name} text={interest.description}>
                 <span className="interest-tag bg-retro-grey border-2 border-retro-grey-dark px-3 py-1 hover:bg-white hover:-translate-y-0.5 transition-all duration-150 cursor-default">
-                  {interest.emoji} {interest.name}
+                  {interest.name}
                 </span>
               </Tooltip>
             ))}

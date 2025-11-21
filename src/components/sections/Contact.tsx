@@ -14,7 +14,7 @@ export default function Contact() {
   const [copiedItem, setCopiedItem] = useState<string | null>(null);
   const hasAnimated = useRef(false);
 
-  const fullMessage = `Hi there! 👋
+  const fullMessage = `Hi there!
 
 Thanks for checking out my portfolio. I'd love to connect and discuss opportunities in DevOps, Platform Engineering, or AI/Automation.`;
 
@@ -90,7 +90,7 @@ Thanks for checking out my portfolio. I'd love to connect and discuss opportunit
           setTimeout(() => {
             setIsDownloading(false);
             setDownloadProgress(0);
-            toast.success('✓ Resume downloaded! 📄', {
+            toast.success('✓ Resume downloaded!', {
               duration: 3000,
               style: {
                 background: '#d4d4d4',
@@ -302,7 +302,7 @@ Thanks for checking out my portfolio. I'd love to connect and discuss opportunit
                 >
                   {isDownloading ? (
                     <span className="flex items-center gap-2">
-                      <span className="animate-spin">⏳</span>
+                      <span className="font-mono text-xs">Loading...</span>
                       {downloadProgress}%
                     </span>
                   ) : (

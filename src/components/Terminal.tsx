@@ -18,7 +18,7 @@ export default function Terminal() {
     { type: 'command', text: '$ skills --list', delay: 800 },
     { type: 'output', text: '> Python ████████░ 90%' },
     { type: 'output', text: '> DevOps ███████░░ 85%' },
-    { type: 'output', text: '> AI/ML  ███████░░ 80%' },
+    { type: 'output', text: '> AI     ███████░░ 80%' },
     { type: 'command', text: '$ echo "Hello, World!"', delay: 800 },
     { type: 'output', text: '> Hello, World!' },
   ];

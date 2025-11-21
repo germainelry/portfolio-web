@@ -996,18 +996,21 @@ export const FigmaIcon = ({ size = 64, className = "" }: IconProps) => (
 
 export const ClaudeIcon = ({ size = 64, className = "" }: IconProps) => (
   <svg width={size} height={size} viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
-    {/* Claude/Anthropic color blocks */}
+    {/* Claude/Anthropic orange square */}
     <rect x="8" y="8" width="48" height="48" rx="8" fill="#d4a574" stroke="#000" strokeWidth="2"/>
     
-    {/* Gradient bars representing AI */}
-    <rect x="14" y="20" width="4" height="24" fill="#cc9966" stroke="#000" strokeWidth="1"/>
-    <rect x="22" y="16" width="4" height="32" fill="#cc9966" stroke="#000" strokeWidth="1"/>
-    <rect x="30" y="14" width="4" height="36" fill="#cc9966" stroke="#000" strokeWidth="1"/>
-    <rect x="38" y="16" width="4" height="32" fill="#cc9966" stroke="#000" strokeWidth="1"/>
-    <rect x="46" y="20" width="4" height="24" fill="#cc9966" stroke="#000" strokeWidth="1"/>
-    
-    {/* "AI" text */}
-    <text x="32" y="54" fontFamily="monospace" fontSize="8" fontWeight="bold" fill="#000" textAnchor="middle">AI</text>
+    {/* Large "A" letter in center */}
+    <text 
+      x="32" 
+      y="42" 
+      fontFamily="Arial, sans-serif" 
+      fontSize="32" 
+      fontWeight="bold" 
+      fill="#000" 
+      textAnchor="middle"
+    >
+      A
+    </text>
   </svg>
 );
 
@@ -1056,6 +1059,49 @@ export const CursorIcon = ({ size = 64, className = "" }: IconProps) => (
     
     {/* Cursor text */}
     <text x="32" y="52" fontFamily="monospace" fontSize="6" fontWeight="bold" fill="#00d9ff" textAnchor="middle">CURSOR</text>
+  </svg>
+);
+
+export const BriefcaseIcon = ({ size = 64, className = "" }: IconProps) => (
+  <svg width={size} height={size} viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
+    {/* Briefcase body */}
+    <rect x="8" y="24" width="48" height="28" fill="#8B4513" stroke="#000" strokeWidth="2"/>
+    
+    {/* Handle */}
+    <path d="M28 24 L28 18 L36 18 L36 24" stroke="#000" strokeWidth="2" fill="none"/>
+    
+    {/* Lock/clasp */}
+    <rect x="30" y="36" width="4" height="6" fill="#D4A574" stroke="#000" strokeWidth="1"/>
+    
+    {/* Top highlight */}
+    <rect x="10" y="26" width="44" height="2" fill="#A0522D"/>
+    
+    {/* Side panels */}
+    <rect x="10" y="32" width="44" height="2" fill="#6B3410"/>
+  </svg>
+);
+
+export const WrenchIcon = ({ size = 64, className = "" }: IconProps) => (
+  <svg width={size} height={size} viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
+    {/* Wrench head */}
+    <rect x="12" y="12" width="12" height="8" fill="#808080" stroke="#000" strokeWidth="2"/>
+    
+    {/* Wrench jaw opening */}
+    <rect x="14" y="14" width="8" height="4" fill="#C0C0C0"/>
+    
+    {/* Wrench handle */}
+    <rect x="20" y="18" width="6" height="32" fill="#808080" stroke="#000" strokeWidth="2"/>
+    
+    {/* Screwdriver crossover */}
+    <path d="M32 20 L48 36" stroke="#CC6600" strokeWidth="6"/>
+    <path d="M32 20 L48 36" stroke="#000" strokeWidth="2" fill="none"/>
+    
+    {/* Screwdriver tip */}
+    <rect x="46" y="36" width="6" height="12" fill="#CC6600" stroke="#000" strokeWidth="2"/>
+    <rect x="48" y="46" width="2" height="4" fill="#999"/>
+    
+    {/* Highlight on wrench */}
+    <rect x="22" y="20" width="2" height="26" fill="#C0C0C0"/>
   </svg>
 );
 
@@ -1133,6 +1179,8 @@ export const PixelIcons = {
   FolderClosed: FolderClosedIcon,
   FolderOpen: FolderOpenIcon,
   Document: DocumentIcon,
+  Briefcase: BriefcaseIcon,
+  Wrench: WrenchIcon,
   
   // Contact
   Email: EmailIcon,
