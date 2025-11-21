@@ -9,7 +9,14 @@ import Contact from './components/sections/Contact';
 import AnimatedBackground from './components/AnimatedBackground';
 import Tooltip from './components/Tooltip';
 import { Toaster } from 'sonner@2.0.3';
-import { PixelIcons } from './components/icons/PixelIcons';
+// @ts-ignore - Vite handles image imports
+import folderIcon from './public/desktop-icons/folder.png';
+// @ts-ignore - Vite handles image imports
+import cvIcon from './public/desktop-icons/cv.png';
+// @ts-ignore - Vite handles image imports
+import suitcaseIcon from './public/desktop-icons/suitcase.png';
+// @ts-ignore - Vite handles image imports
+import skillIcon from './public/desktop-icons/skill.png';
 
 export default function App() {
   const [activeSection, setActiveSection] = useState('home');
@@ -113,8 +120,8 @@ export default function App() {
       <AnimatedBackground />
       
       {/* Desktop icons (fixed position - visible across all sections) */}
-      <div className="fixed top-20 left-8 z-30 hidden lg:block">
-        <div className="flex flex-col gap-6">
+      <div className="fixed top-20 left-1/2 -translate-x-1/2 z-30 hidden lg:block">
+        <div className="flex flex-row gap-6">
           <Tooltip
             title="Projects Folder"
             details={[
@@ -128,7 +135,7 @@ export default function App() {
               className="desktop-icon flex flex-col items-center gap-1 hover:opacity-90 transition-all group"
             >
               <div className="w-16 h-16 bg-retro-grey-light border-2 border-retro-charcoal flex items-center justify-center shadow-md group-hover:shadow-lg group-hover:scale-105 transition-all duration-150 relative">
-                <PixelIcons.FolderClosed size={48} />
+                <img src={folderIcon} alt="Projects folder" className="w-12 h-12" />
                 {/* Selection highlight */}
                 <div className="absolute inset-0 bg-cyan-500 opacity-0 group-hover:opacity-20 transition-opacity" />
               </div>
@@ -149,7 +156,7 @@ export default function App() {
               className="desktop-icon flex flex-col items-center gap-1 hover:opacity-90 transition-all group"
             >
               <div className="w-16 h-16 bg-retro-grey-light border-2 border-retro-charcoal flex items-center justify-center shadow-md group-hover:shadow-lg group-hover:scale-105 transition-all duration-150 relative">
-                <PixelIcons.Document size={48} />
+                <img src={cvIcon} alt="Resume" className="w-12 h-12" />
                 {/* Selection highlight */}
                 <div className="absolute inset-0 bg-cyan-500 opacity-0 group-hover:opacity-20 transition-opacity" />
               </div>
@@ -170,7 +177,7 @@ export default function App() {
               className="desktop-icon flex flex-col items-center gap-1 hover:opacity-90 transition-all group"
             >
               <div className="w-16 h-16 bg-retro-grey-light border-2 border-retro-charcoal flex items-center justify-center shadow-md group-hover:shadow-lg group-hover:scale-105 transition-all duration-150 relative">
-                <PixelIcons.Briefcase size={48} />
+                <img src={suitcaseIcon} alt="Experience" className="w-12 h-12" />
                 {/* Selection highlight */}
                 <div className="absolute inset-0 bg-cyan-500 opacity-0 group-hover:opacity-20 transition-opacity" />
               </div>
@@ -191,7 +198,7 @@ export default function App() {
               className="desktop-icon flex flex-col items-center gap-1 hover:opacity-90 transition-all group"
             >
               <div className="w-16 h-16 bg-retro-grey-light border-2 border-retro-charcoal flex items-center justify-center shadow-md group-hover:shadow-lg group-hover:scale-105 transition-all duration-150 relative">
-                <PixelIcons.Wrench size={48} />
+                <img src={skillIcon} alt="Skills" className="w-12 h-12" />
                 {/* Selection highlight */}
                 <div className="absolute inset-0 bg-cyan-500 opacity-0 group-hover:opacity-20 transition-opacity" />
               </div>
