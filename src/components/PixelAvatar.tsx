@@ -10,7 +10,7 @@ interface PixelAvatarProps {
 export default function PixelAvatar({ size = 'medium', className = '' }: PixelAvatarProps) {
   const sizeMap = {
     small: 'w-8 h-8',      // 32px
-    medium: 'w-24 h-24',   // 96px
+    medium: 'w-30 h-24',   // 120px
     large: 'w-45 h-40',    // 160px
     xlarge: 'w-52 h-52',   // 208px
     xxlarge: 'w-64 h-64'   // 256px

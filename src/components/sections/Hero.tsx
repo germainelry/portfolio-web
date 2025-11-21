@@ -11,7 +11,7 @@ interface HeroProps {
 export default function Hero({ onNavigate }: HeroProps) {
   const [typedText, setTypedText] = useState('');
   const [showCursor, setShowCursor] = useState(true);
-  const fullText = 'Automation • AI • DevOps';
+  const fullText = 'Code • Build • Automate';
   
   // Typing animation
   useEffect(() => {
@@ -52,10 +52,10 @@ export default function Hero({ onNavigate }: HeroProps) {
           {/* Speech bubble - "Hello, World!" */}
           <div className="absolute -right-2 top-2 hidden md:block md:-right-6 md:top-4 lg:-right-10 lg:top-6 animate-bounce-subtle">
             <div className="bg-white border-2 border-retro-charcoal px-3 py-1.5 relative shadow-[2px_2px_0px_0px_rgba(0,0,0,0.2)] rounded">
-              <span className="font-mono text-xs md:text-sm whitespace-nowrap text-retro-charcoal">Hello, World!</span>
-              {/* Speech bubble tail pointing left */}
-              <div className="absolute left-0 top-1/2 -translate-x-full -translate-y-1/2 w-0 h-0 border-t-[6px] border-t-transparent border-b-[6px] border-b-transparent border-r-[10px] border-r-retro-charcoal" />
-              <div className="absolute left-0 top-1/2 -translate-x-[calc(100%-2px)] -translate-y-1/2 w-0 h-0 border-t-[6px] border-t-transparent border-b-[6px] border-b-transparent border-r-[10px] border-r-white" />
+                <span className="font-mono text-xs md:text-sm whitespace-nowrap text-retro-charcoal">Hello, World!</span>
+                {/* Speech bubble tail pointing left */}
+                <div className="absolute left-0 top-1/2 -translate-x-full -translate-y-1/2 w-0 h-0 border-t-[6px] border-t-transparent border-b-[6px] border-b-transparent border-r-[10px] border-r-retro-charcoal" />
+                <div className="absolute left-0 top-1/2 -translate-x-[calc(100%-2px)] -translate-y-1/2 w-0 h-0 border-t-[6px] border-t-transparent border-b-[6px] border-b-transparent border-r-[10px] border-r-white" />
             </div>
           </div>
         </div>
@@ -76,7 +76,7 @@ export default function Hero({ onNavigate }: HeroProps) {
             <span className="text-white">&gt;</span>
             <div className="flex-1">
               <span className="text-white">{typedText}</span>
-              <span className={`inline-block w-3 h-5 bg-cyan-500 ml-1 ${showCursor ? 'opacity-100' : 'opacity-0'}`} style={{ transition: 'opacity 0.1s' }}>█</span>
+              <span className={`inline-block ml-0.5 text-cyan-400 ${showCursor ? 'opacity-100' : 'opacity-0'}`} style={{ transition: 'opacity 0.1s', fontSize: '20px', lineHeight: '20px' }}>|</span>
             </div>
           </div>
         </div>
