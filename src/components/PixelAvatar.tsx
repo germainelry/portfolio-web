@@ -1,20 +1,30 @@
+import React from 'react';
+// @ts-ignore - Vite handles image imports
+import girlInTechSvg from '../public/profile/girl-in-tech.svg';
+
 interface PixelAvatarProps {
-  size?: 'small' | 'medium' | 'large';
+  size?: 'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge';
   className?: string;
 }
 
 export default function PixelAvatar({ size = 'medium', className = '' }: PixelAvatarProps) {
   const sizeMap = {
-    small: 'w-8 h-8',
-    medium: 'w-24 h-24',
-    large: 'w-40 h-40'
+    small: 'w-8 h-8',      // 32px
+    medium: 'w-24 h-24',   // 96px
+    large: 'w-45 h-40',    // 160px
+    xlarge: 'w-52 h-52',   // 208px
+    xxlarge: 'w-64 h-64'   // 256px
   };
 
+  // If className contains width/height classes, use className only; otherwise combine with size
+  const hasSizeInClassName = className && /(w-\d+|h-\d+|w-\[|h-\[)/.test(className);
+  const sizeClass = hasSizeInClassName ? '' : sizeMap[size];
+
   return (
-    <div className={`${sizeMap[size]} ${className} relative`}>
+    <div className={`${sizeClass} ${className} relative`}>
       {/* Tech Girlie character with brown hair, pink dress, headphones, laptop, and plants */}
       <img 
-        src="data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cstyle%3E .pixel %7B shape-rendering: crispEdges; image-rendering: pixelated; %7D %3C/style%3E%3C/defs%3E%3C!-- Background/Desk --%3E%3Crect width='160' height='160' fill='%23f0f0f0' opacity='0'/%3E%3C!-- Desk surface --%3E%3Crect x='20' y='100' width='120' height='50' fill='%23d4a574' class='pixel'/%3E%3C!-- Left plant pot --%3E%3Crect x='12' y='70' width='16' height='20' fill='%23d97e5c' class='pixel'/%3E%3Crect x='14' y='65' width='12' height='8' fill='%2300a86b' class='pixel'/%3E%3Crect x='16' y='58' width='8' height='8' fill='%2300d97e' class='pixel'/%3E%3C!-- Right plant pot --%3E%3Crect x='132' y='70' width='16' height='20' fill='%23d97e5c' class='pixel'/%3E%3Crect x='134' y='65' width='12' height='8' fill='%2300a86b' class='pixel'/%3E%3Crect x='136' y='58' width='8' height='8' fill='%2300d97e' class='pixel'/%3E%3C!-- Long flowing brown hair - back layer --%3E%3Crect x='32' y='28' width='96' height='68' fill='%238B4513' class='pixel'/%3E%3Crect x='36' y='32' width='88' height='64' fill='%23654321' class='pixel'/%3E%3C!-- Hair top/bangs --%3E%3Crect x='48' y='20' width='64' height='8' fill='%23654321' class='pixel'/%3E%3Crect x='40' y='28' width='80' height='16' fill='%238B4513' class='pixel'/%3E%3Crect x='44' y='32' width='72' height='12' fill='%23654321' class='pixel'/%3E%3C!-- Face with shading --%3E%3Crect x='56' y='40' width='48' height='48' fill='%23FFD1B3' class='pixel'/%3E%3Crect x='58' y='42' width='44' height='44' fill='%23FFE4D0' class='pixel'/%3E%3C!-- Long hair sides (framing face) --%3E%3Crect x='40' y='44' width='16' height='52' fill='%238B4513' class='pixel'/%3E%3Crect x='104' y='44' width='16' height='52' fill='%238B4513' class='pixel'/%3E%3Crect x='44' y='48' width='12' height='48' fill='%23654321' class='pixel'/%3E%3Crect x='104' y='48' width='12' height='48' fill='%23654321' class='pixel'/%3E%3C!-- Hair highlights --%3E%3Crect x='52' y='24' width='8' height='4' fill='%23a0693d' class='pixel' opacity='0.6'/%3E%3Crect x='100' y='24' width='8' height='4' fill='%23a0693d' class='pixel' opacity='0.6'/%3E%3C!-- Happy eyes (^ ^) - cute anime style --%3E%3C!-- Left eye curve --%3E%3Cpath d='M 64 54 Q 70 50 76 54' stroke='%231a1a1a' stroke-width='2.5' fill='none' stroke-linecap='round' class='pixel'/%3E%3C!-- Right eye curve --%3E%3Cpath d='M 84 54 Q 90 50 96 54' stroke='%231a1a1a' stroke-width='2.5' fill='none' stroke-linecap='round' class='pixel'/%3E%3C!-- Pink blush cheeks --%3E%3Cellipse cx='64' cy='62' rx='6' ry='5' fill='%23ffb3d9' opacity='0.8' class='pixel'/%3E%3Cellipse cx='96' cy='62' rx='6' ry='5' fill='%23ffb3d9' opacity='0.8' class='pixel'/%3E%3C!-- Gentle smile --%3E%3Cpath d='M 72 72 Q 80 76 88 72' stroke='%23ff9ebb' stroke-width='2' fill='none' stroke-linecap='round' class='pixel'/%3E%3C!-- Headphones --%3E%3Crect x='32' y='42' width='12' height='24' fill='white' class='pixel'/%3E%3Crect x='116' y='42' width='12' height='24' fill='white' class='pixel'/%3E%3Crect x='36' y='46' width='8' height='16' fill='%23ff9ebb' class='pixel'/%3E%3Crect x='116' y='46' width='8' height='16' fill='%23ff9ebb' class='pixel'/%3E%3C!-- Headphone band --%3E%3Crect x='44' y='36' width='72' height='6' fill='white' class='pixel'/%3E%3C!-- Pink dress/body --%3E%3Crect x='48' y='88' width='64' height='48' fill='%23ff9ebb' class='pixel'/%3E%3Crect x='52' y='92' width='56' height='40' fill='%23ffb3d9' class='pixel'/%3E%3C!-- Laptop on desk --%3E%3Crect x='60' y='110' width='40' height='24' fill='%23c0c0c0' class='pixel'/%3E%3Crect x='62' y='112' width='36' height='18' fill='%23e0e0e0' class='pixel'/%3E%3Crect x='64' y='114' width='32' height='14' fill='%2300d9ff' class='pixel' opacity='0.3'/%3E%3C!-- Keyboard --%3E%3Crect x='58' y='134' width='44' height='8' fill='%23ffffff' class='pixel'/%3E%3Crect x='60' y='136' width='40' height='4' fill='%23ff9ebb' class='pixel' opacity='0.6'/%3E%3C!-- Coffee cup --%3E%3Crect x='110' y='118' width='12' height='16' fill='%238B4513' class='pixel'/%3E%3Crect x='112' y='120' width='8' height='12' fill='%23a0522d' class='pixel'/%3E%3C!-- Steam --%3E%3Crect x='114' y='112' width='4' height='6' fill='%23f5f5f5' class='pixel' opacity='0.6'/%3E%3Crect x='116' y='108' width='2' height='4' fill='%23f5f5f5' class='pixel' opacity='0.4'/%3E%3C!-- Small desk plant --%3E%3Crect x='32' y='120' width='12' height='14' fill='%23d97e5c' class='pixel'/%3E%3Crect x='34' y='116' width='8' height='6' fill='%2300a86b' class='pixel'/%3E%3C/svg%3E"
+        src={girlInTechSvg}
         alt="Germaine's Avatar - Tech Girlie with cute happy face and long hair"
         className="w-full h-full"
         style={{ imageRendering: 'pixelated' }}
