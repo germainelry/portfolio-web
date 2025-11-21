@@ -50,9 +50,9 @@ export default function Hero({ onNavigate }: HeroProps) {
           <div className="absolute top-8 -left-3 w-2 h-2 bg-green-400 rounded-full opacity-60 animate-pulse" style={{ animationDelay: '1.5s' }} />
           
           {/* Speech bubble - "Hello, World!" */}
-          <div className="absolute -right-35 top-8 hidden md:block animate-bounce-subtle">
-            <div className="bg-white border-2 border-retro-charcoal px-4 py-2 relative shadow-[2px_2px_0px_0px_rgba(0,0,0,0.2)]">
-              <span className="font-mono text-sm whitespace-nowrap text-retro-charcoal">Hello, World!</span>
+          <div className="absolute -right-2 top-2 hidden md:block md:-right-6 md:top-4 lg:-right-10 lg:top-6 animate-bounce-subtle">
+            <div className="bg-white border-2 border-retro-charcoal px-3 py-1.5 relative shadow-[2px_2px_0px_0px_rgba(0,0,0,0.2)] rounded">
+              <span className="font-mono text-xs md:text-sm whitespace-nowrap text-retro-charcoal">Hello, World!</span>
               {/* Speech bubble tail pointing left */}
               <div className="absolute left-0 top-1/2 -translate-x-full -translate-y-1/2 w-0 h-0 border-t-[6px] border-t-transparent border-b-[6px] border-b-transparent border-r-[10px] border-r-retro-charcoal" />
               <div className="absolute left-0 top-1/2 -translate-x-[calc(100%-2px)] -translate-y-1/2 w-0 h-0 border-t-[6px] border-t-transparent border-b-[6px] border-b-transparent border-r-[10px] border-r-white" />
@@ -61,7 +61,7 @@ export default function Hero({ onNavigate }: HeroProps) {
         </div>
 
         {/* Name and Title - Updated Typography */}
-        <div>
+        <div className="-mt-2">
           <h1 className="text-retro-charcoal mb-2" style={{ fontFamily: 'Silkscreen, monospace', fontSize: '48px', letterSpacing: '0.08em' }}>
             GERMAINE LUAH
           </h1>
@@ -85,12 +85,12 @@ export default function Hero({ onNavigate }: HeroProps) {
         <div className="flex flex-col sm:flex-row gap-4 mt-4">
           <Tooltip text="View portfolio">
             <MacButton variant="primary" onClick={() => onNavigate('about')}>
-              PRESS START
+              START
             </MacButton>
           </Tooltip>
           <Tooltip text="Browse projects">
             <MacButton variant="secondary" onClick={() => onNavigate('projects')}>
-              PORTFOLIO
+              QUEST LOGS
             </MacButton>
           </Tooltip>
         </div>
