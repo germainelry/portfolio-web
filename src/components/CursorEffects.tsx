@@ -117,7 +117,7 @@ export default function CursorEffects() {
         </div>
       ))}
 
-      {/* Global Styles for Animations */}
+      {/* Global Styles for Animations and Custom Cursors */}
       <style>{`
         /* Sparkle animation */
         @keyframes sparkle {
@@ -145,6 +145,26 @@ export default function CursorEffects() {
             transform: translate(-50%, -50%) scale(4);
             opacity: 0;
           }
+        }
+
+        /* Pixelated Magic Wand Cursor */
+        * {
+          cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><rect x="2" y="2" width="4" height="4" fill="%23FFD700"/><rect x="2" y="6" width="4" height="4" fill="%23FFFFFF"/><rect x="6" y="2" width="4" height="4" fill="%23FFFFFF"/><rect x="6" y="6" width="4" height="4" fill="%23FFD700"/><rect x="10" y="10" width="4" height="4" fill="%23FF1493"/><rect x="14" y="14" width="4" height="4" fill="%23FF1493"/><rect x="18" y="18" width="4" height="4" fill="%23FF1493"/><rect x="22" y="22" width="4" height="4" fill="%23C0C0C0"/><rect x="26" y="26" width="4" height="4" fill="%23C0C0C0"/></svg>') 4 4, auto;
+        }
+
+        /* Magic Wand with sparkles for interactive elements */
+        a, button, [role="button"], input[type="submit"], input[type="button"], .cursor-pointer {
+          cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><rect x="2" y="2" width="4" height="4" fill="%2300D9FF"/><rect x="2" y="6" width="4" height="4" fill="%23FFFFFF"/><rect x="6" y="2" width="4" height="4" fill="%23FFFFFF"/><rect x="6" y="6" width="4" height="4" fill="%2300D9FF"/><rect x="10" y="10" width="4" height="4" fill="%23FF1493"/><rect x="14" y="14" width="4" height="4" fill="%23FF1493"/><rect x="18" y="18" width="4" height="4" fill="%23FF1493"/><rect x="22" y="22" width="4" height="4" fill="%23C0C0C0"/><rect x="26" y="26" width="4" height="4" fill="%23C0C0C0"/><rect x="14" y="2" width="2" height="2" fill="%23FFD700"/><rect x="2" y="14" width="2" height="2" fill="%23FFD700"/><rect x="26" y="6" width="2" height="2" fill="%2300D9FF"/></svg>') 4 4, pointer !important;
+        }
+
+        /* Text editing wand for inputs */
+        input[type="text"], input[type="email"], textarea {
+          cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="32" viewBox="0 0 24 32"><rect x="10" y="0" width="4" height="8" fill="%23FF1493"/><rect x="8" y="8" width="2" height="4" fill="%23FF1493"/><rect x="14" y="8" width="2" height="4" fill="%23FF1493"/><rect x="10" y="12" width="4" height="20" fill="%23FF1493"/><rect x="6" y="14" width="2" height="2" fill="%23FFD700"/><rect x="16" y="16" width="2" height="2" fill="%23FFD700"/><rect x="6" y="20" width="2" height="2" fill="%2300D9FF"/></svg>') 12 12, text !important;
+        }
+
+        /* Disabled/not-allowed wand */
+        [disabled], .cursor-not-allowed {
+          cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><rect x="2" y="2" width="4" height="4" fill="%23808080"/><rect x="2" y="6" width="4" height="4" fill="%23A0A0A0"/><rect x="6" y="2" width="4" height="4" fill="%23A0A0A0"/><rect x="6" y="6" width="4" height="4" fill="%23808080"/><rect x="10" y="10" width="4" height="4" fill="%23606060"/><rect x="14" y="14" width="4" height="4" fill="%23606060"/><rect x="18" y="18" width="4" height="4" fill="%23606060"/><rect x="22" y="22" width="4" height="4" fill="%23404040"/><rect x="26" y="26" width="4" height="4" fill="%23404040"/></svg>') 4 4, not-allowed !important;
         }
       `}</style>
     </>
