@@ -12,7 +12,7 @@ export default function Experience() {
       period: '2025 June - Present',
       achievements: [
         'Developed Python automation for privileged ID lifecycle management and CyberArk PAM integration (onboarding, rotation, decommissioning)',
-        'Enhanced SecretHub (FastAPI) secret management system with CyberArk & HashiCorp Vault integrations and comprehensive audit logging',
+        'Enhanced SecretHub (FastAPI) secret management system with CyberArk integrations and comprehensive audit logging',
         'Built FastAPI reporting server delivering automated compliance reports and audit dashboards with scheduled email alerts',
         'Automated Active Directory user/group management with PowerShell, strengthening security compliance and access control'
       ],
@@ -20,7 +20,7 @@ export default function Experience() {
         { name: 'Python', role: 'Core language', use: 'Automation & backend' },
         { name: 'FastAPI', role: 'Backend framework', use: 'REST APIs & reporting' },
         { name: 'CyberArk', role: 'PAM solution', use: 'Privileged access management' },
-        { name: 'HashiCorp Vault', role: 'Secret management', use: 'Credential storage' },
+        { name: 'Pandas', role: 'Data library', use: 'Data processing & analysis' },
         { name: 'PowerShell', role: 'Scripting language', use: 'AD automation' },
         { name: 'Active Directory', role: 'Identity service', use: 'User/group management' }
       ]
@@ -30,19 +30,18 @@ export default function Experience() {
       role: 'Automation Engineer',
       period: '2024 July - 2025 June',
       achievements: [
-        'Developed AI-powered multilingual chatbot using LLMs to enhance customer support and automate natural language interactions',
+        'Automated daily infrastructure tasks with Python through advanced logging, scheduling, and validation workflows',
         'Implemented Infrastructure as Code (IaC) with Chef for server provisioning, config management, and automated deployments',
         'Managed Jenkins CI/CD pipelines and validated regression/compliance test suites across multiple OS platforms',
         'Leveraged Chef and IBM BigFix for OS hardening, compliance monitoring, and vulnerability remediation'
       ],
       tech: [
-        { name: 'Python', role: 'Core language', use: 'Automation & AI scripts' },
+        { name: 'Python', role: 'Core language', use: 'Automation scripts' },
         { name: 'Chef', role: 'Configuration management', use: 'Infrastructure as Code' },
         { name: 'Jenkins', role: 'CI/CD platform', use: 'Pipeline automation' },
         { name: 'Ruby', role: 'Scripting language', use: 'Chef cookbooks' },
         { name: 'IBM BigFix', role: 'Endpoint management', use: 'OS hardening & compliance' },
-        { name: 'Bash', role: 'Shell scripting', use: 'System automation' },
-        { name: 'LLMs', role: 'AI technology', use: 'Chatbot development' }
+        { name: 'Bash', role: 'Shell scripting', use: 'System automation' }
       ]
     },
     {
