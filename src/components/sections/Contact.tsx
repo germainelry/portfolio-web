@@ -12,6 +12,10 @@ import phoneIcon from '../../public/contact-icons/mobile-phone.png';
 import linkedinIcon from '../../public/contact-icons/linkedin.png';
 // @ts-ignore - Vite handles image imports
 import githubIcon from '../../public/contact-icons/github.png';
+// @ts-ignore - Vite handles image imports
+import heartIcon from '../../public/misc/heart.png';
+// @ts-ignore - Vite handles image imports
+import documentHeartIcon from '../../public/contact-icons/document-heart.png';
 
 export default function Contact() {
   const [typedText, setTypedText] = useState('');
@@ -145,8 +149,7 @@ Thanks for checking out my portfolio. I'd love to connect and discuss opportunit
           <div className="font-mono text-sm text-retro-charcoal leading-relaxed relative whitespace-pre-wrap">
             {typedText}
             {!isTypingComplete && (
-              <span className={`inline-block w-2 h-4 bg-retro-charcoal ml-1 ${showCursor ? 'opacity-100' : 'opacity-0'}`}>
-                ▌
+              <span className={`inline-block w-0.5 h-4 bg-retro-charcoal ml-1 align-middle ${showCursor ? 'opacity-100' : 'opacity-0'} transition-opacity duration-150`}>
               </span>
             )}
           </div>
@@ -232,7 +235,7 @@ Thanks for checking out my portfolio. I'd love to connect and discuss opportunit
           {isTypingComplete && (
             <div className="animate-fadeIn" style={{ animationDelay: '0.2s' }}>
               <p className="font-mono text-sm text-retro-charcoal leading-relaxed pt-4 relative flex items-center gap-2">
-                Looking forward to connecting with you! <PixelIcons.Heart size={20} className="inline-block" />
+                Looking forward to connecting with you! <img src={heartIcon} alt="❤️" className="inline-block" style={{ width: '20px', height: '20px' }} />
               </p>
 
               <p className="font-mono text-sm text-retro-charcoal relative mt-4">
@@ -295,7 +298,7 @@ Thanks for checking out my portfolio. I'd love to connect and discuss opportunit
             <div className="flex items-center justify-between mb-2">
               <div className="flex items-center gap-3">
                 <div className="w-8 h-8">
-                  <PixelIcons.Document size={32} />
+                  <img src={documentHeartIcon} alt="Resume" className="w-8 h-8" />
                 </div>
                 <div className="font-mono text-sm">
                   <div className="text-retro-charcoal">Resume.pdf</div>
