@@ -3,6 +3,15 @@ import Window from '../Window';
 import Tooltip from '../Tooltip';
 import ProgressBar from '../ProgressBar';
 import { PixelIcons } from '../icons/PixelIcons';
+// Import colorful brand icons from react-icons
+import { 
+  SiPython, SiPostgresql, SiGnubash, SiTypescript,
+  SiGit, SiLinux, SiDocker, SiJenkins, SiChef,
+  SiReact, SiFastapi, SiSupabase, SiSqlite, SiMongodb,
+  SiTableau, SiJira, SiConfluence, SiNotion, SiFigma,
+  SiAnthropic, SiGithubcopilot
+} from 'react-icons/si';
+import { FaFlask } from 'react-icons/fa';
 
 export default function Skills() {
   const [activeCategory, setActiveCategory] = useState('languages');
@@ -13,10 +22,9 @@ export default function Skills() {
       label: 'Languages',
       skills: [
         { name: 'Python', icon: 'Python', proficiency: 90, years: '3+', description: 'Primary language for automation & backend' },
-        { name: 'SQL', icon: 'SQL', proficiency: 90, years: '3+', description: 'Database design & query optimization' },
-        { name: 'PowerShell', icon: 'PowerShell', proficiency: 85, years: '3+', description: 'Windows scripting & automation' },
-        { name: 'Bash', icon: 'Bash', proficiency: 85, years: '3+', description: 'Unix/Linux shell scripting' },
-        { name: 'TypeScript', icon: 'TypeScript', proficiency: 80, years: '2+', description: 'Type-safe web applications' }
+        { name: 'SQL', icon: 'Postgresql', proficiency: 90, years: '3+', description: 'Database design & query optimization' },
+        { name: 'Bash', icon: 'Gnubash', proficiency: 85, years: '3+', description: 'Unix/Linux shell scripting' },
+        { name: 'TypeScript', icon: 'Typescript', proficiency: 80, years: '2+', description: 'Type-safe web applications' }
       ]
     },
     tools: {
@@ -26,39 +34,59 @@ export default function Skills() {
         { name: 'Linux/Unix', icon: 'Linux', proficiency: 85, years: '3+', description: 'Banking infrastructure & servers' },
         { name: 'Docker', icon: 'Docker', proficiency: 85, years: '2+', description: 'Containerization & deployment' },
         { name: 'Jenkins', icon: 'Jenkins', proficiency: 80, years: '2+', description: 'CI/CD pipeline automation' },
-        { name: 'Chef', icon: 'Chef', proficiency: 80, years: '2+', description: 'Infrastructure as Code - Certified' },
-        { name: 'n8n', icon: 'N8n', proficiency: 75, years: '1+', description: 'Workflow automation platform' }
+        { name: 'Chef', icon: 'Chef', proficiency: 80, years: '2+', description: 'Infrastructure as Code - Certified' }
       ]
     },
     frameworks: {
       label: 'Frameworks & Databases',
       skills: [
         { name: 'React', icon: 'React', proficiency: 85, years: '2+', description: 'Modern UI development' },
-        { name: 'FastAPI', icon: 'FastAPI', proficiency: 90, years: '3+', description: 'High-performance Python APIs' },
+        { name: 'FastAPI', icon: 'Fastapi', proficiency: 90, years: '3+', description: 'High-performance Python APIs' },
         { name: 'Supabase', icon: 'Supabase', proficiency: 80, years: '2+', description: 'Backend as a service' },
-        { name: 'SQLite', icon: 'SQLite', proficiency: 85, years: '2+', description: 'Embedded database' },
-        { name: 'MongoDB', icon: 'MongoDB', proficiency: 75, years: '2+', description: 'NoSQL document database' }
+        { name: 'SQLite', icon: 'Sqlite', proficiency: 85, years: '2+', description: 'Embedded database' },
+        { name: 'MongoDB', icon: 'Mongodb', proficiency: 75, years: '2+', description: 'NoSQL document database' }
       ]
     },
     data: {
       label: 'Data & Productivity',
       skills: [
         { name: 'Tableau', icon: 'Tableau', proficiency: 85, years: '2+', description: 'Data visualization & analytics' },
-        { name: 'JMP', icon: 'JMP', proficiency: 80, years: '2+', description: 'Statistical analysis software' },
-        { name: 'Excel', icon: 'Excel', proficiency: 85, years: '4+', description: 'Advanced formulas & data analysis' },
         { name: 'Jira', icon: 'Jira', proficiency: 85, years: '3+', description: 'Agile project management' },
         { name: 'Confluence', icon: 'Confluence', proficiency: 85, years: '3+', description: 'Team documentation & wikis' },
         { name: 'Notion', icon: 'Notion', proficiency: 80, years: '2+', description: 'Documentation & organization' },
         { name: 'Figma', icon: 'Figma', proficiency: 75, years: '2+', description: 'Design & prototyping' },
-        { name: 'Claude', icon: 'Claude', proficiency: 80, years: '1+', description: 'AI assistant & code generation' },
-        { name: 'GitHub Copilot', icon: 'Copilot', proficiency: 75, years: '1+', description: 'AI pair programming' },
-        { name: 'Cursor', icon: 'Cursor', proficiency: 75, years: '1+', description: 'AI-powered code editor' }
+        { name: 'Claude', icon: 'Anthropic', proficiency: 80, years: '1+', description: 'AI assistant & code generation' },
+        { name: 'GitHub Copilot', icon: 'Githubcopilot', proficiency: 75, years: '1+', description: 'AI pair programming' }
       ]
     }
   };
 
   const getIconComponent = (iconName: string) => {
-    const IconComponent = PixelIcons[iconName as keyof typeof PixelIcons];
+    const iconMap: Record<string, any> = {
+      'Python': SiPython,
+      'Postgresql': SiPostgresql,
+      'Gnubash': SiGnubash,
+      'Typescript': SiTypescript,
+      'Git': SiGit,
+      'Linux': SiLinux,
+      'Docker': SiDocker,
+      'Jenkins': SiJenkins,
+      'Chef': SiChef,
+      'React': SiReact,
+      'Fastapi': SiFastapi,
+      'Supabase': SiSupabase,
+      'Sqlite': SiSqlite,
+      'Mongodb': SiMongodb,
+      'Tableau': SiTableau,
+      'Jira': SiJira,
+      'Confluence': SiConfluence,
+      'Notion': SiNotion,
+      'Figma': SiFigma,
+      'Anthropic': SiAnthropic,
+      'Githubcopilot': SiGithubcopilot
+    };
+    
+    const IconComponent = iconMap[iconName];
     return IconComponent ? <IconComponent size={48} /> : null;
   };
 

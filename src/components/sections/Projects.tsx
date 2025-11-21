@@ -91,59 +91,43 @@ export default function Projects() {
       </div>
 
       {/* File Info Panel */}
-      <div className="space-y-6">
-        {/* Project Preview */}
-        <div className="bg-retro-grey border-2 border-retro-grey-dark p-4 flex items-center justify-center aspect-video">
-          <div className="text-center space-y-3">
-            <div className="w-24 h-24 mx-auto">
-              <PixelIcons.Document size={96} />
-            </div>
-            <div className="font-mono text-sm text-retro-charcoal">
+      <div className="space-y-4">
+        {/* Project Preview - Compact */}
+        <div className="bg-retro-grey border-2 border-retro-grey-dark p-3 flex items-center gap-3">
+          <div className="w-12 h-12 flex-shrink-0">
+            <PixelIcons.Document size={48} />
+          </div>
+          <div className="flex-1 min-w-0">
+            <div className="font-mono text-sm text-retro-charcoal truncate">
               {projects[selectedProject].name}
             </div>
-          </div>
-        </div>
-
-        {/* Project Details Grid */}
-        <div className="grid md:grid-cols-2 gap-4 font-mono text-sm">
-          <div className="flex flex-col gap-1">
-            <span className="text-retro-grey-dark">Name:</span>
-            <span className="text-retro-charcoal">{projects[selectedProject].name}</span>
-          </div>
-          <div className="flex flex-col gap-1">
-            <span className="text-retro-grey-dark">Type:</span>
-            <span className="text-retro-charcoal">{projects[selectedProject].type}</span>
-          </div>
-          <div className="flex flex-col gap-1">
-            <span className="text-retro-grey-dark">Modified:</span>
-            <span className="text-retro-charcoal">{projects[selectedProject].year}</span>
-          </div>
-          <div className="flex flex-col gap-1">
-            <span className="text-retro-grey-dark">Status:</span>
-            <div className="flex items-center gap-2">
-              {projects[selectedProject].status === 'Live' ? (
-                <span 
-                  className="inline-block px-3 py-1 font-mono text-xs text-white transition-all duration-200"
-                  style={{
-                    backgroundColor: '#00a86b',
-                    border: '2px solid #008556',
-                  }}
-                >
-                  Live
-                </span>
-              ) : (
-                <span className="text-retro-grey-dark font-mono text-sm">
-                  {projects[selectedProject].status}
-                </span>
-              )}
+            <div className="font-mono text-xs text-retro-grey-dark">
+              {projects[selectedProject].type}
             </div>
+          </div>
+          <div className="flex-shrink-0">
+            {projects[selectedProject].status === 'Live' ? (
+              <span 
+                className="inline-block px-2 py-0.5 font-mono text-xs text-white"
+                style={{
+                  backgroundColor: '#00a86b',
+                  border: '2px solid #008556',
+                }}
+              >
+                Live
+              </span>
+            ) : (
+              <span className="text-retro-grey-dark font-mono text-xs">
+                {projects[selectedProject].status}
+              </span>
+            )}
           </div>
         </div>
 
         {/* Description */}
         <div>
           <h3 className="font-mono text-sm text-retro-grey-dark mb-2">Description:</h3>
-          <div className="bg-[#fafafa] border-2 border-retro-grey-dark p-4">
+          <div className="bg-[#fafafa] border-2 border-retro-grey-dark p-3">
             <p className="font-mono text-sm text-retro-charcoal leading-relaxed" style={{ color: '#2c2c2c', lineHeight: '1.6' }}>
               {projects[selectedProject].description}
             </p>
@@ -178,6 +162,18 @@ export default function Projects() {
                 </Tooltip>
               );
             })}
+          </div>
+        </div>
+
+        {/* Project Details */}
+        <div className="grid grid-cols-2 gap-3 font-mono text-xs bg-white border-2 border-retro-grey-dark p-3">
+          <div className="flex flex-col gap-0.5">
+            <span className="text-retro-grey-dark">Year:</span>
+            <span className="text-retro-charcoal">{projects[selectedProject].year}</span>
+          </div>
+          <div className="flex flex-col gap-0.5">
+            <span className="text-retro-grey-dark">Type:</span>
+            <span className="text-retro-charcoal">{projects[selectedProject].type}</span>
           </div>
         </div>
 
