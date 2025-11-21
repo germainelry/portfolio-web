@@ -6,61 +6,64 @@ import { PixelIcons } from '../icons/PixelIcons';
 
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState(0);
+  const [showConfidentialModal, setShowConfidentialModal] = useState(false);
+  const [showWIPModal, setShowWIPModal] = useState(false);
+  const [showNoDemoModal, setShowNoDemoModal] = useState(false);
 
   const projects = [
     {
       name: 'ThaiBridge Academy',
       type: 'Full-stack Web Application',
-      description: 'Full-stack web application for a Thai language school with course management, student reviews and automated newsletter systems.',
+      description: 'A comprehensive full-stack web application for a Thai language school featuring course management, student review systems, and automated newsletter functionality to streamline operations and enhance student engagement.',
       tech: [
         { name: 'FastAPI', role: 'Backend framework', use: 'REST APIs' },
-        { name: 'React', role: 'Frontend library', use: 'UI components' },
-        { name: 'TypeScript', role: 'Language', use: 'Type safety' },
-        { name: 'Supabase', role: 'Database & Backend', use: 'Data & auth' },
+        { name: 'React', role: 'Frontend library', use: 'UI Components' },
+        { name: 'TypeScript', role: 'Language', use: 'Type Safety' },
+        { name: 'Supabase', role: 'Database & Backend', use: 'Data & Auth' },
         { name: 'Tailwind CSS', role: 'CSS framework', use: 'Styling' }
       ],
-      year: '2024',
+      year: '2025',
       status: 'Live',
       links: {
-        demo: '#',
+        demo: 'https://www.thaibridge.academy/',
         code: '#'
       }
     },
     {
       name: 'Chatbit',
       type: 'AI Chatbot Platform',
-      description: 'AI chatbot featuring Human-in-the-Loop workflows, agent orchestration, RAG-based knowledge search, real-time dashboards and automated escalation to deliver context-aware responses and actionable analytics insights.',
+      description: 'An advanced AI chatbot platform featuring Human-in-the-Loop workflows, agent orchestration, and RAG-based knowledge search. Includes real-time dashboards and automated escalation to deliver context-aware responses and actionable insights.',
       tech: [
-        { name: 'Python', role: 'Core language', use: 'Backend logic' },
+        { name: 'Python', role: 'Core language', use: 'Backend Logic' },
         { name: 'FastAPI', role: 'Web framework', use: 'REST APIs' },
-        { name: 'React', role: 'Frontend library', use: 'UI dashboard' },
-        { name: 'TypeScript', role: 'Frontend language', use: 'Type safety' },
-        { name: 'HuggingFace', role: 'LLM platform', use: 'AI models' },
-        { name: 'PostgreSQL', role: 'Database', use: 'Data storage' },
+        { name: 'React', role: 'Frontend library', use: 'UI Dashboard' },
+        { name: 'TypeScript', role: 'Frontend language', use: 'Type Safety' },
+        { name: 'HuggingFace', role: 'LLM platform', use: 'LLMs & Embeddings' },
+        { name: 'PostgreSQL', role: 'Database', use: 'Data Storage' },
         { name: 'Docker', role: 'Containerization', use: 'Deployment' }
       ],
-      year: '2024',
+      year: '2025',
       status: 'Live',
       links: {
-        demo: '#',
+        demo: 'https://germxai.vercel.app/',
         code: '#'
       }
     },
     {
-      name: 'Cross-Regional Customer Service Chatbot',
-      type: 'AI Banking Chatbot',
-      description: 'An AI-driven, multilingual chatbot designed to enhance customer service in the banking sector.',
+      name: 'Multilingual AI Chatbot',
+      type: 'UOB 2024 TDP Hackathon',
+      description: 'An AI-driven, multilingual chatbot designed to enhance cross-regional customer service in the banking sector. Provides intelligent, context-aware responses to support customers across different regions and languages.',
       tech: [
-        { name: 'Python', role: 'Core language', use: 'Backend logic' },
-        { name: 'Flask', role: 'Backend framework', use: 'Web server' },
-        { name: 'Ollama', role: 'LLM platform', use: 'Local AI models' },
-        { name: 'NLP', role: 'Natural Language Processing', use: 'Text analysis' }
+        { name: 'Python', role: 'Core language', use: 'Backend Logic' },
+        { name: 'Flask', role: 'Backend framework', use: 'Backend Framework' },
+        { name: 'Ollama', role: 'LLM platform', use: 'Local AI Model' },
+        { name: 'NLP', role: 'Natural Language Processing', use: 'Text Generation' }
       ],
       year: '2024',
-      status: 'Dev',
+      status: 'Archived',
       links: {
         demo: '',
-        code: '#'
+        code: 'https://github.com/germainelry/TDP-LLM-Chatbot'
       }
     }
   ];
@@ -183,7 +186,13 @@ export default function Projects() {
             <MacButton 
               variant="primary" 
               className="flex-1"
-              onClick={() => window.open(projects[selectedProject].links.demo, '_blank')}
+              onClick={() => {
+                if (projects[selectedProject].name === 'Multilingual AI Chatbot' || !projects[selectedProject].links.demo) {
+                  setShowNoDemoModal(true);
+                } else {
+                  window.open(projects[selectedProject].links.demo, '_blank');
+                }
+              }}
             >
               Live Demo
             </MacButton>
@@ -192,13 +201,150 @@ export default function Projects() {
             <MacButton 
               variant="secondary" 
               className="flex-1"
-              onClick={() => window.open(projects[selectedProject].links.code, '_blank')}
+              onClick={() => {
+                if (projects[selectedProject].name === 'ThaiBridge Academy') {
+                  setShowConfidentialModal(true);
+                } else if (projects[selectedProject].name === 'Chatbit') {
+                  setShowWIPModal(true);
+                } else {
+                  window.open(projects[selectedProject].links.code, '_blank');
+                }
+              }}
             >
               View Code
             </MacButton>
           </Tooltip>
         </div>
       </div>
+
+      {/* Confidential Modal */}
+      {showConfidentialModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60">
+          <div className="bg-white border-4 border-retro-grey-dark shadow-[8px_8px_0px_rgba(0,0,0,0.3)] max-w-md w-full">
+            {/* Modal Title Bar */}
+            <div className="bg-gradient-to-b from-retro-title-bar to-retro-frame border-b-2 border-retro-grey-dark px-4 py-2 flex items-center justify-between">
+              <span className="font-mono text-sm text-retro-charcoal font-bold">⚠️ NOTICE</span>
+              <button
+                onClick={() => setShowConfidentialModal(false)}
+                className="w-6 h-6 flex items-center justify-center bg-red-500 border-2 border-red-700 hover:bg-red-400 transition-colors cursor-pointer font-mono text-white text-xs"
+                aria-label="Close"
+              >
+                ×
+              </button>
+            </div>
+
+            {/* Modal Content */}
+            <div className="p-6 bg-[#fafafa] border-2 border-retro-grey-dark">
+              <div className="space-y-4">
+                <div className="font-mono text-sm text-retro-charcoal leading-relaxed">
+                  <p className="mb-3 font-bold">Code Access Restricted</p>
+                  <p className="mb-2">
+                    The source code for <strong>ThaiBridge Academy</strong> is confidential and proprietary.
+                  </p>
+                  <p>
+                    All code, designs, and related materials are <strong>copyrighted by ThaiBridge</strong> and are not available for public viewing.
+                  </p>
+                </div>
+                <div className="pt-4 border-t-2 border-retro-grey-dark">
+                  <MacButton
+                    variant="primary"
+                    className="w-full"
+                    onClick={() => setShowConfidentialModal(false)}
+                  >
+                    Understood
+                  </MacButton>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* WIP Modal */}
+      {showWIPModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60">
+          <div className="bg-white border-4 border-retro-grey-dark shadow-[8px_8px_0px_rgba(0,0,0,0.3)] max-w-md w-full">
+            {/* Modal Title Bar */}
+            <div className="bg-gradient-to-b from-retro-title-bar to-retro-frame border-b-2 border-retro-grey-dark px-4 py-2 flex items-center justify-between">
+              <span className="font-mono text-sm text-retro-charcoal font-bold">🚧 WORK IN PROGRESS</span>
+              <button
+                onClick={() => setShowWIPModal(false)}
+                className="w-6 h-6 flex items-center justify-center bg-red-500 border-2 border-red-700 hover:bg-red-400 transition-colors cursor-pointer font-mono text-white text-xs"
+                aria-label="Close"
+              >
+                ×
+              </button>
+            </div>
+
+            {/* Modal Content */}
+            <div className="p-6 bg-[#fafafa] border-2 border-retro-grey-dark">
+              <div className="space-y-4">
+                <div className="font-mono text-sm text-retro-charcoal leading-relaxed">
+                  <p className="mb-3 font-bold">Code Not Available Yet</p>
+                  <p className="mb-2">
+                    The source code for <strong>Chatbit</strong> is currently a work in progress.
+                  </p>
+                  <p>
+                    The code repository is not available for viewing at this time. Please check back later!
+                  </p>
+                </div>
+                <div className="pt-4 border-t-2 border-retro-grey-dark">
+                  <MacButton
+                    variant="primary"
+                    className="w-full"
+                    onClick={() => setShowWIPModal(false)}
+                  >
+                    Understood
+                  </MacButton>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* No Demo Modal */}
+      {showNoDemoModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60">
+          <div className="bg-white border-4 border-retro-grey-dark shadow-[8px_8px_0px_rgba(0,0,0,0.3)] max-w-md w-full">
+            {/* Modal Title Bar */}
+            <div className="bg-gradient-to-b from-retro-title-bar to-retro-frame border-b-2 border-retro-grey-dark px-4 py-2 flex items-center justify-between">
+              <span className="font-mono text-sm text-retro-charcoal font-bold">💻 DEMO NOT AVAILABLE</span>
+              <button
+                onClick={() => setShowNoDemoModal(false)}
+                className="w-6 h-6 flex items-center justify-center bg-red-500 border-2 border-red-700 hover:bg-red-400 transition-colors cursor-pointer font-mono text-white text-xs"
+                aria-label="Close"
+              >
+                ×
+              </button>
+            </div>
+
+            {/* Modal Content */}
+            <div className="p-6 bg-[#fafafa] border-2 border-retro-grey-dark">
+              <div className="space-y-4">
+                <div className="font-mono text-sm text-retro-charcoal leading-relaxed">
+                  <p className="mb-3 font-bold">Live Demo Unavailable</p>
+                  <p className="mb-2">
+                    The <strong>Multilingual AI Chatbot</strong> project was developed locally and does not have a live demo available.
+                  </p>
+                  <p>
+                    This project was created for the <strong>UOB 2024 TDP Hackathon</strong> and was only deployed locally during development.
+                  </p>
+                </div>
+                <div className="pt-4 border-t-2 border-retro-grey-dark">
+                  <MacButton
+                    variant="primary"
+                    className="w-full"
+                    onClick={() => setShowNoDemoModal(false)}
+                  >
+                    Understood
+                  </MacButton>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </Window>
   );
 }
