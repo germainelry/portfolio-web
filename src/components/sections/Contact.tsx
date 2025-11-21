@@ -4,6 +4,14 @@ import MacButton from '../MacButton';
 import Tooltip from '../Tooltip';
 import { toast } from 'sonner@2.0.3';
 import { PixelIcons } from '../icons/PixelIcons';
+// @ts-ignore - Vite handles image imports
+import mailIcon from '../../public/contact-icons/mail.png';
+// @ts-ignore - Vite handles image imports
+import phoneIcon from '../../public/contact-icons/mobile-phone.png';
+// @ts-ignore - Vite handles image imports
+import linkedinIcon from '../../public/contact-icons/linkedin.png';
+// @ts-ignore - Vite handles image imports
+import githubIcon from '../../public/contact-icons/github.png';
 
 export default function Contact() {
   const [typedText, setTypedText] = useState('');
@@ -14,9 +22,9 @@ export default function Contact() {
   const [copiedItem, setCopiedItem] = useState<string | null>(null);
   const hasAnimated = useRef(false);
 
-  const fullMessage = `Hi there!
+  const fullMessage = `Hi there! :D
 
-Thanks for checking out my portfolio. I'd love to connect and discuss opportunities in DevOps, Platform Engineering, or AI/Automation.`;
+Thanks for checking out my portfolio. I'd love to connect and discuss opportunities that combine technical problem-solving, workflow automation and product innovation.`;
 
   // Typing animation effect
   useEffect(() => {
@@ -148,11 +156,11 @@ Thanks for checking out my portfolio. I'd love to connect and discuss opportunit
             <div className="space-y-2 pt-4 border-t border-retro-grey-dark relative animate-fadeIn">
               {/* Email */}
               <div className="flex items-center gap-3 font-mono text-sm group">
-                <div className={`w-6 h-6 transition-transform duration-200 ${copiedItem === 'Email' ? 'scale-110' : ''}`}>
+                <div className={`w-6 h-6 transition-transform duration-200 group-hover:scale-110 ${copiedItem === 'Email' ? 'scale-110' : ''}`}>
                   {copiedItem === 'Email' ? (
                     <PixelIcons.Checkmark size={24} />
                   ) : (
-                    <PixelIcons.Email size={24} />
+                    <img src={mailIcon} alt="Email" className="w-6 h-6" />
                   )}
                 </div>
                 <Tooltip text="Click to copy email">
@@ -166,12 +174,12 @@ Thanks for checking out my portfolio. I'd love to connect and discuss opportunit
               </div>
 
               {/* Phone */}
-              <div className="flex items-center gap-3 font-mono text-sm">
-                <div className={`w-6 h-6 transition-transform duration-200 ${copiedItem === 'Phone' ? 'scale-110' : ''}`}>
+              <div className="flex items-center gap-3 font-mono text-sm group">
+                <div className={`w-6 h-6 transition-transform duration-200 group-hover:scale-110 ${copiedItem === 'Phone' ? 'scale-110' : ''}`}>
                   {copiedItem === 'Phone' ? (
                     <PixelIcons.Checkmark size={24} />
                   ) : (
-                    <PixelIcons.Phone size={24} />
+                    <img src={phoneIcon} alt="Phone" className="w-6 h-6" />
                   )}
                 </div>
                 <Tooltip text="Click to copy phone number">
@@ -186,8 +194,8 @@ Thanks for checking out my portfolio. I'd love to connect and discuss opportunit
 
               {/* LinkedIn */}
               <div className="flex items-center gap-3 font-mono text-sm group">
-                <div className="w-6 h-6 group-hover:scale-110 transition-transform">
-                  <PixelIcons.LinkedIn size={24} />
+                <div className="w-6 h-6 transition-transform duration-200 group-hover:scale-110">
+                  <img src={linkedinIcon} alt="LinkedIn" className="w-6 h-6" />
                 </div>
                 <Tooltip text="Open LinkedIn profile">
                   <a 
@@ -203,8 +211,8 @@ Thanks for checking out my portfolio. I'd love to connect and discuss opportunit
 
               {/* GitHub */}
               <div className="flex items-center gap-3 font-mono text-sm group">
-                <div className="w-6 h-6 group-hover:scale-110 transition-transform">
-                  <PixelIcons.GitHub size={24} />
+                <div className="w-6 h-6 transition-transform duration-200 group-hover:scale-110">
+                  <img src={githubIcon} alt="GitHub" className="w-6 h-6" />
                 </div>
                 <Tooltip text="View GitHub repos">
                   <a 
@@ -223,13 +231,13 @@ Thanks for checking out my portfolio. I'd love to connect and discuss opportunit
           {/* Signature - appears after typing */}
           {isTypingComplete && (
             <div className="animate-fadeIn" style={{ animationDelay: '0.2s' }}>
-              <p className="font-mono text-sm text-retro-charcoal leading-relaxed pt-4 relative">
-                Looking forward to hearing from you!
+              <p className="font-mono text-sm text-retro-charcoal leading-relaxed pt-4 relative flex items-center gap-2">
+                Looking forward to connecting with you! <PixelIcons.Heart size={20} className="inline-block" />
               </p>
 
               <p className="font-mono text-sm text-retro-charcoal relative mt-4">
-                Best regards,<br/>
-                Germaine
+                Best Regards,<br/>
+                Germaine Luah
               </p>
             </div>
           )}
