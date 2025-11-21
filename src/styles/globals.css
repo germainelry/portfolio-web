@@ -75,25 +75,25 @@ body {
 
 /* Custom background patterns */
 .bg-retro-desktop {
-  background: linear-gradient(135deg, #ffb895 0%, #ff9770 100%);
+  background: linear-gradient(135deg, #D8B5D7 0%, #C9A5C6 100%);
   background-attachment: fixed;
 }
 
 .bg-dithered-pattern {
-  background-image: 
+  background-image:
     repeating-linear-gradient(
       0deg,
       transparent,
       transparent 2px,
-      rgba(255, 119, 112, 0.15) 2px,
-      rgba(255, 119, 112, 0.15) 4px
+      rgba(201, 165, 198, 0.15) 2px,
+      rgba(201, 165, 198, 0.15) 4px
     ),
     repeating-linear-gradient(
       90deg,
       transparent,
       transparent 2px,
-      rgba(255, 119, 112, 0.15) 2px,
-      rgba(255, 119, 112, 0.15) 4px
+      rgba(201, 165, 198, 0.15) 2px,
+      rgba(201, 165, 198, 0.15) 4px
     );
   background-blend-mode: multiply;
 }
@@ -313,21 +313,21 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #ffb895;
-  border: 2px solid #ff9770;
+  background: #D8B5D7;
+  border: 2px solid #C9A5C6;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #ff9770;
-  border: 2px solid #ff8860;
+  background: #C9A5C6;
+  border: 2px solid #B995B6;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #ff8860;
+  background: #B995B6;
 }
 
 ::-webkit-scrollbar-corner {
-  background: #ffb895;
+  background: #D8B5D7;
 }
 
 /* Typography defaults */

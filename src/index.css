@@ -2595,21 +2595,21 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #ffb895;
-  border: 2px solid #ff9770;
+  background: #D8B5D7;
+  border: 2px solid #C9A5C6;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #ff9770;
-  border: 2px solid #ff8860;
+  background: #C9A5C6;
+  border: 2px solid #B995B6;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #ff8860;
+  background: #B995B6;
 }
 
 ::-webkit-scrollbar-corner {
-  background: #ffb895;
+  background: #D8B5D7;
 }
 
 h1 {
