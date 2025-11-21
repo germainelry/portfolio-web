@@ -414,6 +414,23 @@ export const PhoneIcon = ({ size = 64, className = "" }: IconProps) => (
   </svg>
 );
 
+export const HeartIcon = ({ size = 64, className = "" }: IconProps) => (
+  <svg width={size} height={size} viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
+    {/* Retro pixel art heart - classic 8-bit style */}
+    {/* Main heart shape */}
+    <path d="M32 48 L20 36 Q16 32 16 28 Q16 24 20 24 Q24 24 28 28 L32 32 L36 28 Q40 24 44 24 Q48 24 48 28 Q48 32 44 36 Z" fill="#e25555" stroke="#000" strokeWidth="2"/>
+    
+    {/* Left lobe highlight */}
+    <ellipse cx="24" cy="28" rx="4" ry="3" fill="#ff8a8a" opacity="0.7"/>
+    
+    {/* Right lobe highlight */}
+    <ellipse cx="40" cy="28" rx="4" ry="3" fill="#ff8a8a" opacity="0.7"/>
+    
+    {/* Shading on bottom */}
+    <path d="M32 40 L28 44 L32 48 L36 44 Z" fill="#c43d3d" opacity="0.5"/>
+  </svg>
+);
+
 // ============================================
 // STAT CARD ICONS (Keeping existing but refining)
 // ============================================
@@ -1187,6 +1204,7 @@ export const PixelIcons = {
   LinkedIn: LinkedInIcon,
   GitHub: GitHubIcon,
   Phone: PhoneIcon,
+  Heart: HeartIcon,
   
   // Stats
   Trophy: TrophyIcon,
