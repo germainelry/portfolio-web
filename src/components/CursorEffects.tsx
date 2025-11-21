@@ -1,103 +1,150 @@
 import { useEffect, useState, useRef } from 'react';
 
-interface Particle {
+interface Sparkle {
   id: number;
   x: number;
   y: number;
   size: number;
-  opacity: number;
-  color: string;
+  rotation: number;
+}
+
+interface Ripple {
+  id: number;
+  x: number;
+  y: number;
 }
 
 export default function CursorEffects() {
-  const [particles, setParticles] = useState<Particle[]>([]);
-  const particleIdRef = useRef(0);
+  const [sparkles, setSparkles] = useState<Sparkle[]>([]);
+  const [ripples, setRipples] = useState<Ripple[]>([]);
+  const sparkleIdRef = useRef(0);
+  const rippleIdRef = useRef(0);
   const lastSpawnTimeRef = useRef(0);
 
+  // Sparkle Trail Effect
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       const now = Date.now();
 
-      // Spawn particles every 50ms to avoid too many particles
-      if (now - lastSpawnTimeRef.current < 50) return;
+      // Spawn sparkles every 80ms to avoid too many
+      if (now - lastSpawnTimeRef.current < 80) return;
       lastSpawnTimeRef.current = now;
 
-      const colors = ['#FF1493', '#00D9FF', '#FFD700', '#FFFFFF'];
-      const randomColor = colors[Math.floor(Math.random() * colors.length)];
-
-      const newParticle: Particle = {
-        id: particleIdRef.current++,
+      const newSparkle: Sparkle = {
+        id: sparkleIdRef.current++,
         x: e.clientX,
         y: e.clientY,
-        size: Math.random() * 4 + 2,
-        opacity: 1,
-        color: randomColor
+        size: Math.random() * 8 + 4,
+        rotation: Math.random() * 360
       };
 
-      setParticles((prev) => [...prev, newParticle]);
+      setSparkles((prev) => [...prev, newSparkle]);
 
-      // Remove particle after animation
+      // Remove sparkle after animation
       setTimeout(() => {
-        setParticles((prev) => prev.filter((p) => p.id !== newParticle.id));
-      }, 800);
+        setSparkles((prev) => prev.filter((s) => s.id !== newSparkle.id));
+      }, 1000);
     };
 
     window.addEventListener('mousemove', handleMouseMove);
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
+  // Ripple on Click Effect
+  useEffect(() => {
+    const handleClick = (e: MouseEvent) => {
+      const newRipple: Ripple = {
+        id: rippleIdRef.current++,
+        x: e.clientX,
+        y: e.clientY
+      };
+
+      setRipples((prev) => [...prev, newRipple]);
+
+      // Remove ripple after animation
+      setTimeout(() => {
+        setRipples((prev) => prev.filter((r) => r.id !== newRipple.id));
+      }, 800);
+    };
+
+    window.addEventListener('click', handleClick);
+    return () => window.removeEventListener('click', handleClick);
+  }, []);
+
   return (
     <>
-      {/* Pixel Dust Particles */}
-      {particles.map((particle) => (
+      {/* Sparkle Trail */}
+      {sparkles.map((sparkle) => (
         <div
-          key={particle.id}
-          className="pointer-events-none fixed z-[9999] pixel-particle"
+          key={sparkle.id}
+          className="pointer-events-none fixed z-[9999]"
           style={{
-            left: `${particle.x}px`,
-            top: `${particle.y}px`,
-            width: `${particle.size}px`,
-            height: `${particle.size}px`,
-            backgroundColor: particle.color,
-            opacity: particle.opacity,
-            transform: 'translate(-50%, -50%)',
-            animation: 'fadeOut 0.8s ease-out forwards'
+            left: `${sparkle.x}px`,
+            top: `${sparkle.y}px`,
+            width: `${sparkle.size}px`,
+            height: `${sparkle.size}px`,
+            transform: `translate(-50%, -50%) rotate(${sparkle.rotation}deg)`,
+            animation: 'sparkle 1s ease-out forwards'
           }}
-        />
+        >
+          {/* Four-pointed star sparkle */}
+          <svg width="100%" height="100%" viewBox="0 0 20 20" fill="none">
+            <path
+              d="M10 0 L11 9 L20 10 L11 11 L10 20 L9 11 L0 10 L9 9 Z"
+              fill="#FFD700"
+              opacity="0.9"
+            />
+            <circle cx="10" cy="10" r="2" fill="#FFFFFF" />
+          </svg>
+        </div>
       ))}
 
-      {/* Global Styles for Cursor and Animations */}
+      {/* Ripple on Click */}
+      {ripples.map((ripple) => (
+        <div
+          key={ripple.id}
+          className="pointer-events-none fixed z-[9999]"
+          style={{
+            left: `${ripple.x}px`,
+            top: `${ripple.y}px`,
+            width: '20px',
+            height: '20px',
+            transform: 'translate(-50%, -50%)',
+            animation: 'ripple 0.8s ease-out forwards'
+          }}
+        >
+          <div className="absolute inset-0 rounded-full border-2 border-cyan-400" />
+        </div>
+      ))}
+
+      {/* Global Styles for Animations */}
       <style>{`
-        /* Pixel dust animation */
-        @keyframes fadeOut {
+        /* Sparkle animation */
+        @keyframes sparkle {
           0% {
+            opacity: 0;
+            transform: translate(-50%, -50%) rotate(var(--rotation)) scale(0);
+          }
+          50% {
             opacity: 1;
-            transform: translate(-50%, -50%) scale(1);
+            transform: translate(-50%, -50%) rotate(var(--rotation)) scale(1);
           }
           100% {
             opacity: 0;
-            transform: translate(-50%, -50%) scale(0.5) translateY(-20px);
+            transform: translate(-50%, -50%) rotate(var(--rotation)) scale(0.3);
           }
         }
 
-        /* Custom cursor styles */
-        * {
-          cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: %23FF1493;"><path d="M4 4l16 7-7 1-2 7z"/></svg>') 4 4, auto;
-        }
-
-        /* Pointer cursor for interactive elements */
-        a, button, [role="button"], input[type="submit"], input[type="button"] {
-          cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: %2300D9FF;"><path d="M10 4v4H6l8 8 8-8h-4V4z"/></svg>') 12 12, pointer !important;
-        }
-
-        /* Text cursor for text inputs */
-        input[type="text"], input[type="email"], textarea {
-          cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><rect x="9" y="2" width="2" height="16" fill="%23FF1493"/></svg>') 10 10, text !important;
-        }
-
-        /* Loading/wait cursor */
-        .loading, [aria-busy="true"] {
-          cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8" fill="none" stroke="%23FFD700" stroke-width="2"/><path d="M12 4 L12 8" stroke="%23FFD700" stroke-width="2"/></svg>') 12 12, wait !important;
+        /* Ripple animation */
+        @keyframes ripple {
+          0% {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 1;
+          }
+          100% {
+            transform: translate(-50%, -50%) scale(4);
+            opacity: 0;
+          }
         }
       `}</style>
     </>
