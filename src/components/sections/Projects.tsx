@@ -3,6 +3,9 @@ import Window from '../Window';
 import MacButton from '../MacButton';
 import Tooltip from '../Tooltip';
 import { PixelIcons } from '../icons/PixelIcons';
+import thaiBridgeIcon from '../../public/projects/thaibridge-icon.svg';
+import { FaRobot } from 'react-icons/fa';
+import { RiRobot2Line } from 'react-icons/ri';
 
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState(0);
@@ -97,8 +100,36 @@ export default function Projects() {
       <div className="space-y-4">
         {/* Project Preview - Compact */}
         <div className="bg-retro-grey border-2 border-retro-grey-dark p-3 flex items-center gap-3">
-          <div className="w-12 h-12 flex-shrink-0">
-            <PixelIcons.Document size={48} />
+          <div className="w-12 h-12 flex-shrink-0 flex items-center justify-center">
+            {projects[selectedProject].name === 'ThaiBridge Academy' ? (
+              <img 
+                src={thaiBridgeIcon} 
+                alt="ThaiBridge Academy icon" 
+                className="w-12 h-12 object-contain"
+              />
+            ) : projects[selectedProject].name === 'Chatbit' ? (
+              <FaRobot 
+                size={48} 
+                style={{ 
+                  color: '#00D9FF',
+                  filter: 'drop-shadow(1px 1px 0px #000) drop-shadow(-1px -1px 0px #000) drop-shadow(1px -1px 0px #000) drop-shadow(-1px 1px 0px #000)',
+                  stroke: '#000',
+                  strokeWidth: '0.5px'
+                }} 
+              />
+            ) : projects[selectedProject].name === 'Multilingual AI Chatbot' ? (
+              <RiRobot2Line 
+                size={48} 
+                style={{ 
+                  color: '#8B5CF6',
+                  filter: 'drop-shadow(1px 1px 0px #000) drop-shadow(-1px -1px 0px #000) drop-shadow(1px -1px 0px #000) drop-shadow(-1px 1px 0px #000)',
+                  stroke: '#000',
+                  strokeWidth: '0.5px'
+                }} 
+              />
+            ) : (
+              <PixelIcons.Document size={48} />
+            )}
           </div>
           <div className="flex-1 min-w-0">
             <div className="font-mono text-sm text-retro-charcoal truncate">
