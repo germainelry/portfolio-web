@@ -3,13 +3,43 @@ import MacButton from '../MacButton';
 import PixelAvatar from '../PixelAvatar';
 import StatCard from '../StatCard';
 import Tooltip from '../Tooltip';
-import { TrophyIcon, FolderGridIcon, CoffeeIcon } from '../StatIcons';
+import { TrophyIcon, CoffeeIcon } from '../StatIcons';
+import { ClockLightningIcon } from '../icons/PixelIcons';
+import { useState, useEffect } from 'react';
 
 interface HeroProps {
   onNavigate: (section: string) => void;
 }
 
 export default function Hero({ onNavigate }: HeroProps) {
+  const [typedText, setTypedText] = useState('');
+  const [showCursor, setShowCursor] = useState(true);
+  const fullText = 'Automation • AI • DevOps';
+  
+  // Typing animation
+  useEffect(() => {
+    let charIndex = 0;
+    const typingInterval = setInterval(() => {
+      if (charIndex < fullText.length) {
+        setTypedText(fullText.substring(0, charIndex + 1));
+        charIndex++;
+      } else {
+        clearInterval(typingInterval);
+      }
+    }, 60); // 60ms per character
+    
+    return () => clearInterval(typingInterval);
+  }, []);
+  
+  // Cursor blink animation
+  useEffect(() => {
+    const cursorInterval = setInterval(() => {
+      setShowCursor(prev => !prev);
+    }, 500); // Blink every 500ms
+    
+    return () => clearInterval(cursorInterval);
+  }, []);
+
   return (
     <Window title="GERMAINE.EXE" width="max-w-xl" className="animate-fadeIn">
       <div className="flex flex-col items-center gap-6 text-center">
@@ -22,33 +52,34 @@ export default function Hero({ onNavigate }: HeroProps) {
           <div className="absolute -bottom-2 -right-1 w-3 h-3 bg-pink-400 rounded-full opacity-70 animate-pulse" style={{ animationDelay: '1s' }} />
           <div className="absolute top-8 -left-3 w-2 h-2 bg-green-400 rounded-full opacity-60 animate-pulse" style={{ animationDelay: '1.5s' }} />
           
-          {/* Speech bubble */}
-          <div className="absolute -right-32 top-4 hidden xl:block animate-bounce-subtle">
-            <div className="bg-white border-2 border-retro-charcoal px-3 py-2 relative shadow-[2px_2px_0px_0px_rgba(0,0,0,0.2)]">
-              <span className="font-mono text-xs whitespace-nowrap">Hello, World!</span>
-              <div className="absolute left-0 top-1/2 -translate-x-full -translate-y-1/2 w-0 h-0 border-t-4 border-t-transparent border-b-4 border-b-transparent border-r-8 border-r-retro-charcoal" />
-              <div className="absolute left-0 top-1/2 -translate-x-[calc(100%-2px)] -translate-y-1/2 w-0 h-0 border-t-4 border-t-transparent border-b-4 border-b-transparent border-r-8 border-r-white" />
+          {/* Speech bubble - "Hello, World!" */}
+          <div className="absolute -right-35 top-8 hidden md:block animate-bounce-subtle">
+            <div className="bg-white border-2 border-retro-charcoal px-4 py-2 relative shadow-[2px_2px_0px_0px_rgba(0,0,0,0.2)]">
+              <span className="font-mono text-sm whitespace-nowrap text-retro-charcoal">Hello, World!</span>
+              {/* Speech bubble tail pointing left */}
+              <div className="absolute left-0 top-1/2 -translate-x-full -translate-y-1/2 w-0 h-0 border-t-[6px] border-t-transparent border-b-[6px] border-b-transparent border-r-[10px] border-r-retro-charcoal" />
+              <div className="absolute left-0 top-1/2 -translate-x-[calc(100%-2px)] -translate-y-1/2 w-0 h-0 border-t-[6px] border-t-transparent border-b-[6px] border-b-transparent border-r-[10px] border-r-white" />
             </div>
           </div>
         </div>
 
-        {/* Name and Title */}
+        {/* Name and Title - Updated Typography */}
         <div>
-          <h1 className="font-mono text-retro-charcoal mb-2">
-            Germaine Luah
+          <h1 className="text-retro-charcoal mb-2" style={{ fontFamily: 'Silkscreen, monospace', fontSize: '48px', letterSpacing: '0.08em' }}>
+            GERMAINE LUAH
           </h1>
-          <p className="font-mono text-lg text-retro-grey-dark">
-            Software Engineer • Builder
+          <p className="text-retro-grey-dark font-mono" style={{ fontSize: '20px', letterSpacing: '0.03em' }}>
+            Software Engineer <span className="text-pink-500 px-2" style={{ fontSize: '18px' }}>•</span> Builder
           </p>
         </div>
 
-        {/* Terminal-style tagline */}
-        <div className="bg-white border-2 border-retro-charcoal p-4 w-full max-w-md font-mono text-sm">
+        {/* Terminal-style interface with typing animation */}
+        <div className="bg-[#1a1a1a] border-2 border-[#2c2c2c] p-4 w-full max-w-md shadow-[4px_4px_0px_rgba(0,0,0,0.25)]" style={{ fontFamily: 'VT323, monospace', fontSize: '18px' }}>
           <div className="flex items-start gap-2">
-            <span className="text-retro-grey-dark">{'>'}</span>
+            <span className="text-white">&gt;</span>
             <div className="flex-1">
-              <span className="text-retro-charcoal">Automation • AI • DevOps</span>
-              <span className="inline-block w-2 h-4 bg-retro-charcoal ml-1 animate-pulse">▌</span>
+              <span className="text-white">{typedText}</span>
+              <span className={`inline-block w-3 h-5 bg-cyan-500 ml-1 ${showCursor ? 'opacity-100' : 'opacity-0'}`} style={{ transition: 'opacity 0.1s' }}>█</span>
             </div>
           </div>
         </div>
@@ -67,8 +98,8 @@ export default function Hero({ onNavigate }: HeroProps) {
           </Tooltip>
         </div>
 
-        {/* Fun stats with icons and animations */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-6 w-full justify-items-center">
+        {/* Stat cards - Standardized sizing with automation focus */}
+        <div className="flex justify-center gap-6 mt-6 w-full">
           <StatCard 
             value="3+" 
             label="Years Exp"
@@ -89,22 +120,22 @@ export default function Hero({ onNavigate }: HeroProps) {
             }}
           />
           <StatCard 
-            value="10+" 
-            label="Projects"
-            icon={<FolderGridIcon />}
+            value="500+" 
+            label="Hours Saved"
+            icon={<ClockLightningIcon size={48} />}
             tooltip={{
-              title: "Projects Completed",
+              title: "Automation Impact",
               details: [
-                "10+ shipped projects",
-                "Full-stack apps",
-                "AI/automation tools"
+                "500+ hours saved",
+                "Through automation",
+                "DevOps efficiency"
               ]
             }}
             countUp={{
               start: 0,
-              end: '10+',
+              end: '500+',
               duration: 1800,
-              steps: [0, 3, 6, 10]
+              steps: [0, 100, 250, 400, 500]
             }}
           />
           <StatCard 
@@ -115,7 +146,7 @@ export default function Hero({ onNavigate }: HeroProps) {
               title: "Coffee Consumed",
               details: [
                 "Fueling productivity",
-                "One cup at a time ☕",
+                "One cup at a time",
                 "Always brewing..."
               ]
             }}

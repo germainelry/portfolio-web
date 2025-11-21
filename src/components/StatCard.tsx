@@ -91,22 +91,22 @@ export default function StatCard({ value, label, icon, tooltip, countUp }: StatC
   const card = (
     <div 
       ref={cardRef}
-      className="stat-card group w-[180px] h-[180px] bg-gradient-to-b from-retro-frame to-retro-grey border-3 border-retro-grey-dark p-6 flex flex-col items-center justify-center gap-4 hover:bg-white hover:-translate-y-2 hover:border-cyan-500 hover:shadow-[6px_6px_0px_0px_rgba(0,217,255,0.4)] transition-all duration-300 cursor-default relative"
+      className="stat-card group w-[160px] h-[160px] bg-gradient-to-b from-retro-frame to-retro-grey border-3 border-retro-grey-dark flex flex-col items-center justify-center hover:bg-white hover:-translate-y-2 hover:border-cyan-500 hover:shadow-[6px_6px_0px_0px_rgba(0,217,255,0.4)] transition-all duration-300 cursor-default relative"
     >
       {/* Icon */}
       {icon && (
-        <div className="transform transition-transform duration-300 group-hover:scale-110 group-hover:animate-bounce-subtle">
+        <div className="transform transition-transform duration-300 group-hover:scale-110 group-hover:animate-bounce-subtle mt-6">
           {icon}
         </div>
       )}
       
       {/* Value */}
-      <div className="font-mono text-3xl text-retro-charcoal font-bold transition-colors group-hover:text-cyan-600">
+      <div className="font-mono text-[32px] text-retro-charcoal mt-4 transition-colors group-hover:text-cyan-600">
         {displayValue}
       </div>
       
       {/* Label */}
-      <div className="font-mono text-sm text-retro-grey-dark mt-1 text-center leading-tight">
+      <div className="font-mono text-sm text-retro-grey-dark mt-2 text-center leading-tight px-2 break-words overflow-hidden">
         {label}
       </div>
     </div>

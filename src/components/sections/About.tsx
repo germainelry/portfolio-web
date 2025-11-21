@@ -14,11 +14,11 @@ export default function About() {
   ];
 
   const interests = [
-    { name: 'Games', emoji: '🎮', description: 'RPG & Strategy games' },
-    { name: 'Anime', emoji: '🍜', description: 'Shonen & Slice of life' },
-    { name: 'Keyboards', emoji: '⌨️', description: 'Mechanical keyboard enthusiast' },
-    { name: 'AI/ML', emoji: '🤖', description: 'Machine learning & automation' },
-    { name: 'Coffee', emoji: '☕', description: 'Specialty coffee lover' }
+    { name: 'Games', description: 'RPG & Strategy games' },
+    { name: 'Anime', description: 'Shonen & Slice of life' },
+    { name: 'Keyboards', description: 'Mechanical keyboard enthusiast' },
+    { name: 'AI/ML', description: 'Machine learning & automation' },
+    { name: 'Coffee', description: 'Specialty coffee lover' }
   ];
 
   return (
@@ -84,7 +84,7 @@ export default function About() {
             {interests.map((interest) => (
               <Tooltip key={interest.name} text={interest.description}>
                 <span className="interest-tag bg-retro-grey border-2 border-retro-grey-dark px-3 py-1 hover:bg-white hover:-translate-y-0.5 transition-all duration-150 cursor-default">
-                  {interest.emoji} {interest.name}
+                  {interest.name}
                 </span>
               </Tooltip>
             ))}

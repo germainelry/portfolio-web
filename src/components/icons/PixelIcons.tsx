@@ -467,6 +467,35 @@ export const CoffeeIcon = ({ size = 64, className = "" }: IconProps) => (
   </svg>
 );
 
+export const ClockLightningIcon = ({ size = 64, className = "" }: IconProps) => (
+  <svg width={size} height={size} viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
+    {/* Clock face */}
+    <circle cx="28" cy="32" r="18" fill="#00d9ff" stroke="#000" strokeWidth="2"/>
+    <circle cx="28" cy="32" r="14" fill="#fff" stroke="#000" strokeWidth="2"/>
+    
+    {/* Clock center */}
+    <circle cx="28" cy="32" r="2" fill="#000"/>
+    
+    {/* Hour hand (pointing at 10) */}
+    <line x1="28" y1="32" x2="23" y2="24" stroke="#000" strokeWidth="2.5" strokeLinecap="round"/>
+    
+    {/* Minute hand (pointing at 2) */}
+    <line x1="28" y1="32" x2="36" y2="27" stroke="#000" strokeWidth="2.5" strokeLinecap="round"/>
+    
+    {/* Hour markers */}
+    <circle cx="28" cy="20" r="1.5" fill="#000"/>
+    <circle cx="28" cy="44" r="1.5" fill="#000"/>
+    <circle cx="16" cy="32" r="1.5" fill="#000"/>
+    <circle cx="40" cy="32" r="1.5" fill="#000"/>
+    
+    {/* Lightning bolt (automation symbol) */}
+    <path d="M48 16 L40 32 L44 32 L36 48 L44 32 L40 32 Z" fill="#ffd700" stroke="#000" strokeWidth="2" strokeLinejoin="miter"/>
+    
+    {/* Lightning highlight */}
+    <path d="M46 18 L43 26 L44 26 L41 34" stroke="#fff" strokeWidth="1.5" strokeLinecap="round" opacity="0.7"/>
+  </svg>
+);
+
 export const FolderGridIcon = ({ size = 64, className = "" }: IconProps) => (
   <svg width={size} height={size} viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
     {/* Grid of squares representing multiple projects */}
@@ -733,6 +762,328 @@ export const PostgreSQLIcon = ({ size = 64, className = "" }: IconProps) => (
   </svg>
 );
 
+export const ChefIcon = ({ size = 64, className = "" }: IconProps) => (
+  <svg width={size} height={size} viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
+    {/* Chef's hat */}
+    <ellipse cx="32" cy="20" rx="10" ry="8" fill="#fff" stroke="#000" strokeWidth="2"/>
+    <ellipse cx="20" cy="18" rx="6" ry="8" fill="#fff" stroke="#000" strokeWidth="2"/>
+    <ellipse cx="44" cy="18" rx="6" ry="8" fill="#fff" stroke="#000" strokeWidth="2"/>
+    
+    {/* Hat band */}
+    <rect x="16" y="24" width="32" height="6" fill="#ff6600" stroke="#000" strokeWidth="2"/>
+    
+    {/* Cutting board/knife */}
+    <rect x="12" y="36" width="40" height="20" rx="2" fill="#8B4513" stroke="#000" strokeWidth="2"/>
+    
+    {/* Knife blade */}
+    <path d="M24 40 L36 40 L38 46 L22 46 Z" fill="#c0c0c0" stroke="#000" strokeWidth="2"/>
+    <path d="M36 40 L38 46 L36 46 Z" fill="#a0a0a0"/>
+    
+    {/* Handle */}
+    <rect x="28" y="46" width="8" height="6" rx="1" fill="#654321" stroke="#000" strokeWidth="2"/>
+  </svg>
+);
+
+export const PowerShellIcon = ({ size = 64, className = "" }: IconProps) => (
+  <svg width={size} height={size} viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
+    {/* Blue square background */}
+    <rect x="8" y="8" width="48" height="48" rx="4" fill="#012456" stroke="#000" strokeWidth="2"/>
+    
+    {/* Command prompt arrow */}
+    <path d="M16 24 L28 32 L16 40" stroke="#fff" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+    
+    {/* Underscore cursor */}
+    <rect x="32" y="38" width="12" height="3" fill="#fff"/>
+    
+    {/* PowerShell "PS" */}
+    <text x="48" y="22" fontFamily="monospace" fontSize="8" fontWeight="bold" fill="#00d9ff">PS</text>
+  </svg>
+);
+
+export const BashIcon = ({ size = 64, className = "" }: IconProps) => (
+  <svg width={size} height={size} viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
+    {/* Dark terminal background */}
+    <rect x="8" y="8" width="48" height="48" rx="4" fill="#2d2d2d" stroke="#000" strokeWidth="2"/>
+    
+    {/* Green terminal prompt */}
+    <text x="12" y="24" fontFamily="monospace" fontSize="10" fontWeight="bold" fill="#4af626">$</text>
+    
+    {/* Command text */}
+    <rect x="18" y="18" width="24" height="3" fill="#fff"/>
+    <rect x="18" y="24" width="16" height="3" fill="#fff"/>
+    
+    {/* Blinking cursor */}
+    <rect x="36" y="24" width="3" height="3" fill="#4af626"/>
+    
+    {/* Bottom text */}
+    <text x="12" y="46" fontFamily="monospace" fontSize="6" fill="#888">bash</text>
+  </svg>
+);
+
+export const SupabaseIcon = ({ size = 64, className = "" }: IconProps) => (
+  <svg width={size} height={size} viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
+    {/* Supabase lightning bolt */}
+    <path d="M36 8 L20 36 L32 36 L28 56 L48 28 L36 28 Z" fill="#3ecf8e" stroke="#000" strokeWidth="2"/>
+    
+    {/* Database cylinder behind */}
+    <ellipse cx="44" cy="44" rx="12" ry="6" fill="#3ecf8e" stroke="#000" strokeWidth="2" opacity="0.6"/>
+    <rect x="32" y="44" width="24" height="8" fill="#3ecf8e" opacity="0.6"/>
+    <ellipse cx="44" cy="52" rx="12" ry="6" fill="#3ecf8e" stroke="#000" strokeWidth="2" opacity="0.6"/>
+  </svg>
+);
+
+export const ChromaDBIcon = ({ size = 64, className = "" }: IconProps) => (
+  <svg width={size} height={size} viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
+    {/* Rainbow/chromatic database */}
+    {/* Top cylinder - red */}
+    <ellipse cx="32" cy="16" rx="20" ry="8" fill="#ff0000" stroke="#000" strokeWidth="2"/>
+    <rect x="12" y="16" width="40" height="6" fill="#ff0000"/>
+    
+    {/* Middle cylinder - green */}
+    <ellipse cx="32" cy="22" rx="20" ry="8" fill="#00ff00" stroke="#000" strokeWidth="2"/>
+    <rect x="12" y="22" width="40" height="6" fill="#00ff00"/>
+    
+    {/* Bottom cylinder - blue */}
+    <ellipse cx="32" cy="28" rx="20" ry="8" fill="#0000ff" stroke="#000" strokeWidth="2"/>
+    <rect x="12" y="28" width="40" height="12" fill="#0000ff"/>
+    <ellipse cx="32" cy="40" rx="20" ry="8" fill="#0000ff" stroke="#000" strokeWidth="2"/>
+    
+    {/* "Vector" label */}
+    <rect x="20" y="46" width="24" height="8" rx="2" fill="#fff" stroke="#000" strokeWidth="2"/>
+    <text x="32" y="52" fontFamily="monospace" fontSize="6" fill="#000" textAnchor="middle">VECTOR</text>
+  </svg>
+);
+
+export const JMPIcon = ({ size = 64, className = "" }: IconProps) => (
+  <svg width={size} height={size} viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
+    {/* Statistical scatter plot */}
+    <rect x="8" y="8" width="48" height="48" fill="#fff" stroke="#000" strokeWidth="2"/>
+    
+    {/* Axes */}
+    <line x1="14" y1="50" x2="50" y2="50" stroke="#000" strokeWidth="2"/>
+    <line x1="14" y1="14" x2="14" y2="50" stroke="#000" strokeWidth="2"/>
+    
+    {/* Data points with trend line */}
+    <circle cx="20" cy="42" r="2.5" fill="#ff006e"/>
+    <circle cx="26" cy="38" r="2.5" fill="#ff006e"/>
+    <circle cx="32" cy="32" r="2.5" fill="#ff006e"/>
+    <circle cx="38" cy="28" r="2.5" fill="#ff006e"/>
+    <circle cx="44" cy="22" r="2.5" fill="#ff006e"/>
+    
+    {/* Trend line */}
+    <line x1="18" y1="44" x2="46" y2="20" stroke="#00d9ff" strokeWidth="2" strokeDasharray="2,2"/>
+    
+    {/* JMP text */}
+    <text x="32" y="10" fontFamily="sans-serif" fontSize="8" fontWeight="bold" fill="#ff006e" textAnchor="middle">JMP</text>
+  </svg>
+);
+
+export const ExcelIcon = ({ size = 64, className = "" }: IconProps) => (
+  <svg width={size} height={size} viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
+    {/* Green Excel document */}
+    <rect x="12" y="8" width="36" height="48" fill="#107c41" stroke="#000" strokeWidth="2"/>
+    
+    {/* Page corner */}
+    <path d="M48 8 L36 8 L48 20 Z" fill="#0b5c2e" stroke="#000" strokeWidth="2"/>
+    
+    {/* White "X" for Excel */}
+    <path d="M20 20 L32 36 M32 20 L20 36" stroke="#fff" strokeWidth="4" strokeLinecap="round"/>
+    
+    {/* Grid cells */}
+    <rect x="18" y="40" width="10" height="6" fill="#fff" opacity="0.3"/>
+    <rect x="28" y="40" width="10" height="6" fill="#fff" opacity="0.3"/>
+    <rect x="18" y="46" width="10" height="6" fill="#fff" opacity="0.3"/>
+    <rect x="28" y="46" width="10" height="6" fill="#fff" opacity="0.3"/>
+  </svg>
+);
+
+export const JiraIcon = ({ size = 64, className = "" }: IconProps) => (
+  <svg width={size} height={size} viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
+    {/* Jira blue logo - stylized ticket/card */}
+    <rect x="12" y="16" width="40" height="32" rx="4" fill="#0052cc" stroke="#000" strokeWidth="2"/>
+    
+    {/* Ticket details - lines */}
+    <rect x="18" y="22" width="16" height="3" fill="#fff" opacity="0.8"/>
+    <rect x="18" y="28" width="24" height="2" fill="#fff" opacity="0.6"/>
+    <rect x="18" y="32" width="20" height="2" fill="#fff" opacity="0.6"/>
+    
+    {/* Priority icon */}
+    <path d="M18 38 L22 42 L18 46" stroke="#ff5630" strokeWidth="2" fill="none"/>
+    
+    {/* Sprint indicator */}
+    <circle cx="42" cy="38" r="6" fill="#fff" opacity="0.3"/>
+  </svg>
+);
+
+export const ConfluenceIcon = ({ size = 64, className = "" }: IconProps) => (
+  <svg width={size} height={size} viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
+    {/* Confluence blue gradient logo */}
+    <rect x="8" y="8" width="48" height="48" rx="8" fill="#0052cc" stroke="#000" strokeWidth="2"/>
+    
+    {/* Flowing wave design */}
+    <path d="M12 40 Q20 30, 28 32 T44 28" stroke="#fff" strokeWidth="4" fill="none" strokeLinecap="round"/>
+    <path d="M12 48 Q20 38, 28 40 T44 36" stroke="#fff" strokeWidth="3" fill="none" strokeLinecap="round" opacity="0.7"/>
+    
+    {/* Upper wave */}
+    <path d="M52 24 Q44 34, 36 32 T20 36" stroke="#fff" strokeWidth="4" fill="none" strokeLinecap="round"/>
+    <path d="M52 16 Q44 26, 36 24 T20 28" stroke="#fff" strokeWidth="3" fill="none" strokeLinecap="round" opacity="0.7"/>
+  </svg>
+);
+
+export const SQLiteIcon = ({ size = 64, className = "" }: IconProps) => (
+  <svg width={size} height={size} viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
+    {/* SQLite feather logo */}
+    <path d="M32 8 L36 16 L44 14 L38 22 L46 28 L36 28 L32 36 L28 28 L18 28 L26 22 L20 14 L28 16 Z" fill="#0f80cc" stroke="#000" strokeWidth="2"/>
+    
+    {/* Database cylinder */}
+    <ellipse cx="32" cy="42" rx="18" ry="8" fill="#003b57" stroke="#000" strokeWidth="2"/>
+    <rect x="14" y="42" width="36" height="10" fill="#003b57"/>
+    <ellipse cx="32" cy="52" rx="18" ry="8" fill="#003b57" stroke="#000" strokeWidth="2"/>
+    
+    {/* Highlight on database */}
+    <ellipse cx="32" cy="42" rx="12" ry="5" fill="#0f80cc" opacity="0.3"/>
+  </svg>
+);
+
+export const MongoDBIcon = ({ size = 64, className = "" }: IconProps) => (
+  <svg width={size} height={size} viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
+    {/* MongoDB leaf logo */}
+    <path d="M32 8 C28 16, 20 24, 20 36 C20 48, 28 56, 32 56 C36 56, 44 48, 44 36 C44 24, 36 16, 32 8 Z" fill="#47a248" stroke="#000" strokeWidth="2"/>
+    
+    {/* Leaf detail */}
+    <path d="M32 8 C34 16, 38 24, 38 36 C38 44, 34 52, 32 56" fill="#3f8f3d" stroke="#000" strokeWidth="1"/>
+    
+    {/* Center vein */}
+    <line x1="32" y1="12" x2="32" y2="54" stroke="#2d6e2b" strokeWidth="2"/>
+    
+    {/* Stem */}
+    <rect x="30" y="54" width="4" height="6" fill="#3f8f3d" stroke="#000" strokeWidth="1"/>
+  </svg>
+);
+
+export const NotionIcon = ({ size = 64, className = "" }: IconProps) => (
+  <svg width={size} height={size} viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
+    {/* Notion "N" logo on white background */}
+    <rect x="8" y="8" width="48" height="48" rx="6" fill="#fff" stroke="#000" strokeWidth="2"/>
+    
+    {/* Black "N" shape */}
+    <path d="M18 16 L18 48 L22 48 L22 24 L42 48 L46 48 L46 16 L42 16 L42 40 L22 16 Z" fill="#000"/>
+    
+    {/* Corner accent */}
+    <rect x="8" y="8" width="12" height="12" rx="6" fill="#000" opacity="0.1"/>
+  </svg>
+);
+
+export const FigmaIcon = ({ size = 64, className = "" }: IconProps) => (
+  <svg width={size} height={size} viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
+    {/* Figma logo - colorful circles and rectangles */}
+    {/* Red rectangle */}
+    <rect x="20" y="12" width="12" height="12" rx="6" fill="#f24e1e" stroke="#000" strokeWidth="2"/>
+    
+    {/* Purple rectangle */}
+    <rect x="20" y="24" width="12" height="12" rx="6" fill="#a259ff" stroke="#000" strokeWidth="2"/>
+    
+    {/* Blue circle */}
+    <rect x="20" y="36" width="12" height="12" rx="6" fill="#0acf83" stroke="#000" strokeWidth="2"/>
+    
+    {/* Cyan circle */}
+    <circle cx="38" cy="18" r="6" fill="#1abcfe" stroke="#000" strokeWidth="2"/>
+    
+    {/* Orange circle */}
+    <circle cx="38" cy="30" r="6" fill="#ff7262" stroke="#000" strokeWidth="2"/>
+  </svg>
+);
+
+export const ClaudeIcon = ({ size = 64, className = "" }: IconProps) => (
+  <svg width={size} height={size} viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
+    {/* Claude/Anthropic orange square */}
+    <rect x="8" y="8" width="48" height="48" rx="8" fill="#d4a574" stroke="#000" strokeWidth="2"/>
+    
+    {/* Large "A" letter in center */}
+    <text 
+      x="32" 
+      y="42" 
+      fontFamily="Arial, sans-serif" 
+      fontSize="32" 
+      fontWeight="bold" 
+      fill="#000" 
+      textAnchor="middle"
+    >
+      A
+    </text>
+  </svg>
+);
+
+export const CopilotIcon = ({ size = 64, className = "" }: IconProps) => (
+  <svg width={size} height={size} viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
+    {/* GitHub Copilot - robot/AI assistant */}
+    <circle cx="32" cy="28" r="16" fill="#000" stroke="#000" strokeWidth="2"/>
+    
+    {/* Eyes - glowing */}
+    <circle cx="26" cy="26" r="4" fill="#00ff00"/>
+    <circle cx="38" cy="26" r="4" fill="#00ff00"/>
+    
+    {/* Inner eye glow */}
+    <circle cx="26" cy="26" r="2" fill="#fff"/>
+    <circle cx="38" cy="26" r="2" fill="#fff"/>
+    
+    {/* Smile */}
+    <path d="M22 34 Q32 38 42 34" stroke="#00ff00" strokeWidth="2" fill="none"/>
+    
+    {/* Body/wings */}
+    <path d="M18 38 L14 48 L20 46 L24 52 L28 44" fill="#333" stroke="#000" strokeWidth="2"/>
+    <path d="M46 38 L50 48 L44 46 L40 52 L36 44" fill="#333" stroke="#000" strokeWidth="2"/>
+    
+    {/* GitHub Copilot text */}
+    <text x="32" y="10" fontFamily="monospace" fontSize="6" fontWeight="bold" fill="#000" textAnchor="middle">COPILOT</text>
+  </svg>
+);
+
+export const CursorIcon = ({ size = 64, className = "" }: IconProps) => (
+  <svg width={size} height={size} viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
+    {/* Cursor IDE - text cursor with AI glow */}
+    <rect x="12" y="8" width="40" height="48" rx="4" fill="#000" stroke="#000" strokeWidth="2"/>
+    
+    {/* Code editor lines */}
+    <rect x="18" y="16" width="20" height="2" fill="#00ff00"/>
+    <rect x="18" y="22" width="28" height="2" fill="#00ff00"/>
+    <rect x="18" y="28" width="16" height="2" fill="#00ff00"/>
+    <rect x="18" y="34" width="24" height="2" fill="#00ff00"/>
+    
+    {/* Blinking cursor */}
+    <rect x="38" y="28" width="2" height="8" fill="#00d9ff"/>
+    
+    {/* AI sparkle */}
+    <circle cx="46" cy="20" r="3" fill="#00d9ff"/>
+    <path d="M46 14 L46 26 M40 20 L52 20" stroke="#00d9ff" strokeWidth="1.5"/>
+    
+    {/* Cursor text */}
+    <text x="32" y="52" fontFamily="monospace" fontSize="6" fontWeight="bold" fill="#00d9ff" textAnchor="middle">CURSOR</text>
+  </svg>
+);
+
+export const ShellIcon = ({ size = 64, className = "" }: IconProps) => (
+  <svg width={size} height={size} viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
+    {/* Combined PowerShell/Bash terminal */}
+    <rect x="8" y="8" width="48" height="48" rx="4" fill="#1a1a1a" stroke="#000" strokeWidth="2"/>
+    
+    {/* Split design - PowerShell on left, Bash on right */}
+    {/* PowerShell side */}
+    <path d="M14 20 L22 26 L14 32" stroke="#0078d4" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+    <text x="14" y="44" fontFamily="monospace" fontSize="6" fontWeight="bold" fill="#0078d4">PS</text>
+    
+    {/* Bash side */}
+    <text x="38" y="26" fontFamily="monospace" fontSize="12" fontWeight="bold" fill="#4af626">$</text>
+    <text x="38" y="44" fontFamily="monospace" fontSize="6" fontWeight="bold" fill="#4af626">bash</text>
+    
+    {/* Divider */}
+    <line x1="32" y1="16" x2="32" y2="48" stroke="#444" strokeWidth="1" strokeDasharray="2,2"/>
+    
+    {/* Cursor */}
+    <rect x="46" y="24" width="3" height="3" fill="#fff"/>
+  </svg>
+);
+
 // Export all icons as a collection
 export const PixelIcons = {
   // Languages
@@ -741,6 +1092,7 @@ export const PixelIcons = {
   TypeScript: TypeScriptIcon,
   SQL: SQLIcon,
   Ruby: RubyIcon,
+  Shell: ShellIcon,
   
   // Tools
   Git: GitIcon,
@@ -749,18 +1101,36 @@ export const PixelIcons = {
   Npm: NpmIcon,
   Tableau: TableauIcon,
   N8n: N8nIcon,
+  Chef: ChefIcon,
+  PowerShell: PowerShellIcon,
+  Bash: BashIcon,
+  Linux: LinuxIcon,
   
   // Frameworks
   React: ReactIcon,
   Flask: FlaskIcon,
   AWS: AWSIcon,
-  Linux: LinuxIcon,
   NodeJS: NodeJSIcon,
   FastAPI: FastAPIIcon,
   DialogFlow: DialogFlowIcon,
   Firebase: FirebaseIcon,
   Express: ExpressIcon,
   PostgreSQL: PostgreSQLIcon,
+  Supabase: SupabaseIcon,
+  ChromaDB: ChromaDBIcon,
+  SQLite: SQLiteIcon,
+  MongoDB: MongoDBIcon,
+  
+  // Data & Productivity
+  JMP: JMPIcon,
+  Excel: ExcelIcon,
+  Jira: JiraIcon,
+  Confluence: ConfluenceIcon,
+  Notion: NotionIcon,
+  Figma: FigmaIcon,
+  Claude: ClaudeIcon,
+  Copilot: CopilotIcon,
+  Cursor: CursorIcon,
   
   // Desktop
   FolderClosed: FolderClosedIcon,
@@ -776,6 +1146,7 @@ export const PixelIcons = {
   // Stats
   Trophy: TrophyIcon,
   Coffee: CoffeeIcon,
+  ClockLightning: ClockLightningIcon,
   FolderGrid: FolderGridIcon,
   
   // Interests

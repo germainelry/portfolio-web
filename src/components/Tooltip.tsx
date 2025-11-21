@@ -63,13 +63,13 @@ export default function Tooltip({
             isVisible ? 'opacity-100' : 'opacity-0'
           }`}
         >
-          <div className="bg-[#2c2c2c] border-2 border-cyan-500 px-4 py-3 shadow-[3px_3px_0px_0px_rgba(0,0,0,0.4)]">
-            <span className="font-mono text-xs text-white">{text}</span>
+          <div className="bg-retro-grey-light border-2 border-cyan-500 px-4 py-3 shadow-[3px_3px_0px_0px_rgba(0,0,0,0.4)]">
+            <span className="font-mono text-xs text-retro-charcoal">{text}</span>
           </div>
           {/* Arrow */}
           <div className={`absolute ${arrowStyles[position]}`}>
             <div className="w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[8px] border-t-cyan-500" />
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-[6px] w-0 h-0 border-l-[5px] border-l-transparent border-r-[5px] border-r-transparent border-t-[7px] border-t-[#2c2c2c]" />
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-[6px] w-0 h-0 border-l-[5px] border-l-transparent border-r-[5px] border-r-transparent border-t-[7px] border-t-retro-grey-light" />
           </div>
         </div>
       </div>
@@ -89,29 +89,29 @@ export default function Tooltip({
           isVisible ? 'opacity-100' : 'opacity-0'
         }`}
       >
-        <div className="bg-[#2c2c2c] border-2 border-cyan-500 px-4 py-3 shadow-[3px_3px_0px_0px_rgba(0,0,0,0.4)] min-w-[180px]">
+        <div className="bg-retro-grey-light border-2 border-cyan-500 px-4 py-3 shadow-[3px_3px_0px_0px_rgba(0,0,0,0.4)] min-w-[180px]">
           {title && (
-            <div className="font-mono text-xs text-white mb-2 border-b border-cyan-500/30 pb-2">
+            <div className="font-mono text-xs text-retro-charcoal mb-2 border-b border-retro-grey-dark pb-2">
               {title}
             </div>
           )}
           {details.length > 0 && (
             <div className="space-y-1">
               {details.map((detail, index) => (
-                <div key={index} className="font-mono text-xs text-white/90 whitespace-nowrap">
+                <div key={index} className="font-mono text-xs text-retro-charcoal whitespace-nowrap">
                   {detail}
                 </div>
               ))}
             </div>
           )}
           {text && !title && (
-            <span className="font-mono text-xs text-white">{text}</span>
+            <span className="font-mono text-xs text-retro-charcoal">{text}</span>
           )}
         </div>
         {/* Arrow */}
         <div className={`absolute ${arrowStyles[position]}`}>
           <div className="w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[8px] border-t-cyan-500" />
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-[6px] w-0 h-0 border-l-[5px] border-l-transparent border-r-[5px] border-r-transparent border-t-[7px] border-t-[#2c2c2c]" />
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-[6px] w-0 h-0 border-l-[5px] border-l-transparent border-r-[5px] border-r-transparent border-t-[7px] border-t-retro-grey-light" />
         </div>
       </div>
     </div>

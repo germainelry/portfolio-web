@@ -18,25 +18,18 @@ export default function MenuBar({ onNavigate, activeSection, currentTime }: Menu
   };
 
   const menuItems = [
-    { id: 'home', label: 'Home', emoji: '🏠' },
-    { id: 'about', label: 'About', emoji: '👤' },
-    { id: 'experience', label: 'Experience', emoji: '💼' },
-    { id: 'projects', label: 'Projects', emoji: '🎯' },
-    { id: 'skills', label: 'Skills', emoji: '⚔️' },
-    { id: 'contact', label: 'Contact', emoji: '📧' },
+    { id: 'home', label: 'Home' },
+    { id: 'about', label: 'About' },
+    { id: 'experience', label: 'Experience' },
+    { id: 'projects', label: 'Projects' },
+    { id: 'skills', label: 'Skills' },
+    { id: 'contact', label: 'Contact' },
   ];
 
   return (
     <div className="fixed top-0 left-0 right-0 z-50 h-7 bg-gradient-to-b from-retro-frame to-retro-grey flex items-center justify-between px-3 border-b border-retro-border-dark shadow-md">
       {/* Left side - Menu */}
       <div className="flex items-center gap-4 relative">
-        <button 
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className="text-lg hover:opacity-80 transition-opacity"
-        >
-          🍎
-        </button>
-        
         <button 
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           className="font-mono text-xs hover:bg-retro-grey-dark px-2 py-0.5 transition-colors"
@@ -67,7 +60,6 @@ export default function MenuBar({ onNavigate, activeSection, currentTime }: Menu
                     activeSection === item.id ? 'bg-retro-grey' : ''
                   }`}
                 >
-                  <span>{item.emoji}</span>
                   <span>{item.label}</span>
                 </button>
               ))}
