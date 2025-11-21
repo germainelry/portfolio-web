@@ -12,6 +12,7 @@ import {
   SiAnthropic, SiGithubcopilot
 } from 'react-icons/si';
 import { FaFlask } from 'react-icons/fa';
+import { TbBrandPowershell } from 'react-icons/tb';
 
 export default function Skills() {
   const [activeCategory, setActiveCategory] = useState('languages');
@@ -24,7 +25,8 @@ export default function Skills() {
         { name: 'Python', icon: 'Python', proficiency: 90, years: '3+', description: 'Primary language for automation & backend' },
         { name: 'SQL', icon: 'Postgresql', proficiency: 90, years: '3+', description: 'Database design & query optimization' },
         { name: 'Bash', icon: 'Gnubash', proficiency: 85, years: '3+', description: 'Unix/Linux shell scripting' },
-        { name: 'TypeScript', icon: 'Typescript', proficiency: 80, years: '2+', description: 'Type-safe web applications' }
+        { name: 'TypeScript', icon: 'Typescript', proficiency: 80, years: '2+', description: 'Type-safe web applications' },
+        { name: 'PowerShell', icon: 'Powershell', proficiency: 75, years: '2+', description: 'Windows automation & scripting' }
       ]
     },
     tools: {
@@ -67,6 +69,7 @@ export default function Skills() {
       'Postgresql': SiPostgresql,
       'Gnubash': SiGnubash,
       'Typescript': SiTypescript,
+      'Powershell': TbBrandPowershell,
       'Git': SiGit,
       'Linux': SiLinux,
       'Docker': SiDocker,
@@ -86,8 +89,35 @@ export default function Skills() {
       'Githubcopilot': SiGithubcopilot
     };
     
+    // Brand-authentic colors from design brief
+    const colorMap: Record<string, string> = {
+      'Python': '#3776AB',
+      'Postgresql': '#336791',
+      'Gnubash': '#4EAA25',
+      'Typescript': '#3178C6',
+      'Powershell': '#5391FE',
+      'Git': '#F05032',
+      'Linux': '#FCC624',
+      'Docker': '#2496ED',
+      'Jenkins': '#D24939',
+      'Chef': '#F09820',
+      'React': '#61DAFB',
+      'Fastapi': '#009688',
+      'Supabase': '#3ECF8E',
+      'Sqlite': '#003B57',
+      'Mongodb': '#47A248',
+      'Tableau': '#E97627',
+      'Jira': '#0052CC',
+      'Confluence': '#172B4D',
+      'Notion': '#000000',
+      'Figma': '#F24E1E',
+      'Anthropic': '#CC785C',
+      'Githubcopilot': '#24292E'
+    };
+    
     const IconComponent = iconMap[iconName];
-    return IconComponent ? <IconComponent size={48} /> : null;
+    const brandColor = colorMap[iconName];
+    return IconComponent ? <IconComponent size={48} color={brandColor} /> : null;
   };
 
   return (
@@ -132,10 +162,10 @@ export default function Skills() {
           >
             <button
               onClick={() => setSelectedSkill(skill)}
-              className={`skill-card w-full h-40 border-3 flex flex-col items-center justify-center gap-3 transition-all duration-200 hover:scale-105 hover:z-10 hover:-translate-y-1 relative ${
+              className={`skill-card group w-full h-40 border-3 flex flex-col items-center justify-center gap-3 transition-all duration-200 relative ${
                 selectedSkill?.name === skill.name
-                  ? 'bg-retro-grey border-pink-500 shadow-[4px_4px_0px_0px_rgba(255,0,110,0.4)] scale-105 -translate-y-1'
-                  : 'bg-gradient-to-b from-retro-frame to-retro-grey border-retro-grey-dark shadow-[2px_2px_0px_0px_rgba(0,0,0,0.2)] hover:border-cyan-500 hover:shadow-[4px_4px_0px_0px_rgba(0,217,255,0.3)]'
+                  ? 'bg-gradient-to-b from-[#f0f0f0] to-[#e5e5e5] border-[#ff006e] shadow-[4px_4px_0px_0px_rgba(255,0,110,0.4)] scale-105 -translate-y-1'
+                  : 'bg-gradient-to-b from-[#f0f0f0] to-[#e5e5e5] border-[#808080] shadow-[2px_2px_0px_0px_rgba(0,0,0,0.2)] hover:border-[#00d9ff] hover:shadow-[4px_4px_0px_0px_rgba(0,217,255,0.3)] hover:scale-105 hover:-translate-y-1'
               }`}
             >
               {/* Certification badge for Chef */}
@@ -145,7 +175,13 @@ export default function Skills() {
                 </div>
               )}
               
-              <div className="transform transition-transform duration-200 group-hover:scale-110">
+              <div 
+                className={`transform transition-all duration-200 ${
+                  selectedSkill?.name === skill.name 
+                    ? '[&>svg]:!text-[#ff006e]' 
+                    : ''
+                }`}
+              >
                 {getIconComponent(skill.icon)}
               </div>
               <span className="font-mono text-sm text-retro-charcoal text-center px-2 leading-tight max-w-[100px]">
