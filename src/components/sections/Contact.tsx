@@ -28,7 +28,7 @@ export default function Contact() {
 
   const fullMessage = `Hi there! :D
 
-Thanks for checking out my portfolio. I'd love to connect and discuss opportunities that combine technical problem-solving, workflow automation and product innovation.`;
+Thanks for visiting my website! I'd love to connect and discuss opportunities that combine technical problem-solving, workflow automation and product innovation.`;
 
   // Typing animation effect
   useEffect(() => {
