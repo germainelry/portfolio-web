@@ -34,8 +34,14 @@ export default function MacButton({
       ${isPressed ? 'shadow-[inset_2px_2px_4px_rgba(0,0,0,0.3)]' : 'shadow-[2px_2px_0px_0px_rgba(0,0,0,0.3)]'}`
   };
 
-  const handleInteraction = (e: React.MouseEvent | React.TouchEvent) => {
+  const handleMouseInteraction = (e: React.MouseEvent) => {
     e.preventDefault();
+    if (onClick && !disabled) {
+      onClick();
+    }
+  };
+
+  const handleTouchInteraction = () => {
     if (onClick && !disabled) {
       onClick();
     }
@@ -49,11 +55,11 @@ export default function MacButton({
       disabled={disabled}
       onMouseDown={(e) => {
         handlePressStart();
-        handleInteraction(e);
+        handleMouseInteraction(e);
       }}
-      onTouchStart={(e) => {
+      onTouchStart={() => {
         handlePressStart();
-        handleInteraction(e);
+        handleTouchInteraction();
       }}
       onMouseUp={handlePressEnd}
       onMouseLeave={handlePressEnd}

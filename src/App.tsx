@@ -137,8 +137,7 @@ export default function App() {
                 e.preventDefault();
                 scrollToSection('projects');
               }}
-              onTouchStart={(e) => {
-                e.preventDefault();
+              onTouchStart={() => {
                 scrollToSection('projects');
               }}
               className="desktop-icon flex flex-col items-center gap-1 hover:opacity-90 transition-all group"
@@ -165,8 +164,7 @@ export default function App() {
                 e.preventDefault();
                 alert('Resume download would start here');
               }}
-              onTouchStart={(e) => {
-                e.preventDefault();
+              onTouchStart={() => {
                 alert('Resume download would start here');
               }}
               className="desktop-icon flex flex-col items-center gap-1 hover:opacity-90 transition-all group"
@@ -193,8 +191,7 @@ export default function App() {
                 e.preventDefault();
                 scrollToSection('experience');
               }}
-              onTouchStart={(e) => {
-                e.preventDefault();
+              onTouchStart={() => {
                 scrollToSection('experience');
               }}
               className="desktop-icon flex flex-col items-center gap-1 hover:opacity-90 transition-all group"
@@ -221,8 +218,7 @@ export default function App() {
                 e.preventDefault();
                 scrollToSection('skills');
               }}
-              onTouchStart={(e) => {
-                e.preventDefault();
+              onTouchStart={() => {
                 scrollToSection('skills');
               }}
               className="desktop-icon flex flex-col items-center gap-1 hover:opacity-90 transition-all group"
@@ -324,8 +320,7 @@ export default function App() {
                 e.preventDefault();
                 scrollToSection(section.id);
               }}
-              onTouchStart={(e) => {
-                e.preventDefault();
+              onTouchStart={() => {
                 scrollToSection(section.id);
               }}
               className="nav-dot flex flex-col items-center gap-1
@@ -369,8 +364,7 @@ export default function App() {
                 scrollToSection(sections[currentIndex - 1]);
               }
             }}
-            onTouchStart={(e) => {
-              e.preventDefault();
+            onTouchStart={() => {
               const sections = ['home', 'about', 'experience', 'projects', 'skills', 'contact'];
               const currentIndex = sections.indexOf(activeSection);
               if (currentIndex > 0) {
@@ -402,8 +396,7 @@ export default function App() {
                 scrollToSection(sections[currentIndex + 1]);
               }
             }}
-            onTouchStart={(e) => {
-              e.preventDefault();
+            onTouchStart={() => {
               const sections = ['home', 'about', 'experience', 'projects', 'skills', 'contact'];
               const currentIndex = sections.indexOf(activeSection);
               if (currentIndex < sections.length - 1) {

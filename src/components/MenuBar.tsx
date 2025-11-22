@@ -68,8 +68,7 @@ export default function MenuBar({ onNavigate, activeSection, currentTime }: Menu
                     onNavigate(item.id);
                     setIsMenuOpen(false);
                   }}
-                  onTouchStart={(e) => {
-                    e.preventDefault();
+                  onTouchStart={() => {
                     onNavigate(item.id);
                     setIsMenuOpen(false);
                   }}
