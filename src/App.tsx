@@ -132,8 +132,15 @@ export default function App() {
             ]}
             position="right"
           >
-            <button 
-              onClick={() => scrollToSection('projects')}
+            <button
+              onMouseDown={(e) => {
+                e.preventDefault();
+                scrollToSection('projects');
+              }}
+              onTouchStart={(e) => {
+                e.preventDefault();
+                scrollToSection('projects');
+              }}
               className="desktop-icon flex flex-col items-center gap-1 hover:opacity-90 transition-all group"
             >
               <div className="w-16 h-16 bg-retro-grey-light border-2 border-retro-charcoal flex items-center justify-center shadow-md group-hover:shadow-lg group-hover:scale-105 transition-all duration-150 relative">
@@ -153,8 +160,15 @@ export default function App() {
             ]}
             position="right"
           >
-            <button 
-              onClick={() => alert('Resume download would start here')}
+            <button
+              onMouseDown={(e) => {
+                e.preventDefault();
+                alert('Resume download would start here');
+              }}
+              onTouchStart={(e) => {
+                e.preventDefault();
+                alert('Resume download would start here');
+              }}
               className="desktop-icon flex flex-col items-center gap-1 hover:opacity-90 transition-all group"
             >
               <div className="w-16 h-16 bg-retro-grey-light border-2 border-retro-charcoal flex items-center justify-center shadow-md group-hover:shadow-lg group-hover:scale-105 transition-all duration-150 relative">
@@ -174,8 +188,15 @@ export default function App() {
             ]}
             position="right"
           >
-            <button 
-              onClick={() => scrollToSection('experience')}
+            <button
+              onMouseDown={(e) => {
+                e.preventDefault();
+                scrollToSection('experience');
+              }}
+              onTouchStart={(e) => {
+                e.preventDefault();
+                scrollToSection('experience');
+              }}
               className="desktop-icon flex flex-col items-center gap-1 hover:opacity-90 transition-all group"
             >
               <div className="w-16 h-16 bg-retro-grey-light border-2 border-retro-charcoal flex items-center justify-center shadow-md group-hover:shadow-lg group-hover:scale-105 transition-all duration-150 relative">
@@ -195,8 +216,15 @@ export default function App() {
             ]}
             position="right"
           >
-            <button 
-              onClick={() => scrollToSection('skills')}
+            <button
+              onMouseDown={(e) => {
+                e.preventDefault();
+                scrollToSection('skills');
+              }}
+              onTouchStart={(e) => {
+                e.preventDefault();
+                scrollToSection('skills');
+              }}
               className="desktop-icon flex flex-col items-center gap-1 hover:opacity-90 transition-all group"
             >
               <div className="w-16 h-16 bg-retro-grey-light border-2 border-retro-charcoal flex items-center justify-center shadow-md group-hover:shadow-lg group-hover:scale-105 transition-all duration-150 relative">
@@ -292,9 +320,16 @@ export default function App() {
           ].map((section) => (
             <button
               key={section.id}
-              onClick={() => scrollToSection(section.id)}
-              className="nav-dot flex flex-col items-center gap-1 
-                         hover:opacity-80 transition-all duration-150 
+              onMouseDown={(e) => {
+                e.preventDefault();
+                scrollToSection(section.id);
+              }}
+              onTouchStart={(e) => {
+                e.preventDefault();
+                scrollToSection(section.id);
+              }}
+              className="nav-dot flex flex-col items-center gap-1
+                         hover:opacity-80 transition-all duration-150
                          relative group min-w-[40px] sm:min-w-auto
                          p-2 sm:p-1"
             >
@@ -326,21 +361,30 @@ export default function App() {
       <div className="hidden lg:block">
         <Tooltip text="Previous section">
           <button
-            onClick={() => {
+            onMouseDown={(e) => {
+              e.preventDefault();
               const sections = ['home', 'about', 'experience', 'projects', 'skills', 'contact'];
               const currentIndex = sections.indexOf(activeSection);
               if (currentIndex > 0) {
                 scrollToSection(sections[currentIndex - 1]);
               }
             }}
-            className="arrow-nav fixed left-4 top-1/2 -translate-y-1/2 z-40 
-                       w-12 h-12 bg-retro-grey-light border-2 border-retro-charcoal 
-                       hover:bg-white hover:border-cyan-500 
-                       hover:shadow-[3px_3px_0px_0px_rgba(0,180,216,0.4)] 
-                       transition-all duration-150 
-                       flex items-center justify-center 
-                       font-mono text-xl 
-                       disabled:opacity-50 disabled:cursor-not-allowed 
+            onTouchStart={(e) => {
+              e.preventDefault();
+              const sections = ['home', 'about', 'experience', 'projects', 'skills', 'contact'];
+              const currentIndex = sections.indexOf(activeSection);
+              if (currentIndex > 0) {
+                scrollToSection(sections[currentIndex - 1]);
+              }
+            }}
+            className="arrow-nav fixed left-4 top-1/2 -translate-y-1/2 z-40
+                       w-12 h-12 bg-retro-grey-light border-2 border-retro-charcoal
+                       hover:bg-white hover:border-cyan-500
+                       hover:shadow-[3px_3px_0px_0px_rgba(0,180,216,0.4)]
+                       transition-all duration-150
+                       flex items-center justify-center
+                       font-mono text-xl
+                       disabled:opacity-50 disabled:cursor-not-allowed
                        active:translate-y-0 active:shadow-none"
             disabled={activeSection === 'home'}
           >
@@ -350,21 +394,30 @@ export default function App() {
 
         <Tooltip text="Next section">
           <button
-            onClick={() => {
+            onMouseDown={(e) => {
+              e.preventDefault();
               const sections = ['home', 'about', 'experience', 'projects', 'skills', 'contact'];
               const currentIndex = sections.indexOf(activeSection);
               if (currentIndex < sections.length - 1) {
                 scrollToSection(sections[currentIndex + 1]);
               }
             }}
-            className="arrow-nav fixed right-4 top-1/2 -translate-y-1/2 z-40 
-                       w-12 h-12 bg-retro-grey-light border-2 border-retro-charcoal 
-                       hover:bg-white hover:border-cyan-500 
-                       hover:shadow-[3px_3px_0px_0px_rgba(0,180,216,0.4)] 
-                       transition-all duration-150 
-                       flex items-center justify-center 
-                       font-mono text-xl 
-                       disabled:opacity-50 disabled:cursor-not-allowed 
+            onTouchStart={(e) => {
+              e.preventDefault();
+              const sections = ['home', 'about', 'experience', 'projects', 'skills', 'contact'];
+              const currentIndex = sections.indexOf(activeSection);
+              if (currentIndex < sections.length - 1) {
+                scrollToSection(sections[currentIndex + 1]);
+              }
+            }}
+            className="arrow-nav fixed right-4 top-1/2 -translate-y-1/2 z-40
+                       w-12 h-12 bg-retro-grey-light border-2 border-retro-charcoal
+                       hover:bg-white hover:border-cyan-500
+                       hover:shadow-[3px_3px_0px_0px_rgba(0,180,216,0.4)]
+                       transition-all duration-150
+                       flex items-center justify-center
+                       font-mono text-xl
+                       disabled:opacity-50 disabled:cursor-not-allowed
                        active:translate-y-0 active:shadow-none"
             disabled={activeSection === 'contact'}
           >

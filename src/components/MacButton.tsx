@@ -34,17 +34,30 @@ export default function MacButton({
       ${isPressed ? 'shadow-[inset_2px_2px_4px_rgba(0,0,0,0.3)]' : 'shadow-[2px_2px_0px_0px_rgba(0,0,0,0.3)]'}`
   };
 
-  const handleMouseDown = () => setIsPressed(true);
-  const handleMouseUp = () => setIsPressed(false);
-  const handleMouseLeave = () => setIsPressed(false);
+  const handleInteraction = (e: React.MouseEvent | React.TouchEvent) => {
+    e.preventDefault();
+    if (onClick && !disabled) {
+      onClick();
+    }
+  };
+
+  const handlePressStart = () => setIsPressed(true);
+  const handlePressEnd = () => setIsPressed(false);
 
   return (
     <button
-      onClick={onClick}
       disabled={disabled}
-      onMouseDown={handleMouseDown}
-      onMouseUp={handleMouseUp}
-      onMouseLeave={handleMouseLeave}
+      onMouseDown={(e) => {
+        handlePressStart();
+        handleInteraction(e);
+      }}
+      onTouchStart={(e) => {
+        handlePressStart();
+        handleInteraction(e);
+      }}
+      onMouseUp={handlePressEnd}
+      onMouseLeave={handlePressEnd}
+      onTouchEnd={handlePressEnd}
       className={`${baseStyles} ${variantStyles[variant]} ${className} cursor-pointer hover:cursor-pointer`}
     >
       {children}
