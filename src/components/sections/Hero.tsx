@@ -82,7 +82,7 @@ export default function Hero({ onNavigate }: HeroProps) {
         </div>
 
         {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row gap-4 mt-4">
+        <div className="flex flex-row justify-center gap-4 mt-4">
           <Tooltip text="View portfolio">
             <MacButton variant="primary" onClick={() => onNavigate('about')}>
               START

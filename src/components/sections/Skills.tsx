@@ -4,12 +4,12 @@ import Tooltip from '../Tooltip';
 import ProgressBar from '../ProgressBar';
 import { PixelIcons } from '../icons/PixelIcons';
 // Import colorful brand icons from react-icons
-import { 
+import {
   SiPython, SiPostgresql, SiGnubash, SiTypescript,
   SiGit, SiLinux, SiDocker, SiJenkins, SiChef,
   SiReact, SiFastapi, SiSupabase, SiSqlite, SiMongodb,
   SiTableau, SiJira, SiConfluence, SiNotion, SiFigma,
-  SiAnthropic, SiGithubcopilot
+  SiAnthropic, SiGithubcopilot, SiN8N
 } from 'react-icons/si';
 import { FaFlask } from 'react-icons/fa';
 import { TbBrandPowershell } from 'react-icons/tb';
@@ -35,6 +35,7 @@ export default function Skills() {
         { name: 'Git', icon: 'Git', proficiency: 85, years: '2+', description: 'Version control & collaboration' },
         { name: 'Linux', icon: 'Linux', proficiency: 85, years: '1+', description: 'OS Server management' },
         { name: 'Chef', icon: 'Chef', proficiency: 80, years: '1+', description: 'Associate Chef Certified' },
+        { name: 'n8n', icon: 'N8n', proficiency: 75, years: '1+', description: 'Workflow automation platform' },
         { name: 'Jenkins', icon: 'Jenkins', proficiency: 75, years: '1+', description: 'CI/CD pipeline automation' },
         { name: 'Docker', icon: 'Docker', proficiency: 70, years: '1+', description: 'Containerization & deployment' },
       ]
@@ -75,6 +76,7 @@ export default function Skills() {
       'Docker': SiDocker,
       'Jenkins': SiJenkins,
       'Chef': SiChef,
+      'N8n': SiN8N,
       'React': SiReact,
       'Fastapi': SiFastapi,
       'Supabase': SiSupabase,
@@ -88,19 +90,20 @@ export default function Skills() {
       'Anthropic': SiAnthropic,
       'Githubcopilot': SiGithubcopilot
     };
-    
+
     // Brand-authentic colors from design brief
     const colorMap: Record<string, string> = {
       'Python': '#3776AB',
       'Postgresql': '#336791',
-      'Gnubash': '#4EAA25',
+      'Gnubash': '#000000',
       'Typescript': '#3178C6',
       'Powershell': '#5391FE',
       'Git': '#F05032',
-      'Linux': '#FCC624',
+      'Linux': '#000000',
       'Docker': '#2496ED',
       'Jenkins': '#D24939',
       'Chef': '#F09820',
+      'N8n': '#EA4B71',
       'React': '#61DAFB',
       'Fastapi': '#009688',
       'Supabase': '#3ECF8E',
@@ -121,7 +124,7 @@ export default function Skills() {
   };
 
   return (
-    <Window title="SYSTEM_SKILLS.cpl" width="max-w-3xl">
+    <Window title="INVENTORY.DLL" width="max-w-3xl">
       {/* Category Tabs */}
       <div className="flex gap-1 border-b-2 border-retro-grey-dark mb-6 -mt-2 overflow-x-auto">
         {Object.entries(skillCategories).map(([key, category]) => {
@@ -164,7 +167,7 @@ export default function Skills() {
               onClick={() => setSelectedSkill(skill)}
               className={`skill-card group w-full h-40 border-3 flex flex-col items-center justify-center gap-3 transition-all duration-200 relative ${
                 selectedSkill?.name === skill.name
-                  ? 'bg-gradient-to-b from-[#f0f0f0] to-[#e5e5e5] border-[#ff006e] shadow-[4px_4px_0px_0px_rgba(255,0,110,0.4)] scale-105 -translate-y-1'
+                  ? 'bg-gradient-to-b from-[#e5e5e5] to-[#d4d4d4] border-[#00d9ff] shadow-[inset_2px_2px_4px_rgba(0,0,0,0.15)] translate-y-1'
                   : 'bg-gradient-to-b from-[#f0f0f0] to-[#e5e5e5] border-[#808080] shadow-[2px_2px_0px_0px_rgba(0,0,0,0.2)] hover:border-[#00d9ff] hover:shadow-[4px_4px_0px_0px_rgba(0,217,255,0.3)] hover:scale-105 hover:-translate-y-1'
               }`}
             >
@@ -174,11 +177,11 @@ export default function Skills() {
                   <PixelIcons.Trophy size={24} />
                 </div>
               )}
-              
-              <div 
+
+              <div
                 className={`transform transition-all duration-200 ${
-                  selectedSkill?.name === skill.name 
-                    ? '[&>svg]:!text-[#ff006e]' 
+                  selectedSkill?.name === skill.name
+                    ? 'scale-95'
                     : ''
                 }`}
               >
