@@ -9,7 +9,7 @@ import Contact from './components/sections/Contact';
 import AnimatedBackground from './components/AnimatedBackground';
 import CursorEffects from './components/CursorEffects';
 import Tooltip from './components/Tooltip';
-import { Toaster } from 'sonner@2.0.3';
+import { Toaster, toast } from 'sonner@2.0.3';
 
 // Public assets are served from root path
 const folderIcon = '/desktop-icons/folder.png';
@@ -22,6 +22,8 @@ export default function App() {
   const [time, setTime] = useState(new Date());
   const [showToast, setShowToast] = useState(false);
   const [toastMessage, setToastMessage] = useState('');
+  const [isDownloading, setIsDownloading] = useState(false);
+  const [downloadProgress, setDownloadProgress] = useState(0);
 
   // Update time every minute
   useEffect(() => {
@@ -125,6 +127,52 @@ export default function App() {
     }
   };
 
+  const handleResumeDownload = () => {
+    setIsDownloading(true);
+    setDownloadProgress(0);
+
+    // Quirky retro/gaming messages
+    const quirkyMessages = [
+      "Achievement Unlocked: Resume Requested! 🏆",
+      "404: Resume not found (but nice try!) 👾",
+      "Resume.exe has stopped working... 💥",
+      "Level Complete! But the resume is in another castle 🍄",
+      "Download successful! (Just kidding, contact me instead) 😄",
+      "Resume.zip extracted to /dev/null ✨",
+      "Mission Accomplished! (The mission was to make you smile) 😊",
+      "File downloaded to the void... reach out via email instead! 📧",
+      "Resume acquired! (Psych! Let's connect instead) 🎮",
+      "Transfer complete... or is it? 🤔 Contact me to find out!"
+    ];
+
+    // Simulate download progress
+    const interval = setInterval(() => {
+      setDownloadProgress(prev => {
+        if (prev >= 100) {
+          clearInterval(interval);
+          setTimeout(() => {
+            setIsDownloading(false);
+            setDownloadProgress(0);
+            const randomMessage = quirkyMessages[Math.floor(Math.random() * quirkyMessages.length)];
+            toast.success(randomMessage, {
+              duration: 4000,
+              style: {
+                background: '#d4d4d4',
+                border: '2px solid #22c55e',
+                fontFamily: 'VT323, monospace',
+                fontSize: '16px'
+              }
+            });
+          }, 300);
+          return 100;
+        }
+        return prev + 10;
+      });
+    }, 50);
+
+    // No actual download - just a fun interaction!
+  };
+
   return (
     <div className="min-h-screen bg-retro-desktop relative overflow-x-hidden">
       {/* Toast notifications */}
@@ -171,29 +219,56 @@ export default function App() {
           <Tooltip
             title="Resume.pdf"
             details={[
-              "File type: PDF",
-              "Size: 2.3 MB",
-              "Click to download"
+              "File type: Mystery",
+              "Size: Unknown",
+              isDownloading ? "Downloading..." : "Click for a surprise! 🎮"
             ]}
             position="right"
           >
-            <button
-              onMouseDown={(e) => {
-                e.preventDefault();
-                alert('Resume download would start here');
-              }}
-              onTouchStart={() => {
-                alert('Resume download would start here');
-              }}
-              className="desktop-icon flex flex-col items-center gap-1 hover:opacity-90 transition-all group"
-            >
-              <div className="w-16 h-16 bg-retro-grey-light border-2 border-retro-charcoal flex items-center justify-center shadow-md group-hover:shadow-lg group-hover:scale-105 transition-all duration-150 relative">
-                <img src={cvIcon} alt="Resume" className="w-12 h-12" />
-                {/* Selection highlight */}
-                <div className="absolute inset-0 bg-cyan-500 opacity-0 group-hover:opacity-20 transition-opacity" />
-              </div>
-              <span className="text-xs text-white font-mono drop-shadow-[1px_1px_1px_rgba(0,0,0,0.8)]">Resume</span>
-            </button>
+            <div className="flex flex-col items-center gap-1 relative">
+              <button
+                onMouseDown={(e) => {
+                  e.preventDefault();
+                  if (!isDownloading) {
+                    handleResumeDownload();
+                  }
+                }}
+                onTouchStart={() => {
+                  if (!isDownloading) {
+                    handleResumeDownload();
+                  }
+                }}
+                disabled={isDownloading}
+                className="desktop-icon flex flex-col items-center gap-1 hover:opacity-90 transition-all group disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                <div className="w-16 h-16 bg-retro-grey-light border-2 border-retro-charcoal flex items-center justify-center shadow-md group-hover:shadow-lg group-hover:scale-105 transition-all duration-150 relative">
+                  {isDownloading ? (
+                    <span className="font-mono text-xs text-retro-charcoal">{downloadProgress}%</span>
+                  ) : (
+                    <img src={cvIcon} alt="Resume" className="w-12 h-12" />
+                  )}
+                  {/* Selection highlight */}
+                  <div className="absolute inset-0 bg-cyan-500 opacity-0 group-hover:opacity-20 transition-opacity" />
+                </div>
+                <span className="text-xs text-white font-mono drop-shadow-[1px_1px_1px_rgba(0,0,0,0.8)]">
+                  {isDownloading ? 'Loading...' : 'Resume'}
+                </span>
+              </button>
+              
+              {/* Progress Bar */}
+              {isDownloading && (
+                <div className="absolute top-full mt-2 w-20 bg-white border-2 border-retro-charcoal h-4 relative overflow-hidden">
+                  <div 
+                    className="h-full bg-gradient-to-r from-cyan-400 to-cyan-500 transition-all duration-100 flex items-center justify-center"
+                    style={{ width: `${downloadProgress}%` }}
+                  >
+                    <span className="font-mono text-[8px] text-white mix-blend-difference">
+                      {downloadProgress}%
+                    </span>
+                  </div>
+                </div>
+              )}
+            </div>
           </Tooltip>
           <Tooltip
             title="Experience"

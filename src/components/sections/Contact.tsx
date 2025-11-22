@@ -90,6 +90,20 @@ Thanks for visiting my website! I'd love to connect and discuss opportunities th
     setIsDownloading(true);
     setDownloadProgress(0);
 
+    // Quirky retro/gaming messages
+    const quirkyMessages = [
+      "Achievement Unlocked: Resume Requested! 🏆",
+      "404: Resume not found (but nice try!) 👾",
+      "Resume.exe has stopped working... 💥",
+      "Level Complete! But the resume is in another castle 🍄",
+      "Download successful! (Just kidding, contact me instead) 😄",
+      "Resume.zip extracted to /dev/null ✨",
+      "Mission Accomplished! (The mission was to make you smile) 😊",
+      "File downloaded to the void... reach out via email instead! 📧",
+      "Resume acquired! (Psych! Let's connect instead) 🎮",
+      "Transfer complete... or is it? 🤔 Contact me to find out!"
+    ];
+
     // Simulate download progress
     const interval = setInterval(() => {
       setDownloadProgress(prev => {
@@ -98,8 +112,9 @@ Thanks for visiting my website! I'd love to connect and discuss opportunities th
           setTimeout(() => {
             setIsDownloading(false);
             setDownloadProgress(0);
-            toast.success('✓ Resume downloaded!', {
-              duration: 3000,
+            const randomMessage = quirkyMessages[Math.floor(Math.random() * quirkyMessages.length)];
+            toast.success(randomMessage, {
+              duration: 4000,
               style: {
                 background: '#d4d4d4',
                 border: '2px solid #22c55e',
@@ -114,9 +129,7 @@ Thanks for visiting my website! I'd love to connect and discuss opportunities th
       });
     }, 50);
 
-    // Trigger actual download
-    // In production, this would download the actual resume PDF
-    // window.open('/path/to/resume.pdf', '_blank');
+    // No actual download - just a fun interaction!
   };
 
   return (
@@ -301,7 +314,7 @@ Thanks for visiting my website! I'd love to connect and discuss opportunities th
                   <div className="text-retro-grey-dark text-xs">Attachment (1 file)</div>
                 </div>
               </div>
-              <Tooltip text={isDownloading ? 'Downloading...' : 'Download PDF (2.3 MB)'}>
+              <Tooltip text={isDownloading ? 'Downloading...' : 'Click for a surprise! 🎮'}>
                 <MacButton 
                   onClick={handleDownload}
                   disabled={isDownloading}

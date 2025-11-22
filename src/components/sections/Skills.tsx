@@ -124,7 +124,7 @@ export default function Skills() {
   };
 
   return (
-    <Window title="Inventory.dll" width="max-w-3xl">
+    <Window title="INVENTORY.DLL" width="max-w-3xl">
       {/* Category Tabs */}
       <div className="flex gap-1 border-b-2 border-retro-grey-dark mb-6 -mt-2 overflow-x-auto">
         {Object.entries(skillCategories).map(([key, category]) => {
