@@ -3,7 +3,8 @@ import Window from '../Window';
 import MacButton from '../MacButton';
 import Tooltip from '../Tooltip';
 import { PixelIcons } from '../icons/PixelIcons';
-import thaiBridgeIcon from '../../public/projects/thaibridge-icon.svg';
+// Public assets are served from root path
+const thaiBridgeIcon = '/projects/thaibridge-icon.svg';
 import { FaRobot } from 'react-icons/fa';
 import { RiRobot2Line } from 'react-icons/ri';
 

@@ -10,14 +10,12 @@ import AnimatedBackground from './components/AnimatedBackground';
 import CursorEffects from './components/CursorEffects';
 import Tooltip from './components/Tooltip';
 import { Toaster } from 'sonner@2.0.3';
-// @ts-ignore - Vite handles image imports
-import folderIcon from './public/desktop-icons/folder.png';
-// @ts-ignore - Vite handles image imports
-import cvIcon from './public/desktop-icons/cv.png';
-// @ts-ignore - Vite handles image imports
-import suitcaseIcon from './public/desktop-icons/suitcase.png';
-// @ts-ignore - Vite handles image imports
-import skillIcon from './public/desktop-icons/skill.png';
+
+// Public assets are served from root path
+const folderIcon = '/desktop-icons/folder.png';
+const cvIcon = '/desktop-icons/cv.png';
+const suitcaseIcon = '/desktop-icons/suitcase.png';
+const skillIcon = '/desktop-icons/skill.png';
 
 export default function App() {
   const [activeSection, setActiveSection] = useState('home');

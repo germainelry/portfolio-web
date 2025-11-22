@@ -1,6 +1,7 @@
 import { useState } from 'react';
-// @ts-ignore - Vite handles image imports
-import appleLogo from '../public/desktop-icons/applemacos.png';
+
+// Public assets are served from root path
+const appleLogo = '/desktop-icons/applemacos.png';
 
 interface MenuBarProps {
   onNavigate: (section: string) => void;
