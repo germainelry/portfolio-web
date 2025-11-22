@@ -9,9 +9,9 @@ import {
   SiGit, SiLinux, SiDocker, SiJenkins, SiChef,
   SiReact, SiFastapi, SiSupabase, SiSqlite, SiMongodb,
   SiTableau, SiJira, SiConfluence, SiNotion, SiFigma,
-  SiAnthropic, SiGithubcopilot
+  SiAnthropic, SiGithubcopilot, SiN8N
 } from 'react-icons/si';
-import { FaFlask, FaProjectDiagram } from 'react-icons/fa';
+import { FaFlask } from 'react-icons/fa';
 import { TbBrandPowershell } from 'react-icons/tb';
 
 export default function Skills() {
@@ -76,7 +76,7 @@ export default function Skills() {
       'Docker': SiDocker,
       'Jenkins': SiJenkins,
       'Chef': SiChef,
-      'N8n': FaProjectDiagram,
+      'N8n': SiN8N,
       'React': SiReact,
       'Fastapi': SiFastapi,
       'Supabase': SiSupabase,
