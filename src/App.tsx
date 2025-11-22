@@ -48,14 +48,15 @@ export default function App() {
       else {
         const sections = ['home', 'about', 'experience', 'projects', 'skills', 'contact'];
         const scrollPosition = window.scrollY + window.innerHeight / 2;
-        
+        const mobileContainer = document.querySelector('.lg\\:hidden');
+
         for (const section of sections) {
-          const element = document.getElementById(section);
+          const element = mobileContainer?.querySelector(`#${section}`) as HTMLElement;
           if (element) {
             const rect = element.getBoundingClientRect();
             const elementTop = rect.top + window.scrollY;
             const elementBottom = elementTop + element.offsetHeight;
-            
+
             if (scrollPosition >= elementTop && scrollPosition <= elementBottom) {
               if (activeSection !== section) {
                 setActiveSection(section);
@@ -101,9 +102,26 @@ export default function App() {
 
   const scrollToSection = (section: string) => {
     setActiveSection(section);
-    const element = document.getElementById(section);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+
+    // Determine if we're on mobile or desktop
+    const isMobile = window.innerWidth < 1024; // lg breakpoint
+
+    if (isMobile) {
+      // On mobile, find the section within the mobile container
+      const mobileContainer = document.querySelector('.lg\\:hidden');
+      const element = mobileContainer?.querySelector(`#${section}`) as HTMLElement;
+
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    } else {
+      // On desktop, find the section within the horizontal scroll container
+      const desktopContainer = document.querySelector('.horizontal-scroll');
+      const element = desktopContainer?.querySelector(`#${section}`) as HTMLElement;
+
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+      }
     }
   };
 
