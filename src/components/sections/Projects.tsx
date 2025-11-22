@@ -213,10 +213,10 @@ export default function Projects() {
         </div>
 
         {/* Action Buttons */}
-        <div className="flex flex-col sm:flex-row gap-3 pt-4 border-t-2 border-retro-grey-dark">
+        <div className="flex flex-row justify-center gap-3 pt-4 border-t-2 border-retro-grey-dark">
           <Tooltip text="View live project">
-            <MacButton 
-              variant="primary" 
+            <MacButton
+              variant="primary"
               className="flex-1"
               onClick={() => {
                 if (projects[selectedProject].name === 'Multilingual AI Chatbot' || !projects[selectedProject].links.demo) {
@@ -230,8 +230,8 @@ export default function Projects() {
             </MacButton>
           </Tooltip>
           <Tooltip text="View source code">
-            <MacButton 
-              variant="secondary" 
+            <MacButton
+              variant="secondary"
               className="flex-1"
               onClick={() => {
                 if (projects[selectedProject].name === 'ThaiBridge Academy') {

@@ -244,10 +244,10 @@ Thanks for visiting my website! I'd love to connect and discuss opportunities th
 
         {/* Action Buttons */}
         {isTypingComplete && (
-          <div className="flex flex-col sm:flex-row gap-3 pt-4 animate-fadeIn">
+          <div className="flex flex-row justify-center gap-3 pt-4 animate-fadeIn">
             <Tooltip text="Open email client">
-              <MacButton 
-                variant="primary" 
+              <MacButton
+                variant="primary"
                 className="flex-1"
                 onClick={() => {
                   window.location.href = 'mailto:germainelry@gmail.com?subject=Let\'s Connect!&body=Hi Germaine,';
@@ -266,8 +266,8 @@ Thanks for visiting my website! I'd love to connect and discuss opportunities th
               </MacButton>
             </Tooltip>
             <Tooltip text="Connect on LinkedIn">
-              <MacButton 
-                variant="secondary" 
+              <MacButton
+                variant="secondary"
                 className="flex-1"
                 onClick={() => {
                   window.open('https://linkedin.com/in/germaineluah', '_blank');
