@@ -22,9 +22,9 @@ export default function Skills() {
     languages: {
       label: 'Languages',
       skills: [
-        { name: 'Python', icon: 'Python', proficiency: 90, years: '3+', description: 'Primary language for automation & backend' },
-        { name: 'SQL', icon: 'Postgresql', proficiency: 90, years: '3+', description: 'Database design & query optimization' },
-        { name: 'Bash', icon: 'Gnubash', proficiency: 85, years: '3+', description: 'Unix/Linux shell scripting' },
+        { name: 'Python', icon: 'Python', proficiency: 90, years: '2+', description: 'Primary language for automation & backend' },
+        { name: 'SQL', icon: 'Postgresql', proficiency: 85, years: '2+', description: 'Database design & query optimization' },
+        { name: 'Bash', icon: 'Gnubash', proficiency: 80, years: '2+', description: 'Unix/Linux shell scripting' },
         { name: 'TypeScript', icon: 'Typescript', proficiency: 80, years: '2+', description: 'Type-safe web applications' },
         { name: 'PowerShell', icon: 'Powershell', proficiency: 75, years: '2+', description: 'Windows automation & scripting' }
       ]
@@ -32,33 +32,33 @@ export default function Skills() {
     tools: {
       label: 'Tools & Infrastructure',
       skills: [
-        { name: 'Git', icon: 'Git', proficiency: 85, years: '3+', description: 'Version control & collaboration' },
-        { name: 'Linux/Unix', icon: 'Linux', proficiency: 85, years: '3+', description: 'Banking infrastructure & servers' },
-        { name: 'Docker', icon: 'Docker', proficiency: 85, years: '2+', description: 'Containerization & deployment' },
-        { name: 'Jenkins', icon: 'Jenkins', proficiency: 80, years: '2+', description: 'CI/CD pipeline automation' },
-        { name: 'Chef', icon: 'Chef', proficiency: 80, years: '2+', description: 'Infrastructure as Code - Certified' }
+        { name: 'Git', icon: 'Git', proficiency: 85, years: '2+', description: 'Version control & collaboration' },
+        { name: 'Linux', icon: 'Linux', proficiency: 85, years: '1+', description: 'OS Server management' },
+        { name: 'Chef', icon: 'Chef', proficiency: 80, years: '1+', description: 'Associate Chef Certified' },
+        { name: 'Jenkins', icon: 'Jenkins', proficiency: 75, years: '1+', description: 'CI/CD pipeline automation' },
+        { name: 'Docker', icon: 'Docker', proficiency: 70, years: '1+', description: 'Containerization & deployment' },
       ]
     },
     frameworks: {
       label: 'Frameworks & Databases',
       skills: [
         { name: 'React', icon: 'React', proficiency: 85, years: '2+', description: 'Modern UI development' },
-        { name: 'FastAPI', icon: 'Fastapi', proficiency: 90, years: '3+', description: 'High-performance Python APIs' },
-        { name: 'Supabase', icon: 'Supabase', proficiency: 80, years: '2+', description: 'Backend as a service' },
-        { name: 'SQLite', icon: 'Sqlite', proficiency: 85, years: '2+', description: 'Embedded database' },
-        { name: 'MongoDB', icon: 'Mongodb', proficiency: 75, years: '2+', description: 'NoSQL document database' }
+        { name: 'FastAPI', icon: 'Fastapi', proficiency: 90, years: '1+', description: 'High-performance Python APIs' },
+        { name: 'Supabase', icon: 'Supabase', proficiency: 80, years: '1+', description: 'Backend as a service' },
+        { name: 'SQLite', icon: 'Sqlite', proficiency: 85, years: '1+', description: 'Embedded database' },
+        { name: 'MongoDB', icon: 'Mongodb', proficiency: 75, years: '1+', description: 'NoSQL document database' }
       ]
     },
     data: {
       label: 'Data & Productivity',
       skills: [
-        { name: 'Tableau', icon: 'Tableau', proficiency: 85, years: '2+', description: 'Data visualization & analytics' },
-        { name: 'Jira', icon: 'Jira', proficiency: 85, years: '3+', description: 'Agile project management' },
-        { name: 'Confluence', icon: 'Confluence', proficiency: 85, years: '3+', description: 'Team documentation & wikis' },
+        { name: 'Claude', icon: 'Anthropic', proficiency: 80, years: '1+', description: 'AI assistant & code generation' },
+        { name: 'GitHub Copilot', icon: 'Githubcopilot', proficiency: 75, years: '1+', description: 'AI pair programming' },
         { name: 'Notion', icon: 'Notion', proficiency: 80, years: '2+', description: 'Documentation & organization' },
         { name: 'Figma', icon: 'Figma', proficiency: 75, years: '2+', description: 'Design & prototyping' },
-        { name: 'Claude', icon: 'Anthropic', proficiency: 80, years: '1+', description: 'AI assistant & code generation' },
-        { name: 'GitHub Copilot', icon: 'Githubcopilot', proficiency: 75, years: '1+', description: 'AI pair programming' }
+        { name: 'Tableau', icon: 'Tableau', proficiency: 85, years: '2+', description: 'Data visualization & analytics' },
+        { name: 'Jira', icon: 'Jira', proficiency: 85, years: '2+', description: 'Agile project management' },
+        { name: 'Confluence', icon: 'Confluence', proficiency: 85, years: '3+', description: 'Team documentation & wikis' }
       ]
     }
   };

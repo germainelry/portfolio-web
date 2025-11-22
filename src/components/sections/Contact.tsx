@@ -4,18 +4,14 @@ import MacButton from '../MacButton';
 import Tooltip from '../Tooltip';
 import { toast } from 'sonner@2.0.3';
 import { PixelIcons } from '../icons/PixelIcons';
-// @ts-ignore - Vite handles image imports
-import mailIcon from '../../public/contact-icons/mail.png';
-// @ts-ignore - Vite handles image imports
-import phoneIcon from '../../public/contact-icons/mobile-phone.png';
-// @ts-ignore - Vite handles image imports
-import linkedinIcon from '../../public/contact-icons/linkedin.png';
-// @ts-ignore - Vite handles image imports
-import githubIcon from '../../public/contact-icons/github.png';
-// @ts-ignore - Vite handles image imports
-import heartIcon from '../../public/misc/heart.png';
-// @ts-ignore - Vite handles image imports
-import documentHeartIcon from '../../public/contact-icons/document-heart.png';
+
+// Public assets are served from root path
+const mailIcon = '/contact-icons/mail.png';
+const phoneIcon = '/contact-icons/mobile-phone.png';
+const linkedinIcon = '/contact-icons/linkedin.png';
+const githubIcon = '/contact-icons/github.png';
+const heartIcon = '/misc/heart.png';
+const documentHeartIcon = '/contact-icons/document-heart.png';
 
 export default function Contact() {
   const [typedText, setTypedText] = useState('');

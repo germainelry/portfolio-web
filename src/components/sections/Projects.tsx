@@ -3,7 +3,8 @@ import Window from '../Window';
 import MacButton from '../MacButton';
 import Tooltip from '../Tooltip';
 import { PixelIcons } from '../icons/PixelIcons';
-import thaiBridgeIcon from '../../public/projects/thaibridge-icon.svg';
+// Public assets are served from root path
+const thaiBridgeIcon = '/projects/thaibridge-icon.svg';
 import { FaRobot } from 'react-icons/fa';
 import { RiRobot2Line } from 'react-icons/ri';
 
@@ -72,7 +73,7 @@ export default function Projects() {
   ];
 
   return (
-    <Window title="PROJECTS" width="max-w-3xl">
+    <Window title="PROJECTS.ZIP" width="max-w-3xl">
       {/* Tab Navigation */}
       <div className="flex border-b-2 border-retro-grey-dark mb-6 -mt-2 overflow-x-auto">
         {projects.map((project, index) => {

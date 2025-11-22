@@ -10,14 +10,12 @@ import AnimatedBackground from './components/AnimatedBackground';
 import CursorEffects from './components/CursorEffects';
 import Tooltip from './components/Tooltip';
 import { Toaster } from 'sonner@2.0.3';
-// @ts-ignore - Vite handles image imports
-import folderIcon from './public/desktop-icons/folder.png';
-// @ts-ignore - Vite handles image imports
-import cvIcon from './public/desktop-icons/cv.png';
-// @ts-ignore - Vite handles image imports
-import suitcaseIcon from './public/desktop-icons/suitcase.png';
-// @ts-ignore - Vite handles image imports
-import skillIcon from './public/desktop-icons/skill.png';
+
+// Public assets are served from root path
+const folderIcon = '/desktop-icons/folder.png';
+const cvIcon = '/desktop-icons/cv.png';
+const suitcaseIcon = '/desktop-icons/suitcase.png';
+const skillIcon = '/desktop-icons/skill.png';
 
 export default function App() {
   const [activeSection, setActiveSection] = useState('home');
@@ -50,14 +48,15 @@ export default function App() {
       else {
         const sections = ['home', 'about', 'experience', 'projects', 'skills', 'contact'];
         const scrollPosition = window.scrollY + window.innerHeight / 2;
-        
+        const mobileContainer = document.querySelector('.lg\\:hidden');
+
         for (const section of sections) {
-          const element = document.getElementById(section);
+          const element = mobileContainer?.querySelector(`#${section}`) as HTMLElement;
           if (element) {
             const rect = element.getBoundingClientRect();
             const elementTop = rect.top + window.scrollY;
             const elementBottom = elementTop + element.offsetHeight;
-            
+
             if (scrollPosition >= elementTop && scrollPosition <= elementBottom) {
               if (activeSection !== section) {
                 setActiveSection(section);
@@ -103,9 +102,26 @@ export default function App() {
 
   const scrollToSection = (section: string) => {
     setActiveSection(section);
-    const element = document.getElementById(section);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+
+    // Determine if we're on mobile or desktop
+    const isMobile = window.innerWidth < 1024; // lg breakpoint
+
+    if (isMobile) {
+      // On mobile, find the section within the mobile container
+      const mobileContainer = document.querySelector('.lg\\:hidden');
+      const element = mobileContainer?.querySelector(`#${section}`) as HTMLElement;
+
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    } else {
+      // On desktop, find the section within the horizontal scroll container
+      const desktopContainer = document.querySelector('.horizontal-scroll');
+      const element = desktopContainer?.querySelector(`#${section}`) as HTMLElement;
+
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+      }
     }
   };
 
@@ -134,8 +150,14 @@ export default function App() {
             ]}
             position="right"
           >
-            <button 
-              onClick={() => scrollToSection('projects')}
+            <button
+              onMouseDown={(e) => {
+                e.preventDefault();
+                scrollToSection('projects');
+              }}
+              onTouchStart={() => {
+                scrollToSection('projects');
+              }}
               className="desktop-icon flex flex-col items-center gap-1 hover:opacity-90 transition-all group"
             >
               <div className="w-16 h-16 bg-retro-grey-light border-2 border-retro-charcoal flex items-center justify-center shadow-md group-hover:shadow-lg group-hover:scale-105 transition-all duration-150 relative">
@@ -155,8 +177,14 @@ export default function App() {
             ]}
             position="right"
           >
-            <button 
-              onClick={() => alert('Resume download would start here')}
+            <button
+              onMouseDown={(e) => {
+                e.preventDefault();
+                alert('Resume download would start here');
+              }}
+              onTouchStart={() => {
+                alert('Resume download would start here');
+              }}
               className="desktop-icon flex flex-col items-center gap-1 hover:opacity-90 transition-all group"
             >
               <div className="w-16 h-16 bg-retro-grey-light border-2 border-retro-charcoal flex items-center justify-center shadow-md group-hover:shadow-lg group-hover:scale-105 transition-all duration-150 relative">
@@ -176,8 +204,14 @@ export default function App() {
             ]}
             position="right"
           >
-            <button 
-              onClick={() => scrollToSection('experience')}
+            <button
+              onMouseDown={(e) => {
+                e.preventDefault();
+                scrollToSection('experience');
+              }}
+              onTouchStart={() => {
+                scrollToSection('experience');
+              }}
               className="desktop-icon flex flex-col items-center gap-1 hover:opacity-90 transition-all group"
             >
               <div className="w-16 h-16 bg-retro-grey-light border-2 border-retro-charcoal flex items-center justify-center shadow-md group-hover:shadow-lg group-hover:scale-105 transition-all duration-150 relative">
@@ -197,8 +231,14 @@ export default function App() {
             ]}
             position="right"
           >
-            <button 
-              onClick={() => scrollToSection('skills')}
+            <button
+              onMouseDown={(e) => {
+                e.preventDefault();
+                scrollToSection('skills');
+              }}
+              onTouchStart={() => {
+                scrollToSection('skills');
+              }}
               className="desktop-icon flex flex-col items-center gap-1 hover:opacity-90 transition-all group"
             >
               <div className="w-16 h-16 bg-retro-grey-light border-2 border-retro-charcoal flex items-center justify-center shadow-md group-hover:shadow-lg group-hover:scale-105 transition-all duration-150 relative">
@@ -294,9 +334,15 @@ export default function App() {
           ].map((section) => (
             <button
               key={section.id}
-              onClick={() => scrollToSection(section.id)}
-              className="nav-dot flex flex-col items-center gap-1 
-                         hover:opacity-80 transition-all duration-150 
+              onMouseDown={(e) => {
+                e.preventDefault();
+                scrollToSection(section.id);
+              }}
+              onTouchStart={() => {
+                scrollToSection(section.id);
+              }}
+              className="nav-dot flex flex-col items-center gap-1
+                         hover:opacity-80 transition-all duration-150
                          relative group min-w-[40px] sm:min-w-auto
                          p-2 sm:p-1"
             >
@@ -328,21 +374,29 @@ export default function App() {
       <div className="hidden lg:block">
         <Tooltip text="Previous section">
           <button
-            onClick={() => {
+            onMouseDown={(e) => {
+              e.preventDefault();
               const sections = ['home', 'about', 'experience', 'projects', 'skills', 'contact'];
               const currentIndex = sections.indexOf(activeSection);
               if (currentIndex > 0) {
                 scrollToSection(sections[currentIndex - 1]);
               }
             }}
-            className="arrow-nav fixed left-4 top-1/2 -translate-y-1/2 z-40 
-                       w-12 h-12 bg-retro-grey-light border-2 border-retro-charcoal 
-                       hover:bg-white hover:border-cyan-500 
-                       hover:shadow-[3px_3px_0px_0px_rgba(0,180,216,0.4)] 
-                       transition-all duration-150 
-                       flex items-center justify-center 
-                       font-mono text-xl 
-                       disabled:opacity-50 disabled:cursor-not-allowed 
+            onTouchStart={() => {
+              const sections = ['home', 'about', 'experience', 'projects', 'skills', 'contact'];
+              const currentIndex = sections.indexOf(activeSection);
+              if (currentIndex > 0) {
+                scrollToSection(sections[currentIndex - 1]);
+              }
+            }}
+            className="arrow-nav fixed left-4 top-1/2 -translate-y-1/2 z-40
+                       w-12 h-12 bg-retro-grey-light border-2 border-retro-charcoal
+                       hover:bg-white hover:border-cyan-500
+                       hover:shadow-[3px_3px_0px_0px_rgba(0,180,216,0.4)]
+                       transition-all duration-150
+                       flex items-center justify-center
+                       font-mono text-xl
+                       disabled:opacity-50 disabled:cursor-not-allowed
                        active:translate-y-0 active:shadow-none"
             disabled={activeSection === 'home'}
           >
@@ -352,21 +406,29 @@ export default function App() {
 
         <Tooltip text="Next section">
           <button
-            onClick={() => {
+            onMouseDown={(e) => {
+              e.preventDefault();
               const sections = ['home', 'about', 'experience', 'projects', 'skills', 'contact'];
               const currentIndex = sections.indexOf(activeSection);
               if (currentIndex < sections.length - 1) {
                 scrollToSection(sections[currentIndex + 1]);
               }
             }}
-            className="arrow-nav fixed right-4 top-1/2 -translate-y-1/2 z-40 
-                       w-12 h-12 bg-retro-grey-light border-2 border-retro-charcoal 
-                       hover:bg-white hover:border-cyan-500 
-                       hover:shadow-[3px_3px_0px_0px_rgba(0,180,216,0.4)] 
-                       transition-all duration-150 
-                       flex items-center justify-center 
-                       font-mono text-xl 
-                       disabled:opacity-50 disabled:cursor-not-allowed 
+            onTouchStart={() => {
+              const sections = ['home', 'about', 'experience', 'projects', 'skills', 'contact'];
+              const currentIndex = sections.indexOf(activeSection);
+              if (currentIndex < sections.length - 1) {
+                scrollToSection(sections[currentIndex + 1]);
+              }
+            }}
+            className="arrow-nav fixed right-4 top-1/2 -translate-y-1/2 z-40
+                       w-12 h-12 bg-retro-grey-light border-2 border-retro-charcoal
+                       hover:bg-white hover:border-cyan-500
+                       hover:shadow-[3px_3px_0px_0px_rgba(0,180,216,0.4)]
+                       transition-all duration-150
+                       flex items-center justify-center
+                       font-mono text-xl
+                       disabled:opacity-50 disabled:cursor-not-allowed
                        active:translate-y-0 active:shadow-none"
             disabled={activeSection === 'contact'}
           >

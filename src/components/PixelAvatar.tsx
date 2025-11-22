@@ -1,6 +1,7 @@
 import React from 'react';
-// @ts-ignore - Vite handles image imports
-import girlInTechSvg from '../public/profile/girl-in-tech.svg';
+
+// Public assets are served from root path
+const girlInTechSvg = '/profile/girl-in-tech.svg';
 
 interface PixelAvatarProps {
   size?: 'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge';

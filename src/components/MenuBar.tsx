@@ -1,6 +1,7 @@
 import { useState } from 'react';
-// @ts-ignore - Vite handles image imports
-import appleLogo from '../public/desktop-icons/applemacos.png';
+
+// Public assets are served from root path
+const appleLogo = '/desktop-icons/applemacos.png';
 
 interface MenuBarProps {
   onNavigate: (section: string) => void;
@@ -62,13 +63,18 @@ export default function MenuBar({ onNavigate, activeSection, currentTime }: Menu
               {menuItems.map((item) => (
                 <button
                   key={item.id}
-                  onClick={() => {
+                  onMouseDown={(e) => {
+                    e.preventDefault();
                     onNavigate(item.id);
                     setIsMenuOpen(false);
                   }}
-                  className={`w-full text-left px-2 sm:px-3 py-1 sm:py-1.5 
-                              font-mono text-[10px] sm:text-xs 
-                              hover:bg-retro-grey transition-colors 
+                  onTouchStart={() => {
+                    onNavigate(item.id);
+                    setIsMenuOpen(false);
+                  }}
+                  className={`w-full text-left px-2 sm:px-3 py-1 sm:py-1.5
+                              font-mono text-[10px] sm:text-xs
+                              hover:bg-retro-grey transition-colors
                               flex items-center gap-2 ${
                     activeSection === item.id ? 'bg-retro-grey' : ''
                   }`}
