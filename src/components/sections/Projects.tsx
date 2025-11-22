@@ -5,8 +5,8 @@ import Tooltip from '../Tooltip';
 import { PixelIcons } from '../icons/PixelIcons';
 // Public assets are served from root path
 const thaiBridgeIcon = '/projects/thaibridge-icon.svg';
-import { FaRobot } from 'react-icons/fa';
-import { RiRobot2Line } from 'react-icons/ri';
+const botIcon = '/projects/bot.png';
+const translationBotIcon = '/projects/translation-bot.png';
 
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState(0);
@@ -109,24 +109,16 @@ export default function Projects() {
                 className="w-12 h-12 object-contain"
               />
             ) : projects[selectedProject].name === 'Chatbit' ? (
-              <FaRobot 
-                size={48} 
-                style={{ 
-                  color: '#00D9FF',
-                  filter: 'drop-shadow(1px 1px 0px #000) drop-shadow(-1px -1px 0px #000) drop-shadow(1px -1px 0px #000) drop-shadow(-1px 1px 0px #000)',
-                  stroke: '#000',
-                  strokeWidth: '0.5px'
-                }} 
+              <img 
+                src={botIcon} 
+                alt="Chatbit bot icon" 
+                className="w-12 h-12 object-contain"
               />
             ) : projects[selectedProject].name === 'Multilingual AI Chatbot' ? (
-              <RiRobot2Line 
-                size={48} 
-                style={{ 
-                  color: '#8B5CF6',
-                  filter: 'drop-shadow(1px 1px 0px #000) drop-shadow(-1px -1px 0px #000) drop-shadow(1px -1px 0px #000) drop-shadow(-1px 1px 0px #000)',
-                  stroke: '#000',
-                  strokeWidth: '0.5px'
-                }} 
+              <img 
+                src={translationBotIcon} 
+                alt="Multilingual AI Chatbot icon" 
+                className="w-12 h-12 object-contain"
               />
             ) : (
               <PixelIcons.Document size={48} />
