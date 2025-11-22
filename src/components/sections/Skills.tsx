@@ -4,12 +4,12 @@ import Tooltip from '../Tooltip';
 import ProgressBar from '../ProgressBar';
 import { PixelIcons } from '../icons/PixelIcons';
 // Import colorful brand icons from react-icons
-import { 
+import {
   SiPython, SiPostgresql, SiGnubash, SiTypescript,
   SiGit, SiLinux, SiDocker, SiJenkins, SiChef,
   SiReact, SiFastapi, SiSupabase, SiSqlite, SiMongodb,
   SiTableau, SiJira, SiConfluence, SiNotion, SiFigma,
-  SiAnthropic, SiGithubcopilot
+  SiAnthropic, SiGithubcopilot, SiN8n
 } from 'react-icons/si';
 import { FaFlask } from 'react-icons/fa';
 import { TbBrandPowershell } from 'react-icons/tb';
@@ -35,6 +35,7 @@ export default function Skills() {
         { name: 'Git', icon: 'Git', proficiency: 85, years: '2+', description: 'Version control & collaboration' },
         { name: 'Linux', icon: 'Linux', proficiency: 85, years: '1+', description: 'OS Server management' },
         { name: 'Chef', icon: 'Chef', proficiency: 80, years: '1+', description: 'Associate Chef Certified' },
+        { name: 'n8n', icon: 'N8n', proficiency: 75, years: '1+', description: 'Workflow automation platform' },
         { name: 'Jenkins', icon: 'Jenkins', proficiency: 75, years: '1+', description: 'CI/CD pipeline automation' },
         { name: 'Docker', icon: 'Docker', proficiency: 70, years: '1+', description: 'Containerization & deployment' },
       ]
@@ -75,6 +76,7 @@ export default function Skills() {
       'Docker': SiDocker,
       'Jenkins': SiJenkins,
       'Chef': SiChef,
+      'N8n': SiN8n,
       'React': SiReact,
       'Fastapi': SiFastapi,
       'Supabase': SiSupabase,
@@ -88,19 +90,20 @@ export default function Skills() {
       'Anthropic': SiAnthropic,
       'Githubcopilot': SiGithubcopilot
     };
-    
+
     // Brand-authentic colors from design brief
     const colorMap: Record<string, string> = {
       'Python': '#3776AB',
       'Postgresql': '#336791',
-      'Gnubash': '#4EAA25',
+      'Gnubash': '#000000',
       'Typescript': '#3178C6',
       'Powershell': '#5391FE',
       'Git': '#F05032',
-      'Linux': '#FCC624',
+      'Linux': '#000000',
       'Docker': '#2496ED',
       'Jenkins': '#D24939',
       'Chef': '#F09820',
+      'N8n': '#EA4B71',
       'React': '#61DAFB',
       'Fastapi': '#009688',
       'Supabase': '#3ECF8E',
@@ -121,7 +124,7 @@ export default function Skills() {
   };
 
   return (
-    <Window title="SYSTEM_SKILLS.cpl" width="max-w-3xl">
+    <Window title="Inventory.inv" width="max-w-3xl">
       {/* Category Tabs */}
       <div className="flex gap-1 border-b-2 border-retro-grey-dark mb-6 -mt-2 overflow-x-auto">
         {Object.entries(skillCategories).map(([key, category]) => {
