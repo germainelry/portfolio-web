@@ -9,9 +9,9 @@ import {
   SiGit, SiLinux, SiDocker, SiJenkins, SiChef,
   SiReact, SiFastapi, SiSupabase, SiSqlite, SiMongodb,
   SiTableau, SiJira, SiConfluence, SiNotion, SiFigma,
-  SiAnthropic, SiGithubcopilot, SiN8n
+  SiAnthropic, SiGithubcopilot
 } from 'react-icons/si';
-import { FaFlask } from 'react-icons/fa';
+import { FaFlask, FaProjectDiagram } from 'react-icons/fa';
 import { TbBrandPowershell } from 'react-icons/tb';
 
 export default function Skills() {
@@ -76,7 +76,7 @@ export default function Skills() {
       'Docker': SiDocker,
       'Jenkins': SiJenkins,
       'Chef': SiChef,
-      'N8n': SiN8n,
+      'N8n': FaProjectDiagram,
       'React': SiReact,
       'Fastapi': SiFastapi,
       'Supabase': SiSupabase,
@@ -124,7 +124,7 @@ export default function Skills() {
   };
 
   return (
-    <Window title="Inventory.inv" width="max-w-3xl">
+    <Window title="Inventory.dll" width="max-w-3xl">
       {/* Category Tabs */}
       <div className="flex gap-1 border-b-2 border-retro-grey-dark mb-6 -mt-2 overflow-x-auto">
         {Object.entries(skillCategories).map(([key, category]) => {
