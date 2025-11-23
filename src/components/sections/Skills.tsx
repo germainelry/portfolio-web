@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Window from '../Window';
 import Tooltip from '../Tooltip';
 import ProgressBar from '../ProgressBar';
@@ -17,6 +17,10 @@ import { TbBrandPowershell } from 'react-icons/tb';
 export default function Skills() {
   const [activeCategory, setActiveCategory] = useState('languages');
   const [selectedSkill, setSelectedSkill] = useState<any>(null);
+  const [isVisible, setIsVisible] = useState(false);
+  const [shouldAnimate, setShouldAnimate] = useState(false);
+  const hasAnimated = useRef(false);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   const skillCategories = {
     languages: {
@@ -63,6 +67,42 @@ export default function Skills() {
       ]
     }
   };
+
+  // Intersection Observer to detect when skills section is in view
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !hasAnimated.current) {
+          setIsVisible(true);
+          setShouldAnimate(true);
+          hasAnimated.current = true;
+        }
+      },
+      { threshold: 0.2 } // Trigger when 20% of the section is visible
+    );
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
+    return () => {
+      if (containerRef.current) {
+        observer.unobserve(containerRef.current);
+      }
+    };
+  }, []);
+
+  // Re-trigger animation when category changes (after initial view)
+  useEffect(() => {
+    if (isVisible) {
+      setShouldAnimate(false);
+      // Small delay to reset animation state
+      const timer = setTimeout(() => {
+        setShouldAnimate(true);
+      }, 50);
+      return () => clearTimeout(timer);
+    }
+  }, [activeCategory, isVisible]);
 
   const getIconComponent = (iconName: string) => {
     const iconMap: Record<string, any> = {
@@ -152,7 +192,7 @@ export default function Skills() {
       </div>
 
       {/* Skills Grid */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 mb-6">
+      <div ref={containerRef} className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 mb-6">
         {skillCategories[activeCategory as keyof typeof skillCategories].skills.map((skill, index) => (
           <Tooltip 
             key={index} 
@@ -169,7 +209,8 @@ export default function Skills() {
                 selectedSkill?.name === skill.name
                   ? 'bg-gradient-to-b from-[#e5e5e5] to-[#d4d4d4] border-[#00d9ff] shadow-[inset_2px_2px_4px_rgba(0,0,0,0.15)] translate-y-1'
                   : 'bg-gradient-to-b from-[#f0f0f0] to-[#e5e5e5] border-[#808080] shadow-[2px_2px_0px_0px_rgba(0,0,0,0.2)] hover:border-[#00d9ff] hover:shadow-[4px_4px_0px_0px_rgba(0,217,255,0.3)] hover:scale-105 hover:-translate-y-1'
-              }`}
+              } ${shouldAnimate ? 'animate-fadeIn' : 'opacity-0'}`}
+              style={shouldAnimate ? { animationDelay: `${index * 200}ms` } : {}}
             >
               {/* Certification badge for Chef */}
               {skill.name === 'Chef' && (
@@ -219,7 +260,7 @@ export default function Skills() {
               <span className="text-retro-grey-dark">Proficiency:</span>
               <span className="text-retro-charcoal">{selectedSkill.proficiency}%</span>
             </div>
-            <ProgressBar value={selectedSkill.proficiency} />
+            <ProgressBar value={selectedSkill.proficiency} animated={true} />
           </div>
 
           <div className="flex items-center justify-between font-mono text-sm pt-2 relative">

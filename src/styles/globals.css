@@ -195,6 +195,24 @@ body {
   animation: bounce-in 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
 }
 
+@keyframes tooltipBounce {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.animate-tooltip-bounce {
+  animation: tooltipBounce 0.25s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+}
+
 @keyframes steam-rise {
   0% {
     opacity: 0;

@@ -21,16 +21,16 @@ export default function MacButton({
   
   const variantStyles = {
     default: `bg-gradient-to-b from-retro-frame to-retro-grey border-retro-grey-dark text-retro-charcoal
-      hover:from-white hover:to-retro-grey-light hover:-translate-y-0.5 hover:shadow-[3px_3px_0px_0px_rgba(0,0,0,0.2)]
-      active:translate-y-0.5 active:shadow-none
+      hover:from-white hover:to-retro-grey-light hover:-translate-y-1 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,0.25)]
+      active:translate-y-1 active:shadow-[1px_1px_0px_0px_rgba(0,0,0,0.15)]
       ${isPressed ? 'shadow-[inset_2px_2px_4px_rgba(0,0,0,0.2)]' : 'shadow-[2px_2px_0px_0px_rgba(0,0,0,0.2)]'}`,
     primary: `bg-gradient-to-b from-pink-500 to-pink-600 border-pink-700 text-white
-      hover:from-pink-400 hover:to-pink-500 hover:-translate-y-0.5 hover:shadow-[3px_3px_0px_0px_rgba(255,0,110,0.4)]
-      active:translate-y-0.5 active:shadow-none
+      hover:from-pink-400 hover:to-pink-500 hover:-translate-y-1 hover:shadow-[4px_4px_0px_0px_rgba(255,0,110,0.5)]
+      active:translate-y-1 active:shadow-[1px_1px_0px_0px_rgba(0,0,0,0.2)]
       ${isPressed ? 'shadow-[inset_2px_2px_4px_rgba(0,0,0,0.3)]' : 'shadow-[2px_2px_0px_0px_rgba(0,0,0,0.3)]'}`,
     secondary: `bg-gradient-to-b from-cyan-400 to-cyan-500 border-cyan-700 text-white
-      hover:from-cyan-300 hover:to-cyan-400 hover:-translate-y-0.5 hover:shadow-[3px_3px_0px_0px_rgba(0,180,216,0.4)]
-      active:translate-y-0.5 active:shadow-none
+      hover:from-cyan-300 hover:to-cyan-400 hover:-translate-y-1 hover:shadow-[4px_4px_0px_0px_rgba(0,180,216,0.5)]
+      active:translate-y-1 active:shadow-[1px_1px_0px_0px_rgba(0,0,0,0.2)]
       ${isPressed ? 'shadow-[inset_2px_2px_4px_rgba(0,0,0,0.3)]' : 'shadow-[2px_2px_0px_0px_rgba(0,0,0,0.3)]'}`
   };
 

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 interface TerminalLine {
   type: 'command' | 'output';
@@ -10,6 +10,9 @@ export default function Terminal() {
   const [currentLine, setCurrentLine] = useState(0);
   const [currentChar, setCurrentChar] = useState(0);
   const [showCursor, setShowCursor] = useState(true);
+  const [isVisible, setIsVisible] = useState(false);
+  const hasAnimated = useRef(false);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   const lines: TerminalLine[] = [
     { type: 'command', text: '$ whoami', delay: 500 },
@@ -23,9 +26,32 @@ export default function Terminal() {
     { type: 'output', text: '> Hello, World!' },
   ];
 
-  // Typing animation
+  // Intersection Observer to detect when terminal is in view
   useEffect(() => {
-    if (currentLine >= lines.length) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !hasAnimated.current) {
+          setIsVisible(true);
+          hasAnimated.current = true;
+        }
+      },
+      { threshold: 0.3 } // Trigger when 30% of the terminal is visible
+    );
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
+    return () => {
+      if (containerRef.current) {
+        observer.unobserve(containerRef.current);
+      }
+    };
+  }, []);
+
+  // Typing animation - triggers only when visible
+  useEffect(() => {
+    if (!isVisible || currentLine >= lines.length) return;
 
     const line = lines[currentLine];
     const delay = line.type === 'command' ? 50 : 20;
@@ -43,7 +69,7 @@ export default function Terminal() {
       }, nextDelay);
       return () => clearTimeout(timer);
     }
-  }, [currentChar, currentLine]);
+  }, [currentChar, currentLine, isVisible]);
 
   // Cursor blink
   useEffect(() => {
@@ -54,7 +80,7 @@ export default function Terminal() {
   }, []);
 
   return (
-    <div className="bg-black border-2 border-retro-grey-dark p-4 font-mono text-sm overflow-hidden h-[280px]">
+    <div ref={containerRef} className="bg-black border-2 border-retro-grey-dark p-4 font-mono text-sm overflow-hidden h-[280px]">
       {lines.slice(0, currentLine + 1).map((line, index) => (
         <div
           key={index}

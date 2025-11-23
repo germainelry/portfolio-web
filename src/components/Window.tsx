@@ -23,13 +23,15 @@ export default function Window({
   const [isHovering, setIsHovering] = useState(false);
 
   return (
-    <div className={`w-full max-w-[95vw] lg:${width} mx-auto 
-                     bg-retro-grey-light border-3 border-retro-border-dark 
-                     transition-all duration-200 ${
-      isDragging 
-        ? 'shadow-[8px_8px_0px_rgba(0,0,0,0.3)] opacity-95 cursor-grabbing' 
-        : 'shadow-[6px_6px_0px_rgba(0,0,0,0.25)] cursor-default'
-    } ${className}`}>
+    <div
+      className={`group w-full max-w-[95vw] lg:${width} mx-auto
+                     bg-retro-grey-light border-3 border-retro-border-dark
+                     transition-all duration-300 ${
+      isDragging
+        ? 'shadow-[8px_8px_0px_rgba(0,0,0,0.3)] opacity-95 cursor-grabbing'
+        : 'shadow-[6px_6px_0px_rgba(0,0,0,0.25)] cursor-default hover:shadow-[8px_8px_0px_rgba(0,0,0,0.3)]'
+    } ${className}`}
+    >
       {/* Window Title Bar */}
       <div 
         className={`h-7 sm:h-8 bg-gradient-to-b ${

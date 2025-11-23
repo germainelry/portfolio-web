@@ -58,9 +58,9 @@ export default function Tooltip({
         onMouseLeave={handleMouseLeave}
       >
         {children}
-        <div 
-          className={`absolute ${positionStyles[position]} pointer-events-none z-[100] whitespace-nowrap transition-opacity duration-200 ${
-            isVisible ? 'opacity-100' : 'opacity-0'
+        <div
+          className={`absolute ${positionStyles[position]} pointer-events-none z-[100] whitespace-nowrap ${
+            isVisible ? 'animate-tooltip-bounce' : 'opacity-0 scale-0'
           }`}
         >
           <div className="bg-retro-grey-light border-2 border-cyan-500 px-4 py-3 shadow-[3px_3px_0px_0px_rgba(0,0,0,0.4)]">
@@ -84,9 +84,9 @@ export default function Tooltip({
       onMouseLeave={handleMouseLeave}
     >
       {children}
-      <div 
-        className={`absolute ${positionStyles[position]} pointer-events-none z-[100] transition-opacity duration-200 ${
-          isVisible ? 'opacity-100' : 'opacity-0'
+      <div
+        className={`absolute ${positionStyles[position]} pointer-events-none z-[100] ${
+          isVisible ? 'animate-tooltip-bounce' : 'opacity-0 scale-0'
         }`}
       >
         <div className="bg-retro-grey-light border-2 border-cyan-500 px-4 py-3 shadow-[3px_3px_0px_0px_rgba(0,0,0,0.4)] min-w-[180px]">
