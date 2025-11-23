@@ -23,13 +23,33 @@ export default function Window({
   const [isHovering, setIsHovering] = useState(false);
 
   return (
-    <div className={`w-full max-w-[95vw] lg:${width} mx-auto 
-                     bg-retro-grey-light border-3 border-retro-border-dark 
-                     transition-all duration-200 ${
-      isDragging 
-        ? 'shadow-[8px_8px_0px_rgba(0,0,0,0.3)] opacity-95 cursor-grabbing' 
-        : 'shadow-[6px_6px_0px_rgba(0,0,0,0.25)] cursor-default'
-    } ${className}`}>
+    <div
+      className={`group w-full max-w-[95vw] lg:${width} mx-auto
+                     bg-retro-grey-light border-3 border-retro-border-dark
+                     transition-all duration-300 ${
+      isDragging
+        ? 'shadow-[8px_8px_0px_rgba(0,0,0,0.3)] opacity-95 cursor-grabbing'
+        : 'shadow-[6px_6px_0px_rgba(0,0,0,0.25)] cursor-default hover:shadow-[8px_8px_0px_rgba(0,0,0,0.3)]'
+    } ${className}`}
+      style={{
+        transformStyle: 'preserve-3d',
+        perspective: '1000px'
+      }}
+      onMouseMove={(e) => {
+        if (isDragging) return;
+        const rect = e.currentTarget.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        const rotateX = ((y - centerY) / centerY) * -2; // Max 2deg tilt
+        const rotateY = ((x - centerX) / centerX) * 2; // Max 2deg tilt
+        e.currentTarget.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
+      }}
+    >
       {/* Window Title Bar */}
       <div 
         className={`h-7 sm:h-8 bg-gradient-to-b ${
