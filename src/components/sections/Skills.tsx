@@ -210,7 +210,7 @@ export default function Skills() {
                   ? 'bg-gradient-to-b from-[#e5e5e5] to-[#d4d4d4] border-[#00d9ff] shadow-[inset_2px_2px_4px_rgba(0,0,0,0.15)] translate-y-1'
                   : 'bg-gradient-to-b from-[#f0f0f0] to-[#e5e5e5] border-[#808080] shadow-[2px_2px_0px_0px_rgba(0,0,0,0.2)] hover:border-[#00d9ff] hover:shadow-[4px_4px_0px_0px_rgba(0,217,255,0.3)] hover:scale-105 hover:-translate-y-1'
               } ${shouldAnimate ? 'animate-fadeIn' : 'opacity-0'}`}
-              style={shouldAnimate ? { animationDelay: `${index * 120}ms` } : {}}
+              style={shouldAnimate ? { animationDelay: `${index * 200}ms` } : {}}
             >
               {/* Certification badge for Chef */}
               {skill.name === 'Chef' && (
