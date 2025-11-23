@@ -176,12 +176,13 @@ export default function Projects() {
                   ]}
                 >
                   <span
-                    className="px-2 py-1 font-mono bg-[#E5E5E5] border-2 border-[#808080] text-[#3C3C3C] shadow-[1px_1px_0px_rgba(0,0,0,0.15)] hover:bg-[#F0F0F0] hover:border-[#00D9FF] hover:-translate-y-0.5 hover:shadow-[2px_2px_0px_rgba(0,217,255,0.3)] transition-all duration-200 cursor-default inline-block"
+                    className="px-2 py-1 font-mono bg-[#E5E5E5] border-2 border-[#808080] text-[#3C3C3C] shadow-[1px_1px_0px_rgba(0,0,0,0.15)] hover:bg-[#F0F0F0] hover:border-[#00D9FF] hover:-translate-y-0.5 hover:shadow-[2px_2px_0px_rgba(0,217,255,0.3)] transition-all duration-200 cursor-default inline-block animate-fadeIn"
                     style={{
                       fontSize: '12px',
                       height: '28px',
                       display: 'inline-flex',
-                      alignItems: 'center'
+                      alignItems: 'center',
+                      animationDelay: `${index * 50}ms`
                     }}
                   >
                     {tech.name}
