@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Window from '../Window';
 import MacButton from '../MacButton';
 import Tooltip from '../Tooltip';
@@ -13,6 +13,7 @@ export default function Projects() {
   const [showConfidentialModal, setShowConfidentialModal] = useState(false);
   const [showWIPModal, setShowWIPModal] = useState(false);
   const [showNoDemoModal, setShowNoDemoModal] = useState(false);
+  const [shouldAnimateBadges, setShouldAnimateBadges] = useState(true);
 
   const projects = [
     {
@@ -71,6 +72,15 @@ export default function Projects() {
       }
     }
   ];
+
+  // Re-trigger badge animation when project changes
+  useEffect(() => {
+    setShouldAnimateBadges(false);
+    const timer = setTimeout(() => {
+      setShouldAnimateBadges(true);
+    }, 50);
+    return () => clearTimeout(timer);
+  }, [selectedProject]);
 
   return (
     <Window title="PROJECTS.ZIP" width="max-w-3xl">
@@ -176,13 +186,13 @@ export default function Projects() {
                   ]}
                 >
                   <span
-                    className="px-2 py-1 font-mono bg-[#E5E5E5] border-2 border-[#808080] text-[#3C3C3C] shadow-[1px_1px_0px_rgba(0,0,0,0.15)] hover:bg-[#F0F0F0] hover:border-[#00D9FF] hover:-translate-y-0.5 hover:shadow-[2px_2px_0px_rgba(0,217,255,0.3)] transition-all duration-200 cursor-default inline-block animate-fadeIn"
+                    className={`px-2 py-1 font-mono bg-[#E5E5E5] border-2 border-[#808080] text-[#3C3C3C] shadow-[1px_1px_0px_rgba(0,0,0,0.15)] hover:bg-[#F0F0F0] hover:border-[#00D9FF] hover:-translate-y-0.5 hover:shadow-[2px_2px_0px_rgba(0,217,255,0.3)] transition-all duration-200 cursor-default inline-block ${shouldAnimateBadges ? 'animate-fadeIn' : 'opacity-0'}`}
                     style={{
                       fontSize: '12px',
                       height: '28px',
                       display: 'inline-flex',
                       alignItems: 'center',
-                      animationDelay: `${index * 50}ms`
+                      animationDelay: shouldAnimateBadges ? `${index * 80}ms` : '0ms'
                     }}
                   >
                     {tech.name}

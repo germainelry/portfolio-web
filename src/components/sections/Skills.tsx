@@ -18,6 +18,7 @@ export default function Skills() {
   const [activeCategory, setActiveCategory] = useState('languages');
   const [selectedSkill, setSelectedSkill] = useState<any>(null);
   const [isVisible, setIsVisible] = useState(false);
+  const [shouldAnimate, setShouldAnimate] = useState(false);
   const hasAnimated = useRef(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -73,6 +74,7 @@ export default function Skills() {
       ([entry]) => {
         if (entry.isIntersecting && !hasAnimated.current) {
           setIsVisible(true);
+          setShouldAnimate(true);
           hasAnimated.current = true;
         }
       },
@@ -89,6 +91,18 @@ export default function Skills() {
       }
     };
   }, []);
+
+  // Re-trigger animation when category changes (after initial view)
+  useEffect(() => {
+    if (isVisible) {
+      setShouldAnimate(false);
+      // Small delay to reset animation state
+      const timer = setTimeout(() => {
+        setShouldAnimate(true);
+      }, 50);
+      return () => clearTimeout(timer);
+    }
+  }, [activeCategory, isVisible]);
 
   const getIconComponent = (iconName: string) => {
     const iconMap: Record<string, any> = {
@@ -195,8 +209,8 @@ export default function Skills() {
                 selectedSkill?.name === skill.name
                   ? 'bg-gradient-to-b from-[#e5e5e5] to-[#d4d4d4] border-[#00d9ff] shadow-[inset_2px_2px_4px_rgba(0,0,0,0.15)] translate-y-1'
                   : 'bg-gradient-to-b from-[#f0f0f0] to-[#e5e5e5] border-[#808080] shadow-[2px_2px_0px_0px_rgba(0,0,0,0.2)] hover:border-[#00d9ff] hover:shadow-[4px_4px_0px_0px_rgba(0,217,255,0.3)] hover:scale-105 hover:-translate-y-1'
-              } ${isVisible ? 'animate-fadeIn' : 'opacity-0'}`}
-              style={isVisible ? { animationDelay: `${index * 50}ms` } : {}}
+              } ${shouldAnimate ? 'animate-fadeIn' : 'opacity-0'}`}
+              style={shouldAnimate ? { animationDelay: `${index * 80}ms` } : {}}
             >
               {/* Certification badge for Chef */}
               {skill.name === 'Chef' && (
