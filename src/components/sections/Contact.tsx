@@ -20,19 +20,45 @@ export default function Contact() {
   const [isDownloading, setIsDownloading] = useState(false);
   const [downloadProgress, setDownloadProgress] = useState(0);
   const [copiedItem, setCopiedItem] = useState<string | null>(null);
+  const [isVisible, setIsVisible] = useState(false);
   const hasAnimated = useRef(false);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   const fullMessage = `Hi there! :D
 
 Thanks for visiting my website! I'd love to connect and discuss opportunities that combine technical problem-solving, workflow automation and product innovation.`;
 
-  // Typing animation effect
+  // Intersection Observer to detect when component is in view
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !hasAnimated.current) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.3 } // Trigger when 30% of the component is visible
+    );
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
+    return () => {
+      if (containerRef.current) {
+        observer.unobserve(containerRef.current);
+      }
+    };
+  }, []);
+
+  // Typing animation effect - triggers only when visible
   useEffect(() => {
     if (hasAnimated.current) {
       setTypedText(fullMessage);
       setIsTypingComplete(true);
       return;
     }
+
+    if (!isVisible) return;
 
     let currentIndex = 0;
     const typingSpeed = 35; // ms per character
@@ -59,7 +85,7 @@ Thanks for visiting my website! I'd love to connect and discuss opportunities th
     }, 500);
 
     return () => clearTimeout(startDelay);
-  }, []);
+  }, [isVisible]);
 
   // Blinking cursor effect
   useEffect(() => {
@@ -134,7 +160,7 @@ Thanks for visiting my website! I'd love to connect and discuss opportunities th
 
   return (
     <Window title="NEW_MESSAGE.eml" width="max-w-2xl">
-      <div className="space-y-4">
+      <div ref={containerRef} className="space-y-4">
         {/* Email Header Fields */}
         <div className="space-y-2 font-mono text-sm border-b-2 border-retro-grey-dark pb-4">
           <div className="flex gap-3">
