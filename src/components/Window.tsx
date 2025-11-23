@@ -21,6 +21,7 @@ export default function Window({
 }: WindowProps) {
   const [isDragging, setIsDragging] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
+  const [isMouseDown, setIsMouseDown] = useState(false);
 
   return (
     <div
@@ -35,8 +36,12 @@ export default function Window({
         transformStyle: 'preserve-3d',
         perspective: '1000px'
       }}
+      onMouseDown={() => setIsMouseDown(true)}
+      onMouseUp={() => {
+        setIsMouseDown(false);
+      }}
       onMouseMove={(e) => {
-        if (isDragging) return;
+        if (!isMouseDown || isDragging) return;
         const rect = e.currentTarget.getBoundingClientRect();
         const x = e.clientX - rect.left;
         const y = e.clientY - rect.top;
@@ -47,6 +52,7 @@ export default function Window({
         e.currentTarget.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
       }}
       onMouseLeave={(e) => {
+        setIsMouseDown(false);
         e.currentTarget.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
       }}
     >
