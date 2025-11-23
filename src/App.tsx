@@ -35,7 +35,14 @@ export default function App() {
 
   // Intersection Observer for section animations
   useEffect(() => {
+    // Determine the root container based on viewport size
+    const isDesktop = window.innerWidth >= 1024;
+    const root = isDesktop
+      ? document.querySelector('.horizontal-scroll')
+      : null; // null = viewport
+
     const observerOptions = {
+      root: root as Element | null,
       threshold: 0.2,
       rootMargin: '0px'
     };
@@ -49,11 +56,15 @@ export default function App() {
       });
     }, observerOptions);
 
-    // Observe all sections
-    const sections = document.querySelectorAll('section[id]');
-    sections.forEach(section => observer.observe(section));
+    // Small delay to ensure DOM is ready
+    const timer = setTimeout(() => {
+      const sections = document.querySelectorAll('section[id]');
+      sections.forEach(section => observer.observe(section));
+    }, 100);
 
     return () => {
+      clearTimeout(timer);
+      const sections = document.querySelectorAll('section[id]');
       sections.forEach(section => observer.unobserve(section));
     };
   }, []);
