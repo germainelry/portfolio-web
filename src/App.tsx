@@ -10,6 +10,7 @@ import AnimatedBackground from './components/AnimatedBackground';
 import CursorEffects from './components/CursorEffects';
 import Tooltip from './components/Tooltip';
 import { Toaster, toast } from 'sonner@2.0.3';
+import { Analytics } from '@vercel/analytics/react';
 
 // Public assets are served from root path
 const folderIcon = '/desktop-icons/folder.png';
@@ -177,6 +178,9 @@ export default function App() {
     <div className="min-h-screen bg-retro-desktop relative overflow-x-hidden">
       {/* Toast notifications */}
       <Toaster position="top-right" expand={false} richColors />
+
+      {/* Vercel Web Analytics */}
+      <Analytics />
 
       {/* Dithered background pattern */}
       <div className="fixed inset-0 bg-dithered-pattern pointer-events-none" />
