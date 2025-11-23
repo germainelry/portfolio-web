@@ -25,11 +25,37 @@ export default function App() {
   const [toastMessage, setToastMessage] = useState('');
   const [isDownloading, setIsDownloading] = useState(false);
   const [downloadProgress, setDownloadProgress] = useState(0);
+  const [visibleSections, setVisibleSections] = useState<Set<string>>(new Set(['home']));
 
   // Update time every minute
   useEffect(() => {
     const timer = setInterval(() => setTime(new Date()), 60000);
     return () => clearInterval(timer);
+  }, []);
+
+  // Intersection Observer for section animations
+  useEffect(() => {
+    const observerOptions = {
+      threshold: 0.2,
+      rootMargin: '0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const sectionId = entry.target.id;
+          setVisibleSections(prev => new Set(prev).add(sectionId));
+        }
+      });
+    }, observerOptions);
+
+    // Observe all sections
+    const sections = document.querySelectorAll('section[id]');
+    sections.forEach(section => observer.observe(section));
+
+    return () => {
+      sections.forEach(section => observer.unobserve(section));
+    };
   }, []);
 
   // Track which section is in view
@@ -342,54 +368,54 @@ export default function App() {
       <main className="relative z-10 pt-6 sm:pt-8">
         {/* Desktop: Horizontal scroll */}
         <div className="hidden lg:flex h-[calc(100vh-2rem)] overflow-x-auto overflow-y-hidden snap-x snap-mandatory scroll-smooth horizontal-scroll">
-          <section id="home" className="min-w-full h-full flex items-center justify-center px-4 snap-center flex-shrink-0 overflow-y-auto">
+          <section id="home" className={`min-w-full h-full flex items-center justify-center px-4 snap-center flex-shrink-0 overflow-y-auto ${visibleSections.has('home') ? 'animate-fadeSlideUp' : 'opacity-0'}`}>
             <Hero onNavigate={scrollToSection} />
           </section>
 
-          <section id="about" className="min-w-full h-full flex items-center justify-center px-4 snap-center flex-shrink-0 overflow-y-auto">
+          <section id="about" className={`min-w-full h-full flex items-center justify-center px-4 snap-center flex-shrink-0 overflow-y-auto ${visibleSections.has('about') ? 'animate-fadeSlideUp' : 'opacity-0'}`}>
             <About />
           </section>
 
-          <section id="experience" className="min-w-full h-full flex items-center justify-center px-4 snap-center flex-shrink-0 overflow-y-auto">
+          <section id="experience" className={`min-w-full h-full flex items-center justify-center px-4 snap-center flex-shrink-0 overflow-y-auto ${visibleSections.has('experience') ? 'animate-fadeSlideUp' : 'opacity-0'}`}>
             <Experience />
           </section>
 
-          <section id="projects" className="min-w-full h-full flex items-center justify-center px-4 snap-center flex-shrink-0 overflow-y-auto">
+          <section id="projects" className={`min-w-full h-full flex items-center justify-center px-4 snap-center flex-shrink-0 overflow-y-auto ${visibleSections.has('projects') ? 'animate-fadeSlideUp' : 'opacity-0'}`}>
             <Projects />
           </section>
 
-          <section id="skills" className="min-w-full h-full flex items-center justify-center px-4 snap-center flex-shrink-0 overflow-y-auto">
+          <section id="skills" className={`min-w-full h-full flex items-center justify-center px-4 snap-center flex-shrink-0 overflow-y-auto ${visibleSections.has('skills') ? 'animate-fadeSlideUp' : 'opacity-0'}`}>
             <Skills />
           </section>
 
-          <section id="contact" className="min-w-full h-full flex items-center justify-center px-4 snap-center flex-shrink-0 overflow-y-auto">
+          <section id="contact" className={`min-w-full h-full flex items-center justify-center px-4 snap-center flex-shrink-0 overflow-y-auto ${visibleSections.has('contact') ? 'animate-fadeSlideUp' : 'opacity-0'}`}>
             <Contact />
           </section>
         </div>
 
         {/* Mobile/Tablet: Vertical scroll */}
         <div className="lg:hidden min-h-screen">
-          <section id="home" className="min-h-screen flex items-center justify-center px-4 py-16">
+          <section id="home" className={`min-h-screen flex items-center justify-center px-4 py-16 ${visibleSections.has('home') ? 'animate-fadeSlideUp' : 'opacity-0'}`}>
             <Hero onNavigate={scrollToSection} />
           </section>
 
-          <section id="about" className="min-h-screen flex items-center justify-center px-4 py-16">
+          <section id="about" className={`min-h-screen flex items-center justify-center px-4 py-16 ${visibleSections.has('about') ? 'animate-fadeSlideUp' : 'opacity-0'}`}>
             <About />
           </section>
 
-          <section id="experience" className="min-h-screen flex items-center justify-center px-4 py-16">
+          <section id="experience" className={`min-h-screen flex items-center justify-center px-4 py-16 ${visibleSections.has('experience') ? 'animate-fadeSlideUp' : 'opacity-0'}`}>
             <Experience />
           </section>
 
-          <section id="projects" className="min-h-screen flex items-center justify-center px-4 py-16">
+          <section id="projects" className={`min-h-screen flex items-center justify-center px-4 py-16 ${visibleSections.has('projects') ? 'animate-fadeSlideUp' : 'opacity-0'}`}>
             <Projects />
           </section>
 
-          <section id="skills" className="min-h-screen flex items-center justify-center px-4 py-16">
+          <section id="skills" className={`min-h-screen flex items-center justify-center px-4 py-16 ${visibleSections.has('skills') ? 'animate-fadeSlideUp' : 'opacity-0'}`}>
             <Skills />
           </section>
 
-          <section id="contact" className="min-h-screen flex items-center justify-center px-4 py-16">
+          <section id="contact" className={`min-h-screen flex items-center justify-center px-4 py-16 ${visibleSections.has('contact') ? 'animate-fadeSlideUp' : 'opacity-0'}`}>
             <Contact />
           </section>
         </div>
