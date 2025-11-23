@@ -21,7 +21,6 @@ export default function Window({
 }: WindowProps) {
   const [isDragging, setIsDragging] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
-  const [isMouseDown, setIsMouseDown] = useState(false);
 
   return (
     <div
@@ -32,29 +31,6 @@ export default function Window({
         ? 'shadow-[8px_8px_0px_rgba(0,0,0,0.3)] opacity-95 cursor-grabbing'
         : 'shadow-[6px_6px_0px_rgba(0,0,0,0.25)] cursor-default hover:shadow-[8px_8px_0px_rgba(0,0,0,0.3)]'
     } ${className}`}
-      style={{
-        transformStyle: 'preserve-3d',
-        perspective: '1000px'
-      }}
-      onMouseDown={() => setIsMouseDown(true)}
-      onMouseUp={() => {
-        setIsMouseDown(false);
-      }}
-      onMouseMove={(e) => {
-        if (!isMouseDown || isDragging) return;
-        const rect = e.currentTarget.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
-        const rotateX = ((y - centerY) / centerY) * -2; // Max 2deg tilt
-        const rotateY = ((x - centerX) / centerX) * 2; // Max 2deg tilt
-        e.currentTarget.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-      }}
-      onMouseLeave={(e) => {
-        setIsMouseDown(false);
-        e.currentTarget.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
-      }}
     >
       {/* Window Title Bar */}
       <div 
